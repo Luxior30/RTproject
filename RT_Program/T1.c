@@ -6,7 +6,7 @@ void tache1()
     while(1)
     {
 
-         /*//Gère le siège
+         /*//Gère le siège SALUT C MOI
         if((SIEGE == 1) && (CHOC == 0)) //Si user pas sur le siege et a un choc
         {
             LED_R=0; //Allume le rouge
