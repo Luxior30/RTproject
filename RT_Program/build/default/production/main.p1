@@ -1,6 +1,9 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "55 variables_globales.h
 [v F10202 `(v ~T0 @X0 0 tf ]
+[p mainexit ]
+"142 main.h
+[v _initialisation_des_ports `(v ~T0 @X0 0 ef ]
 "21 systeme.h
 [v _initialisation_du_systeme `(v ~T0 @X0 0 ef ]
 "26 semaphore.h
@@ -9436,18 +9439,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 "84
 [v _timer_swap_tempon `uc ~T0 @X0 1 e@134 ]
 [; ;variables_globales.h: 84: unsigned char timer_swap_tempon @0x86 ;
-"86
-[v _tempon_presence_cle `uc ~T0 @X0 1 e ]
-[i _tempon_presence_cle
--> -> 0 `i `uc
-]
-[; ;variables_globales.h: 86: unsigned char tempon_presence_cle =0;
-"87
-[v _temps_initial `uc ~T0 @X0 1 e ]
-[i _temps_initial
--> -> 0 `i `uc
-]
-[; ;variables_globales.h: 87: unsigned char temps_initial =0;
 [; ;afficheur.h: 32: void write_d_aff(unsigned char data);
 [; ;afficheur.h: 33: void write_c_aff(unsigned char command);
 [; ;afficheur.h: 34: unsigned char check_status_ok();
@@ -9492,12 +9483,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;T4.h: 16: void tache4();
 [; ;T4.h: 17: char read_EEPROM(char adressH, char adressL);
 [; ;T4.h: 18: void write_EEPROM(char data, char adressH, char adressL);
-"20 T4.h
-[v _add_data `(v ~T0 @X0 1 ef3`uc`uc`uc ]
-{
-[; ;T4.h: 19: void add_data (char data_J, char adressH, char adressL)
-[; ;T4.h: 20: void follow_driver_timer (char temps_end, char temps_ini);
-[e :U _add_data ]
+[; ;T5.h: 16: void tache5();
+[; ;T6.h: 16: void tache6();
 "36 main.h
 [p x INTOSCSEL=HIGH ]
 [p x SOSCSEL=DIG ]
@@ -9567,129 +9554,182 @@ Version 3.2 HI-TECH Software Intermediate Code
 [p x EBRT7=OFF ]
 "48
 [p x EBRTB=OFF ]
-"5 main.c
-[v _data_J `uc ~T0 @X0 1 r1 ]
-[v _adressH `uc ~T0 @X0 1 r2 ]
-[v _adressL `uc ~T0 @X0 1 r3 ]
+[; ;main.h: 142: void initialisation_des_ports();
+[; ;main.h: 143: unsigned char lecture_8bit_analogique(unsigned char channel);
+"4 main.c
+[v _main `(v ~T0 @X0 1 ef ]
+{
+[; ;main.c: 3: void main()
+[; ;main.c: 4: {
+[e :U _main ]
 [f ]
+[; ;main.c: 5: initialisation_des_ports();
+"5
+[e ( _initialisation_des_ports ..  ]
+[; ;main.c: 6: initialisation_du_systeme();
 "6
 [e ( _initialisation_du_systeme ..  ]
+[; ;main.c: 7: Init(1);
 "7
 [e ( _Init (1 -> -> 1 `i `uc ]
+[; ;main.c: 10: T0CONbits.TMR0ON=1;
 "10
 [e = . . _T0CONbits 0 5 -> -> 1 `i `uc ]
+[; ;main.c: 11: T0IF=1;
 "11
 [e = _T0IF -> -> 1 `i `b ]
+[; ;main.c: 12: (INTCONbits.GIE = 1);
 "12
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;main.c: 15: while(1)
 "15
 [e :U 1240 ]
+[; ;main.c: 16: asm(" nop");
 "16
 [; <"  nop ;# ">
 [e :U 1239 ]
 "15
 [e $U 1240  ]
 [e :U 1241 ]
+[; ;main.c: 17: }
 "17
 [e :UE 1238 ]
 }
 "21
 [v _initialisation_des_ports `(v ~T0 @X0 1 ef ]
 {
-[; ;T4.h: 21: char conv_badge_8bitsl (void);
+[; ;main.c: 20: void initialisation_des_ports()
+[; ;main.c: 21: {
 [e :U _initialisation_des_ports ]
 [f ]
-[; ;T4.h: 22: char conv_badge_8bitsh (void);
-[; ;T5.h: 16: void tache5();
-[; ;T6.h: 16: void tache6();
+[; ;main.c: 23: MEMCON=0xA0;
 "23
 [e = _MEMCON -> -> 160 `i `uc ]
+[; ;main.c: 26: ANCON0=0x00;
 "26
 [e = _ANCON0 -> -> 0 `i `uc ]
+[; ;main.c: 27: ANCON1=0x00;
 "27
 [e = _ANCON1 -> -> 0 `i `uc ]
+[; ;main.c: 28: ANCON2=0x00;
 "28
 [e = _ANCON2 -> -> 0 `i `uc ]
+[; ;main.c: 29: ANCON0bits.ANSEL0=1;
 "29
 [e = . . _ANCON0bits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 30: ANCON0bits.ANSEL1=1;
 "30
 [e = . . _ANCON0bits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 31: ANCON0bits.ANSEL2=1;
 "31
 [e = . . _ANCON0bits 0 2 -> -> 1 `i `uc ]
+[; ;main.c: 32: ANCON0bits.ANSEL3=1;
 "32
 [e = . . _ANCON0bits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 33: ANCON1bits.ANSEL10=1;
 "33
 [e = . . _ANCON1bits 0 2 -> -> 1 `i `uc ]
+[; ;main.c: 34: ANCON1bits.ANSEL11=1;
 "34
 [e = . . _ANCON1bits 0 3 -> -> 1 `i `uc ]
+[; ;main.c: 38: LATCbits.LATC2=1;
 "38
 [e = . . _LATCbits 0 2 -> -> 1 `i `uc ]
+[; ;main.c: 39: LATCbits.LATC1=1;
 "39
 [e = . . _LATCbits 0 1 -> -> 1 `i `uc ]
+[; ;main.c: 40: LATGbits.LATG0=1;
 "40
 [e = . . _LATGbits 0 0 -> -> 1 `i `uc ]
+[; ;main.c: 42: TRISCbits.TRISC2=0;
 "42
 [e = . . _TRISCbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 43: TRISCbits.TRISC1=0;
 "43
 [e = . . _TRISCbits 0 1 -> -> 0 `i `uc ]
+[; ;main.c: 44: TRISGbits.TRISG0=0;
 "44
 [e = . . _TRISGbits 0 0 -> -> 0 `i `uc ]
+[; ;main.c: 45: TRISGbits.TRISG3=0;
 "45
 [e = . . _TRISGbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 46: TRISGbits.TRISG4=0;
 "46
 [e = . . _TRISGbits 0 4 -> -> 0 `i `uc ]
+[; ;main.c: 47: TRISDbits.TRISD2=0;
 "47
 [e = . . _TRISDbits 0 2 -> -> 0 `i `uc ]
+[; ;main.c: 48: TRISDbits.TRISD3=0;
 "48
 [e = . . _TRISDbits 0 3 -> -> 0 `i `uc ]
+[; ;main.c: 51: INTCON2bits.RBPU=0;
 "51
 [e = . . _INTCON2bits 2 4 -> -> 0 `i `uc ]
+[; ;main.c: 52: PADCFG1bits.REPU=1;
 "52
 [e = . . _PADCFG1bits 0 4 -> -> 1 `i `uc ]
+[; ;main.c: 54: }
 "54
 [e :UE 1242 ]
 }
 "57
 [v _lecture_8bit_analogique `(uc ~T0 @X0 1 ef1`uc ]
 {
+[; ;main.c: 56: unsigned char lecture_8bit_analogique(unsigned char channel)
+[; ;main.c: 57: {
 [e :U _lecture_8bit_analogique ]
 [v _channel `uc ~T0 @X0 1 r1 ]
 [f ]
 "58
 [v _ret `uc ~T0 @X0 1 a ]
+[; ;main.c: 58: unsigned char ret;
+[; ;main.c: 61: ADCON1=0;
 "61
 [e = _ADCON1 -> -> 0 `i `uc ]
+[; ;main.c: 62: ADCON2=0x16;
 "62
 [e = _ADCON2 -> -> 22 `i `uc ]
+[; ;main.c: 63: channel=channel&0x1F;
 "63
 [e = _channel -> & -> _channel `i -> 31 `i `uc ]
+[; ;main.c: 64: channel=channel<<2;
 "64
 [e = _channel -> << -> _channel `i -> 2 `i `uc ]
+[; ;main.c: 65: ADCON0=channel|0x01;
 "65
 [e = _ADCON0 -> | -> _channel `i -> 1 `i `uc ]
+[; ;main.c: 67: ADCON0bits.GO=1;
 "67
 [e = . . _ADCON0bits 3 1 -> -> 1 `i `uc ]
+[; ;main.c: 68: while(ADCON0bits.DONE==1)
 "68
 [e $U 1244  ]
 [e :U 1245 ]
+[; ;main.c: 69: ;
 "69
 [e :U 1244 ]
 "68
 [e $ == -> . . _ADCON0bits 2 1 `i -> 1 `i 1245  ]
 [e :U 1246 ]
+[; ;main.c: 71: if ((ADRESL&0x01)==0x01)
 "71
 [e $ ! == & -> _ADRESL `i -> 1 `i -> 1 `i 1247  ]
+[; ;main.c: 72: ret=0;
 "72
 [e = _ret -> -> 0 `i `uc ]
 [e $U 1248  ]
 "73
 [e :U 1247 ]
+[; ;main.c: 73: else
+[; ;main.c: 74: ret=ADRESH;
 "74
 [e = _ret _ADRESH ]
 [e :U 1248 ]
+[; ;main.c: 77: return ret;
 "77
 [e ) _ret ]
 [e $UE 1243  ]
+[; ;main.c: 78: }
 "78
 [e :UE 1243 ]
 }

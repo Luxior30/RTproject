@@ -83,9 +83,6 @@ unsigned long Timer_G @0x81 ;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
 
-unsigned char tempon_presence_cle @0x87;
-unsigned char temps_initial @0x88;
-
 
 
 #ifdef	__cplusplus

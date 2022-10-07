@@ -11980,9 +11980,6 @@ unsigned long Timer_G @0x81 ;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
 
-unsigned char tempon_presence_cle =0;
-unsigned char temps_initial =0;
-
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
 void write_c_aff(unsigned char command);
@@ -12037,10 +12034,6 @@ void init_chRGB (void);
 void tache4();
 char read_EEPROM(char adressH, char adressL);
 void write_EEPROM(char data, char adressH, char adressL);
-void add_data (char data_J, char adressH, char adressL)
-void follow_driver_timer (char temps_end, char temps_ini);
-char conv_badge_8bitsl (void);
-char conv_badge_8bitsh (void);
 
 # 16 "T5.h"
 void tache5();
