@@ -9496,3 +9496,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 "33
 [e :UE 1243 ]
 }
+"37
+[v _add_timer `(v ~T0 @X0 1 ef3`uc`uc`uc ]
+{
+[; ;T4.c: 36: void add_timer (char data_J, char adressH, char adressL)
+[; ;T4.c: 37: {
+[e :U _add_timer ]
+[v _data_J `uc ~T0 @X0 1 r1 ]
+[v _adressH `uc ~T0 @X0 1 r2 ]
+[v _adressL `uc ~T0 @X0 1 r3 ]
+[f ]
+"38
+[v _data_t `uc ~T0 @X0 1 a ]
+[; ;T4.c: 38: unsigned char data_t=data_J+read_EEPROM(adressH, adressL);
+[e = _data_t -> + -> _data_J `i -> ( _read_EEPROM (2 , _adressH _adressL `i `uc ]
+[; ;T4.c: 39: write_EEPROM(data_t,adressH, adressL);
+"39
+[e ( _write_EEPROM (3 , , _data_t _adressH _adressL ]
+[; ;T4.c: 40: }
+"40
+[e :UE 1247 ]
+}

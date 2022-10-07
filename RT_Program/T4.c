@@ -32,6 +32,12 @@ char read_EEPROM (char adressH, char adressL)
     return data;
 }
 
+
+void add_timer (char data_J, char adressH, char adressL)
+{
+    unsigned char data_t=data_J+read_EEPROM(adressH, adressL);
+    write_EEPROM(data_t,adressH, adressL);
+}
         // Variable récupération variable timer
         // temps utilisation normale
         // temps utilisation anormale

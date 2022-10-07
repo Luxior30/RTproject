@@ -12094,3 +12094,10 @@ unsigned char data = EEDATA;
 return data;
 }
 
+
+void add_timer (char data_J, char adressH, char adressL)
+{
+unsigned char data_t=data_J+read_EEPROM(adressH, adressL);
+write_EEPROM(data_t,adressH, adressL);
+}
+
