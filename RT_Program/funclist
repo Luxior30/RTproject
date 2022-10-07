@@ -7,7 +7,7 @@ _write_d_aff: CODE, 11266 0 24
 _tache2: CODE, 8068 0 336
 _init_rxtx: CODE, 11168 0 34
 _tache5: CODE, 7168 0 526
-_clear_text: CODE, 10474 0 96
+_clear_text: CODE, 10378 0 96
 _initialisation_des_ports: CODE, 10084 0 98
 i2_Init: CODE, 11052 0 42
 ___awmod: CODE, 9296 0 168
@@ -19,7 +19,7 @@ __initialization: CODE, 11314 0 8
 ___lwdiv: CODE, 9976 0 108
 _tache3: CODE, 4334 0 2084
 _tache6: CODE, 10740 0 80
-_clear_graphics: CODE, 10378 0 96
+_clear_graphics: CODE, 10474 0 96
 _draw_hex8: CODE, 9600 0 134
 _tp_delai: CODE, 11202 0 32
 _delai_us_char: CODE, 11094 0 38
