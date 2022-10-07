@@ -5,13 +5,32 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T4.h</file>
-            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T6.h</file>
-            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/systeme.c</file>
-            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/nbproject/Makefile-impl.mk</file>
-            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T6.c</file>
-            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T4.c</file>
             <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/variables_globales.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/systeme.c</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T6.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T6.c</file>
             <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T3.c</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T4.c</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/nbproject/Makefile-impl.mk</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/main.c</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/systeme.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T1.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T2.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T3.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T5.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/stid.c</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/stid.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/nbproject/Makefile-default.mk</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T1.c</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/afficheur.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/main.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/rxtx.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/semaphore.h</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/afficheur.c</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/rxtx.c</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/semaphore.c</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T2.c</file>
+            <file>file:/C:/Users/nicog/Desktop/RTproject/RT_Program/T5.c</file>
         </group>
     </open-files>
 </project-private>
