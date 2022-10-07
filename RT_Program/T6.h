@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 #include "main.h"
-    void tache6();
+void tache6();
 
 #ifdef	__cplusplus
 }

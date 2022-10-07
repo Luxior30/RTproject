@@ -11980,6 +11980,9 @@ unsigned long Timer_G @0x81 ;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
 
+unsigned char tempon_presence_cle @0x87;
+unsigned char temps_initial @0x88;
+
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
 void write_c_aff(unsigned char command);
@@ -12060,11 +12063,19 @@ unsigned char lecture_8bit_analogique(unsigned char channel);
 void tache4();
 char read_EEPROM(char adressH, char adressL);
 void write_EEPROM(char data, char adressH, char adressL);
+void add_data_time (char data_J, char adress_H, char adress_L);
+void follow_driver_timer (char temps_end, char temps_ini);
+char conv_badge_8bitsl (void);
+char conv_badge_8bitsh (void);
 
 # 3 "T4.c"
 void tache4()
 {
-
+if ((PORTDbits.RD0==1)&&(tempon_presence_cle==0))
+{
+temps_initial=Timer_G;
+tempon_presence_cle=1;
+}
 }
 
 void write_EEPROM (char data, char adressH, char adressL)
@@ -12095,9 +12106,38 @@ return data;
 }
 
 
-void add_timer (char data_J, char adressH, char adressL)
+void add_data_time (char data_J, char adress_H, char adress_L)
 {
-unsigned char data_t=data_J+read_EEPROM(adressH, adressL);
-write_EEPROM(data_t,adressH, adressL);
+unsigned char data_t=read_EEPROM(adress_H, adress_L);
+data_t=data_t+data_J;
+write_EEPROM(data_t,adress_H, adress_L);
+}
+
+void follow_driver_timer (char temps_end, char temps_ini)
+{
+unsigned char adresslow=conv_badge_8bitsl();
+unsigned char adresshigh=conv_badge_8bitsh();
+unsigned char temps_act_normal = temps_end - temps_ini ;
+add_data_time(temps_act_normal,adresslow,adresshigh);
+}
+
+char conv_badge_8bitsl (void)
+{
+unsigned badge_t=0;
+for (unsigned char i=0; i<8; i++)
+{
+badge_t=badge_t+badge[i]<<i;
+}
+return badge_t;
+}
+
+char conv_badge_8bitsh (void)
+{
+unsigned badge_t=0;
+for (unsigned char i=0; i<2; i++)
+{
+badge_t=badge_t+badge[i+8]<<i;
+}
+return badge_t;
 }
 

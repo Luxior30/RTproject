@@ -9346,6 +9346,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "84
 [v _timer_swap_tempon `uc ~T0 @X0 1 e@134 ]
 [; ;variables_globales.h: 84: unsigned char timer_swap_tempon @0x86 ;
+"86
+[v _tempon_presence_cle `uc ~T0 @X0 1 e@135 ]
+[; ;variables_globales.h: 86: unsigned char tempon_presence_cle @0x87;
+"87
+[v _temps_initial `uc ~T0 @X0 1 e@136 ]
+[; ;variables_globales.h: 87: unsigned char temps_initial @0x88;
 [; ;afficheur.h: 32: void write_d_aff(unsigned char data);
 [; ;afficheur.h: 33: void write_c_aff(unsigned char command);
 [; ;afficheur.h: 34: unsigned char check_status_ok();
@@ -9390,6 +9396,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;T4.h: 16: void tache4();
 [; ;T4.h: 17: char read_EEPROM(char adressH, char adressL);
 [; ;T4.h: 18: void write_EEPROM(char data, char adressH, char adressL);
+[; ;T4.h: 19: void add_data_time (char data_J, char adress_H, char adress_L);
+[; ;T4.h: 20: void follow_driver_timer (char temps_end, char temps_ini);
+[; ;T4.h: 21: char conv_badge_8bitsl (void);
+[; ;T4.h: 22: char conv_badge_8bitsh (void);
 [; ;T5.h: 16: void tache5();
 [; ;T6.h: 16: void tache6();
 "36 main.h
@@ -9466,9 +9476,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;systeme.h: 20: void interrupt fonction_d_interruption();
 [; ;systeme.h: 21: void initialisation_du_systeme();
 "20 systeme.h
-[v F10290 `(v ~T0 @X0 1 tf ]
+[v F10303 `(v ~T0 @X0 1 tf ]
 "18 systeme.c
-[v _fonction_d_interruption `IF10290 ~T0 @X0 1 e ]
+[v _fonction_d_interruption `IF10303 ~T0 @X0 1 e ]
 {
 [; ;systeme.c: 17: void interrupt fonction_d_interruption()
 [; ;systeme.c: 18: {
@@ -9820,59 +9830,59 @@ Version 3.2 HI-TECH Software Intermediate Code
 "133
 [v _temp `uc ~T0 @X0 1 a ]
 [; ;systeme.c: 133: unsigned char temp;
-[; ;systeme.c: 135: DEMARRAGE=1;
-"135
-[e = _DEMARRAGE -> -> 1 `i `uc ]
-[; ;systeme.c: 136: Timer_G=0;
+[; ;systeme.c: 136: DEMARRAGE=1;
 "136
+[e = _DEMARRAGE -> -> 1 `i `uc ]
+[; ;systeme.c: 137: Timer_G=0;
+"137
 [e = _Timer_G -> -> -> 0 `i `l `ul ]
-[; ;systeme.c: 138: INTCONbits.GIE=1;
-"138
-[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;systeme.c: 139: INTCONbits.PEIE=1;
+[; ;systeme.c: 139: INTCONbits.GIE=1;
 "139
-[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
-[; ;systeme.c: 140: EECON1=0x00;
+[e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
+[; ;systeme.c: 140: INTCONbits.PEIE=1;
 "140
+[e = . . _INTCONbits 1 6 -> -> 1 `i `uc ]
+[; ;systeme.c: 141: EECON1=0x00;
+"141
 [e = _EECON1 -> -> 0 `i `uc ]
-[; ;systeme.c: 142: EECON1bits.EEPGD=0;
-"142
-[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
-[; ;systeme.c: 143: EECON1bits.CFGS=0;
+[; ;systeme.c: 143: EECON1bits.EEPGD=0;
 "143
+[e = . . _EECON1bits 0 7 -> -> 0 `i `uc ]
+[; ;systeme.c: 144: EECON1bits.CFGS=0;
+"144
 [e = . . _EECON1bits 0 6 -> -> 0 `i `uc ]
-[; ;systeme.c: 145: IPR6bits.EEIP=1;
-"145
+[; ;systeme.c: 146: IPR6bits.EEIP=1;
+"146
 [e = . . _IPR6bits 0 4 -> -> 1 `i `uc ]
-[; ;systeme.c: 148: queue[0]=1;
-"148
-[e = *U + &U _queue * -> -> -> 0 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 1 `i `uc ]
-[; ;systeme.c: 149: queue[1]=2;
+[; ;systeme.c: 149: queue[0]=1;
 "149
-[e = *U + &U _queue * -> -> -> 1 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 2 `i `uc ]
-[; ;systeme.c: 150: queue[2]=3;
+[e = *U + &U _queue * -> -> -> 0 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 1 `i `uc ]
+[; ;systeme.c: 150: queue[1]=2;
 "150
-[e = *U + &U _queue * -> -> -> 2 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 3 `i `uc ]
-[; ;systeme.c: 151: queue[3]=4;
+[e = *U + &U _queue * -> -> -> 1 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 2 `i `uc ]
+[; ;systeme.c: 151: queue[2]=3;
 "151
-[e = *U + &U _queue * -> -> -> 3 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 4 `i `uc ]
-[; ;systeme.c: 152: queue[4]=5;
+[e = *U + &U _queue * -> -> -> 2 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 3 `i `uc ]
+[; ;systeme.c: 152: queue[3]=4;
 "152
-[e = *U + &U _queue * -> -> -> 4 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 5 `i `uc ]
-[; ;systeme.c: 153: queue[5]=6;
+[e = *U + &U _queue * -> -> -> 3 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 4 `i `uc ]
+[; ;systeme.c: 153: queue[4]=5;
 "153
+[e = *U + &U _queue * -> -> -> 4 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 5 `i `uc ]
+[; ;systeme.c: 154: queue[5]=6;
+"154
 [e = *U + &U _queue * -> -> -> 5 `i `ui `ux -> -> # *U &U _queue `ui `ux -> -> 6 `i `uc ]
-[; ;systeme.c: 155: pointeur_de_tache=6-1;
-"155
-[e = _pointeur_de_tache -> - -> 6 `i -> 1 `i `uc ]
-[; ;systeme.c: 156: tache_active=queue[pointeur_de_tache];
+[; ;systeme.c: 156: pointeur_de_tache=6-1;
 "156
+[e = _pointeur_de_tache -> - -> 6 `i -> 1 `i `uc ]
+[; ;systeme.c: 157: tache_active=queue[pointeur_de_tache];
+"157
 [e = _tache_active *U + &U _queue * -> _pointeur_de_tache `ux -> -> # *U &U _queue `ui `ux ]
-[; ;systeme.c: 161: temp=STKPTR;
-"161
+[; ;systeme.c: 162: temp=STKPTR;
+"162
 [e = _temp _STKPTR ]
-[; ;systeme.c: 165: STKPTR=2;fptr=&tache1; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
-"165
+[; ;systeme.c: 166: STKPTR=2;fptr=&tache1; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
+"166
 [e = _STKPTR -> -> 2 `i `uc ]
 [e = _fptr -> &U _tache1 `*F10199 ]
 [e = _val_tos -> _fptr `um ]
@@ -9882,8 +9892,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TOSH *U _puc ]
 [e ++ _puc * -> -> 1 `i `x -> -> # *U _puc `i `x ]
 [e = _TOSU *U _puc ]
-[; ;systeme.c: 166: STKPTR=7;fptr=&tache2; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
-"166
+[; ;systeme.c: 167: STKPTR=7;fptr=&tache2; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
+"167
 [e = _STKPTR -> -> 7 `i `uc ]
 [e = _fptr -> &U _tache2 `*F10199 ]
 [e = _val_tos -> _fptr `um ]
@@ -9893,8 +9903,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TOSH *U _puc ]
 [e ++ _puc * -> -> 1 `i `x -> -> # *U _puc `i `x ]
 [e = _TOSU *U _puc ]
-[; ;systeme.c: 167: STKPTR=12;fptr=&tache3; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
-"167
+[; ;systeme.c: 168: STKPTR=12;fptr=&tache3; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
+"168
 [e = _STKPTR -> -> 12 `i `uc ]
 [e = _fptr -> &U _tache3 `*F10199 ]
 [e = _val_tos -> _fptr `um ]
@@ -9904,8 +9914,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TOSH *U _puc ]
 [e ++ _puc * -> -> 1 `i `x -> -> # *U _puc `i `x ]
 [e = _TOSU *U _puc ]
-[; ;systeme.c: 168: STKPTR=17;fptr=&tache4; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
-"168
+[; ;systeme.c: 169: STKPTR=17;fptr=&tache4; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
+"169
 [e = _STKPTR -> -> 17 `i `uc ]
 [e = _fptr -> &U _tache4 `*F10199 ]
 [e = _val_tos -> _fptr `um ]
@@ -9915,8 +9925,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TOSH *U _puc ]
 [e ++ _puc * -> -> 1 `i `x -> -> # *U _puc `i `x ]
 [e = _TOSU *U _puc ]
-[; ;systeme.c: 169: STKPTR=22;fptr=&tache5; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
-"169
+[; ;systeme.c: 170: STKPTR=22;fptr=&tache5; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
+"170
 [e = _STKPTR -> -> 22 `i `uc ]
 [e = _fptr -> &U _tache5 `*F10199 ]
 [e = _val_tos -> _fptr `um ]
@@ -9926,8 +9936,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TOSH *U _puc ]
 [e ++ _puc * -> -> 1 `i `x -> -> # *U _puc `i `x ]
 [e = _TOSU *U _puc ]
-[; ;systeme.c: 170: STKPTR=27;fptr=&tache6; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
-"170
+[; ;systeme.c: 171: STKPTR=27;fptr=&tache6; val_tos=(unsigned short long) fptr; puc=(unsigned char *)&val_tos; TOSL=*puc;puc++; TOSH=*puc;puc++; TOSU=*puc;
+"171
 [e = _STKPTR -> -> 27 `i `uc ]
 [e = _fptr -> &U _tache6 `*F10199 ]
 [e = _val_tos -> _fptr `um ]
@@ -9937,37 +9947,40 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e = _TOSH *U _puc ]
 [e ++ _puc * -> -> 1 `i `x -> -> # *U _puc `i `x ]
 [e = _TOSU *U _puc ]
-[; ;systeme.c: 172: STKPTR=temp;
-"172
+[; ;systeme.c: 173: STKPTR=temp;
+"173
 [e = _STKPTR _temp ]
-[; ;systeme.c: 175: STKPTR_T1=2;
-"175
-[e = _STKPTR_T1 -> -> 2 `i `uc ]
-[; ;systeme.c: 176: STKPTR_T2=7;
+[; ;systeme.c: 176: STKPTR_T1=2;
 "176
-[e = _STKPTR_T2 -> -> 7 `i `uc ]
-[; ;systeme.c: 177: STKPTR_T3=12;
+[e = _STKPTR_T1 -> -> 2 `i `uc ]
+[; ;systeme.c: 177: STKPTR_T2=7;
 "177
-[e = _STKPTR_T3 -> -> 12 `i `uc ]
-[; ;systeme.c: 178: STKPTR_T4=17;
+[e = _STKPTR_T2 -> -> 7 `i `uc ]
+[; ;systeme.c: 178: STKPTR_T3=12;
 "178
-[e = _STKPTR_T4 -> -> 17 `i `uc ]
-[; ;systeme.c: 179: STKPTR_T5=22;
+[e = _STKPTR_T3 -> -> 12 `i `uc ]
+[; ;systeme.c: 179: STKPTR_T4=17;
 "179
-[e = _STKPTR_T5 -> -> 22 `i `uc ]
-[; ;systeme.c: 180: STKPTR_T6=27;
+[e = _STKPTR_T4 -> -> 17 `i `uc ]
+[; ;systeme.c: 180: STKPTR_T5=22;
 "180
+[e = _STKPTR_T5 -> -> 22 `i `uc ]
+[; ;systeme.c: 181: STKPTR_T6=27;
+"181
 [e = _STKPTR_T6 -> -> 27 `i `uc ]
-[; ;systeme.c: 183: Tick_Count=0;
-"183
+[; ;systeme.c: 184: Tick_Count=0;
+"184
 [e = _Tick_Count -> -> 0 `i `ui ]
-[; ;systeme.c: 185: T0CON=0x01;
-"185
-[e = _T0CON -> -> 1 `i `uc ]
-[; ;systeme.c: 186: T0IE=1;
+[; ;systeme.c: 186: T0CON=0x01;
 "186
-[e = _T0IE -> -> 1 `i `b ]
-[; ;systeme.c: 187: }
+[e = _T0CON -> -> 1 `i `uc ]
+[; ;systeme.c: 187: T0IE=1;
 "187
+[e = _T0IE -> -> 1 `i `b ]
+[; ;systeme.c: 188: tempon_presence_cle=0;
+"188
+[e = _tempon_presence_cle -> -> 0 `i `uc ]
+[; ;systeme.c: 189: }
+"189
 [e :UE 1242 ]
 }

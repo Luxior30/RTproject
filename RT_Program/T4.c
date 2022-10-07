@@ -2,7 +2,11 @@
 
 void tache4()
 {
-    
+    if ((STID_CODE==1)&&(tempon_presence_cle==0))
+    {
+        temps_initial=Timer_G;
+        tempon_presence_cle=1;
+    }
 }
 
 void write_EEPROM (char data, char adressH, char adressL)
@@ -33,11 +37,42 @@ char read_EEPROM (char adressH, char adressL)
 }
 
 
-void add_timer (char data_J, char adressH, char adressL)
+void add_data_time (char data_J, char adress_H, char adress_L)
 {
-    unsigned char data_t=data_J+read_EEPROM(adressH, adressL);
-    write_EEPROM(data_t,adressH, adressL);
+    unsigned char data_t=read_EEPROM(adress_H, adress_L);
+    data_t=data_t+data_J;
+    write_EEPROM(data_t,adress_H, adress_L);
 }
+
+void follow_driver_timer (char temps_end, char temps_ini)
+{
+    unsigned char adresslow=conv_badge_8bitsl();
+    unsigned char adresshigh=conv_badge_8bitsh();
+    unsigned char temps_act_normal = temps_end - temps_ini ;
+    add_data_time(temps_act_normal,adresslow,adresshigh);
+}
+
+char conv_badge_8bitsl (void)
+{
+    unsigned badge_t=0;
+    for (unsigned char i=0; i<8; i++)
+    {
+        badge_t=badge_t+badge[i]<<i;
+    }
+    return badge_t;
+}
+
+char conv_badge_8bitsh (void)
+{
+    unsigned badge_t=0;
+    for (unsigned char i=0; i<2; i++)
+    {
+        badge_t=badge_t+badge[i+8]<<i;
+    }
+    return badge_t;
+}
+
+
         // Variable récupération variable timer
         // temps utilisation normale
         // temps utilisation anormale
