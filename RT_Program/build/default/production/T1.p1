@@ -9252,6 +9252,12 @@ Version 3.2 HI-TECH Software Intermediate Code
 "84
 [v _timer_swap_tempon `uc ~T0 @X0 1 e@134 ]
 [; ;variables_globales.h: 84: unsigned char timer_swap_tempon @0x86 ;
+"86
+[v _tempon_presence_cle `uc ~T0 @X0 1 e@135 ]
+[; ;variables_globales.h: 86: unsigned char tempon_presence_cle @0x87;
+"87
+[v _temps_initial `uc ~T0 @X0 1 e@136 ]
+[; ;variables_globales.h: 87: unsigned char temps_initial @0x88;
 [; ;afficheur.h: 32: void write_d_aff(unsigned char data);
 [; ;afficheur.h: 33: void write_c_aff(unsigned char command);
 [; ;afficheur.h: 34: unsigned char check_status_ok();
@@ -9295,6 +9301,10 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;T4.h: 16: void tache4();
 [; ;T4.h: 17: char read_EEPROM(char adressH, char adressL);
 [; ;T4.h: 18: void write_EEPROM(char data, char adressH, char adressL);
+[; ;T4.h: 19: void add_timer (char data_J, char adressH, char adressL);
+[; ;T4.h: 20: void follow_driver_timer (void);
+[; ;T4.h: 21: char conv_badge_8bitsl (void);
+[; ;T4.h: 22: char conv_badge_8bitsh (void);
 [; ;T5.h: 16: void tache5();
 [; ;T6.h: 16: void tache6();
 "36 main.h

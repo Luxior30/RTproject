@@ -184,4 +184,5 @@ void initialisation_du_systeme()
     //T0CON=0x08;//16 bit, no prescaler, OFF, 5.46ms period
     T0CON=0x01;//16 bit, 1:4 Prescaler, 22ms period
     T0IE=1; // Autorisation IT Ordonnanceur
+    tempon_presence_cle=0;
 }
