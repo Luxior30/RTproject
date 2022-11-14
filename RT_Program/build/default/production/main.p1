@@ -9445,6 +9445,24 @@ Version 3.2 HI-TECH Software Intermediate Code
 "87
 [v _temps_initial `uc ~T0 @X0 1 e@136 ]
 [; ;variables_globales.h: 87: unsigned char temps_initial @0x88;
+"88
+[v _temps_initial_warn `uc ~T0 @X0 1 e@137 ]
+[; ;variables_globales.h: 88: unsigned char temps_initial_warn @0x89;
+"89
+[v _tempon_warnning `uc ~T0 @X0 1 e@138 ]
+[; ;variables_globales.h: 89: unsigned char tempon_warnning @0x8A;
+"90
+[v _test_EEPROM `ul ~T0 @X0 1 e@139 ]
+[; ;variables_globales.h: 90: unsigned long test_EEPROM @0x8B;
+"91
+[v _temps_final `uc ~T0 @X0 1 e@143 ]
+[; ;variables_globales.h: 91: unsigned char temps_final @0x8F;
+"92
+[v _tempon_anormal_use `uc ~T0 @X0 1 e@144 ]
+[; ;variables_globales.h: 92: unsigned char tempon_anormal_use @0x90;
+"93
+[v _tempon_unused `uc ~T0 @X0 1 e@145 ]
+[; ;variables_globales.h: 93: unsigned char tempon_unused @0x91;
 [; ;afficheur.h: 32: void write_d_aff(unsigned char data);
 [; ;afficheur.h: 33: void write_c_aff(unsigned char command);
 [; ;afficheur.h: 34: unsigned char check_status_ok();
@@ -9478,21 +9496,23 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;T1.h: 16: void tache1();
 [; ;T2.h: 17: void tache2();
 [; ;T2.h: 18: void tp_delai(unsigned int itpd);
-"14 T3.h
+"17 T3.h
 [v _screen `uc ~T0 @X0 1 e ]
 [i _screen
 -> -> 0 `i `uc
 ]
-[; ;T3.h: 14: unsigned char screen=0;
-[; ;T3.h: 20: void tache3();
-[; ;T3.h: 21: void init_chRGB (void);
-[; ;T4.h: 16: void tache4();
-[; ;T4.h: 17: char read_EEPROM(char adressH, char adressL);
-[; ;T4.h: 18: void write_EEPROM(char data, char adressH, char adressL);
-[; ;T4.h: 19: void add_timer (char data_J, char adressH, char adressL);
-[; ;T4.h: 20: void follow_driver_timer (void);
-[; ;T4.h: 21: char conv_badge_8bitsl (void);
-[; ;T4.h: 22: char conv_badge_8bitsh (void);
+[; ;T3.h: 17: unsigned char screen= 0;
+[; ;T3.h: 23: void tache3();
+[; ;T3.h: 24: void init_chRGB (void);
+[; ;T4.h: 23: void tache4();
+[; ;T4.h: 24: char read_EEPROM(char adressH, char adressL);
+[; ;T4.h: 25: void write_EEPROM(char data, char adressH, char adressL);
+[; ;T4.h: 26: unsigned char add_timer (char data_J, char adressH, char adressL,char type);
+[; ;T4.h: 27: void follow_driver_timer (void);
+[; ;T4.h: 28: char conv_badge_8bitsl (void);
+[; ;T4.h: 29: char conv_badge_8bitsh (void);
+[; ;T4.h: 30: void follow_driver_timer_anormal (void);
+[; ;T4.h: 31: void follow_timer_unused(void);
 [; ;T5.h: 16: void tache5();
 [; ;T6.h: 16: void tache6();
 "36 main.h

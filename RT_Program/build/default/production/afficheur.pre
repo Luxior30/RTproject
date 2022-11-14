@@ -11982,6 +11982,12 @@ unsigned char timer_swap_tempon @0x86 ;
 
 unsigned char tempon_presence_cle @0x87;
 unsigned char temps_initial @0x88;
+unsigned char temps_initial_warn @0x89;
+unsigned char tempon_warnning @0x8A;
+unsigned long test_EEPROM @0x8B;
+unsigned char temps_final @0x8F;
+unsigned char tempon_anormal_use @0x90;
+unsigned char tempon_unused @0x91;
 
 # 22 "semaphore.h"
 unsigned char Val_sem_cna;
@@ -12006,21 +12012,23 @@ void tache1();
 void tache2();
 void tp_delai(unsigned int itpd);
 
-# 14 "T3.h"
-unsigned char screen=0;
+# 17 "T3.h"
+unsigned char screen= 0;
 
-# 20
+# 23
 void tache3();
 void init_chRGB (void);
 
-# 16 "T4.h"
+# 23 "T4.h"
 void tache4();
 char read_EEPROM(char adressH, char adressL);
 void write_EEPROM(char data, char adressH, char adressL);
-void add_timer (char data_J, char adressH, char adressL);
+unsigned char add_timer (char data_J, char adressH, char adressL,char type);
 void follow_driver_timer (void);
 char conv_badge_8bitsl (void);
 char conv_badge_8bitsh (void);
+void follow_driver_timer_anormal (void);
+void follow_timer_unused(void);
 
 # 16 "T5.h"
 void tache5();

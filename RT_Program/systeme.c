@@ -131,9 +131,11 @@ void interrupt fonction_d_interruption()
 void initialisation_du_systeme()
 {
     unsigned char temp;
-
+    write_EEPROM(0x00, 0x00, 0x00);
     DEMARRAGE=1;
     Timer_G=0;
+    temps_initial=0;
+    temps_final=0;
     //initialisation de la gestion EEPROM
     INTCONbits.GIE=1;   // Active les interruptions globales
     INTCONbits.PEIE=1;  // Active les interruptions peripheriques

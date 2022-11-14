@@ -30,7 +30,13 @@ void tache3()
     {
         switch (screen)
         {
-            case (0):
+            case (main_screen):
+                if (tempon_anormal_use==1)
+                {
+                    LED_R = 1;
+                    LED_G=0;
+                    LED_B=0;
+                }
                 goto_lico(0,0);
                 draw_string("Marche:");
                 if (MARCHE_AVANT==0)
@@ -69,7 +75,8 @@ void tache3()
                     vitesse++;
                 if (VITESSE_MOINS==0)
                     vitesse--;
-                draw_hex8(vitesse);
+               draw_hex8(vitesse);
+               // draw_hex8(test_EEPROM); 
 
                 goto_lico(6,0);
                 draw_string("Batterie:");
@@ -106,6 +113,12 @@ void tache3()
                 draw_string("Y-Joystick:");
                 draw_hex8(lecture_8bit_analogique(JOYSTICK_Y));
 
+                goto_lico(5,20);
+                draw_hex8(test_EEPROM);
+                goto_lico(6,20);
+                draw_hex8(temps_initial);
+                goto_lico(7,20);
+                draw_hex8(temps_final);
                 
           
                 
@@ -131,27 +144,12 @@ void tache3()
                 draw_string("|");
                 goto_lico(16,13);
 
-           
-                
-                goto_lico(13,14);
-                draw_string("-------------");
-                goto_lico(14,14);
-                draw_string("maintenance  |");
-                goto_lico(15,27);
-                draw_string("|");
-                goto_lico(16,27);
-     
                      if (TP_appui==1)
                     { 
                        if ((TP_x<0x50)&&(TP_y>0x60))
                        {
                        clear_text();    
-                       screen=1;
-                       }
-                       if (((TP_x>0x50)&&(TP_x<0xA3))&&(TP_y>0x60))
-                       {
-                       clear_text();    
-                       screen=2;
+                       screen=social_data_screen;
                        }
                     }  
                 if (TP_appui==1)
@@ -198,9 +196,22 @@ void tache3()
         }
                 
             break;
-            case (1):
+            case (social_data_screen):
                     goto_lico(0,0);
-                    draw_string ("hello second screen");
+                    draw_string ("social datas");
+                    goto_lico(2,0);
+                    draw_string ("time unused ans power on");
+                    goto_lico(3,0);
+                    draw_hex8(read_EEPROM(0x01,0x00));
+                    goto_lico(4,0);
+                    draw_string("your time");
+                    goto_lico(5,0);
+                    draw_hex8(read_EEPROM(conv_badge_8bitsh(),conv_badge_8bitsl ()+1));
+                    goto_lico(6,0);
+                    draw_string("warning your anormal use");
+                    goto_lico(7,0);
+                    draw_hex8(read_EEPROM(conv_badge_8bitsh(),conv_badge_8bitsl ()+4));
+                    
                     goto_lico(13,0);
                     draw_string("-------------");
                     goto_lico(14,0);
@@ -217,26 +228,7 @@ void tache3()
                        init_chRGB();
                        }
                     }   
-                    break;
-            case (2):
-                 goto_lico(0,0);
-                    draw_string ("hello third screen");
-                    goto_lico(13,0);
-                    draw_string("-------------");
-                    goto_lico(14,0);
-                    draw_string("main screen  |");
-                    goto_lico(15,13);
-                    draw_string("|");
-                    goto_lico(16,13);
-                    if (TP_appui==1)
-                    { 
-                       if ((TP_x<0x50)&&(TP_y>0x60))
-                       {
-                       clear_text();    
-                       screen=0;
-                       init_chRGB();
-                       }
-                    }   
+                    break; 
                 
     }
            

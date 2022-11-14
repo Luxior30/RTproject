@@ -85,6 +85,12 @@ unsigned char timer_swap_tempon @0x86 ;
 
 unsigned char tempon_presence_cle @0x87;
 unsigned char temps_initial @0x88;
+unsigned char temps_initial_warn @0x89;
+unsigned char tempon_warnning @0x8A;
+unsigned long test_EEPROM  @0x8B;
+unsigned char temps_final @0x8F;
+unsigned char tempon_anormal_use @0x90;
+unsigned char tempon_unused @0x91;
 
 
 #ifdef	__cplusplus

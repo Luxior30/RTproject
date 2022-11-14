@@ -11,7 +11,10 @@
 #ifndef T3_H
 #define	T3_H
 
-unsigned char screen=0;
+#define main_screen 0
+#define social_data_screen 1 
+
+unsigned char screen= main_screen;
 #ifdef	__cplusplus
 extern "C" {
 #endif
