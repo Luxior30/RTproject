@@ -9289,15 +9289,21 @@ Version 3.2 HI-TECH Software Intermediate Code
 "79
 [v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
 [; ;variables_globales.h: 79: unsigned char STKPTR_T6 @0x603;
-"82
+"81
 [v _Timer_G `ul ~T0 @X0 1 e@129 ]
-[; ;variables_globales.h: 82: unsigned long Timer_G @0x81 ;
+[; ;variables_globales.h: 81: unsigned long Timer_G @0x81 ;
+"82
+[v _Timer_G_temp `ul ~T0 @X0 1 e@135 ]
+[; ;variables_globales.h: 82: unsigned long Timer_G_temp @0x87;
 "83
 [v _Timer_swap `uc ~T0 @X0 1 e@133 ]
 [; ;variables_globales.h: 83: unsigned char Timer_swap @0x85 ;
 "84
 [v _timer_swap_tempon `uc ~T0 @X0 1 e@134 ]
 [; ;variables_globales.h: 84: unsigned char timer_swap_tempon @0x86 ;
+"85
+[v _CHOC_LONG `uc ~T0 @X0 1 e@146 ]
+[; ;variables_globales.h: 85: unsigned char CHOC_LONG @0x92;
 [; ;afficheur.h: 32: void write_d_aff(unsigned char data);
 [; ;afficheur.h: 33: void write_c_aff(unsigned char command);
 [; ;afficheur.h: 34: unsigned char check_status_ok();
@@ -9329,17 +9335,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;stid.h: 18: void stid_delai_us(unsigned int isdu);
 [; ;rxtx.h: 17: void init_rxtx();
 [; ;T1.h: 16: void tache1();
-"14 T3.h
-[v _screen `uc ~T0 @X0 1 e ]
-[i _screen
--> -> 0 `i `uc
-]
-[; ;T3.h: 14: unsigned char screen=0;
-[; ;T3.h: 20: void tache3();
-[; ;T3.h: 21: void init_chRGB (void);
+[; ;T3.h: 16: void tache3();
 [; ;T4.h: 16: void tache4();
-[; ;T4.h: 17: char read_EEPROM(char adressH, char adressL);
-[; ;T4.h: 18: void write_EEPROM(char data, char adressH, char adressL);
 [; ;T5.h: 16: void tache5();
 [; ;T6.h: 16: void tache6();
 "36 main.h

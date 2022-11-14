@@ -11975,10 +11975,11 @@ unsigned char STKPTR_T4 @0x403;
 unsigned char STKPTR_T5 @0x503;
 unsigned char STKPTR_T6 @0x603;
 
-
 unsigned long Timer_G @0x81 ;
+unsigned long Timer_G_temp @0x87;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
+unsigned char CHOC_LONG @0x92;
 
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
@@ -12023,12 +12024,8 @@ void tache1();
 void tache2();
 void tp_delai(unsigned int itpd);
 
-# 14 "T3.h"
-unsigned char screen=0;
-
-# 20
+# 16 "T3.h"
 void tache3();
-void init_chRGB (void);
 
 # 16 "T5.h"
 void tache5();
@@ -12058,39 +12055,34 @@ unsigned char lecture_8bit_analogique(unsigned char channel);
 
 # 16 "T4.h"
 void tache4();
-char read_EEPROM(char adressH, char adressL);
-void write_EEPROM(char data, char adressH, char adressL);
 
 # 3 "T4.c"
 void tache4()
 {
-
-}
-
-void write_EEPROM (char data, char adressH, char adressL)
+unsigned int a;
+while(1)
 {
-EEADRH=adressH;
-EEADRH=adressL;
-EEDATA=data;
-EECON1bits.WREN=1;
-INTCONbits.GIE=0;
 
-EECON2=0x55;
-EECON2=0xAA;
-EECON1bits.WR=1;
-while (EECON1bits.WR==1);
 
-INTCONbits.GIE=1;
-EECON1bits.WREN=0;
+
+while (PIR1bits.TX1IF==0); TXREG1='T';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='A';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='C';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='H';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='E';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='4';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='E';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='N';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='C';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='O';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='U';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='R';while (TXSTA1bits.TRMT==0);
+while (PIR1bits.TX1IF==0); TXREG1='S';while (TXSTA1bits.TRMT==0);
+
+
+for (a=0;a<65000;a++)
+;
 }
-
-char read_EEPROM (char adressH, char adressL)
-{
-EEADRH=adressH;
-EEADRH=adressL;
-EECON1bits.RD=1;
-while(EECON1bits.RD==1);
-unsigned char data = EEDATA;
-return data;
 }
-

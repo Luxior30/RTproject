@@ -78,10 +78,11 @@ unsigned char STKPTR_T4             @0x403;
 unsigned char STKPTR_T5             @0x503;
 unsigned char STKPTR_T6             @0x603;
 
-
 unsigned long Timer_G @0x81 ;
+unsigned long Timer_G_temp @0x87;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
+unsigned char CHOC_LONG @0x92;
 
 
 

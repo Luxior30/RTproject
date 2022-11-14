@@ -1,9 +1,6 @@
 
 # 1 "T3.c"
 
-# 14 "T3.h"
-unsigned char screen=0;
-
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
 
@@ -11978,10 +11975,11 @@ unsigned char STKPTR_T4 @0x403;
 unsigned char STKPTR_T5 @0x503;
 unsigned char STKPTR_T6 @0x603;
 
-
 unsigned long Timer_G @0x81 ;
+unsigned long Timer_G_temp @0x87;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
+unsigned char CHOC_LONG @0x92;
 
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
@@ -12028,8 +12026,6 @@ void tp_delai(unsigned int itpd);
 
 # 16 "T4.h"
 void tache4();
-char read_EEPROM(char adressH, char adressL);
-void write_EEPROM(char data, char adressH, char adressL);
 
 # 16 "T5.h"
 void tache5();
@@ -12057,164 +12053,14 @@ void tache6();
 void initialisation_des_ports();
 unsigned char lecture_8bit_analogique(unsigned char channel);
 
-# 20 "T3.h"
+# 16 "T3.h"
 void tache3();
-void init_chRGB (void);
 
-# 4 "T3.c"
+# 3 "T3.c"
 void tache3()
 {
-unsigned char i;
-
-(INTCONbits.GIE = 0);
-initialisation_des_ports();
-initialisation_afficheur();
-clear_text();
-clear_graphics();
-init_rxtx();
-Init(2);
-RXTX_libre=1;
-TXREG1='R';
-(INTCONbits.GIE = 1);
-
-LATCbits.LATC2=0;LATCbits.LATC1=0;LATGbits.LATG0=0;
-
-vitesse=0;
-batterie=120;
-n_octet_badge=0;
-
-init_chRGB();
-
-TP_appui=0;
-
 while(1)
 {
-switch (screen)
-{
-case (0):
-goto_lico(0,0);
-draw_string("Marche:");
-if (PORTBbits.RB0==0)
-draw_string("AV");
-else
-if (PORTBbits.RB1==0)
-draw_string("AR");
-else
-draw_string("N ");
-
-goto_lico(1,0);
-draw_string("Siege:");
-if (PORTBbits.RB2==0)
-{draw_char('1');}
-else
-{draw_char('0');}
-
-goto_lico(2,0);
-draw_string("Temp. Eau:");
-draw_hex8(lecture_8bit_analogique(2));
-
-goto_lico(3,0);
-draw_string("Temp. Huile:");
-draw_hex8(lecture_8bit_analogique(3));
-
-goto_lico(4,0);
-draw_string("Choc:");
-if (PORTBbits.RB3==0)
-draw_char('1');
-else
-draw_char('0');
-
-goto_lico(5,0);
-draw_string("Vitesse:");
-if (PORTEbits.RE0==0)
-vitesse++;
-if (PORTEbits.RE1==0)
-vitesse--;
-draw_hex8(vitesse);
-
-goto_lico(6,0);
-draw_string("Batterie:");
-if (PORTEbits.RE2==0)
-batterie++;
-if (PORTEbits.RE3==0)
-batterie--;
-draw_hex8(batterie);
-
-goto_lico(7,0);
-if (PORTEbits.RE4==0)
-draw_string("((!))");
-else
-draw_string("     ");
-
-goto_lico(8,0);
-draw_string("Badge:");
-if (n_octet_badge==0)
-draw_string(" AUCUN              ");
-else
-{
-for (i=0;i<n_octet_badge;i++)
-{
-draw_hex8(badge[i]);
-}
-}
-
-goto_lico(9,0);
-draw_string("X-Joystick:");
-draw_hex8(lecture_8bit_analogique(10));
-
-
-goto_lico(10,0);
-draw_string("Y-Joystick:");
-draw_hex8(lecture_8bit_analogique(11));
-
-
-
-
-if (TP_appui==1)
-{
-goto_lico(0,20);
-draw_string("x=");
-draw_hex8(TP_x);
-draw_string(" y=");
-draw_hex8(TP_y);
-plot1(TP_x,TP_y);
-}
-else
-{
-asm(" nop");
-}
-
-goto_lico(13,0);
-draw_string("-------------");
-goto_lico(14,0);
-draw_string("social data  |");
-goto_lico(15,13);
-draw_string("|");
-goto_lico(16,13);
-
-
-
-goto_lico(13,14);
-draw_string("-------------");
-goto_lico(14,14);
-draw_string("maintenance  |");
-goto_lico(15,27);
-draw_string("|");
-goto_lico(16,27);
-
-if (TP_appui==1)
-{
-if ((TP_x<0x50)&&(TP_y>0x60))
-{
-clear_text();
-screen=1;
-}
-if (((TP_x>0x50)&&(TP_x<0xA3))&&(TP_y>0x60))
-{
-clear_text();
-screen=2;
-}
-}
 if (TP_appui==1)
 {
 if ((TP_x>=203)&&(TP_x<209))
@@ -12257,59 +12103,5 @@ LATGbits.LATG0=0;
 }
 }
 }
-
-break;
-case (1):
-goto_lico(0,0);
-draw_string ("hello second screen");
-goto_lico(13,0);
-draw_string("-------------");
-goto_lico(14,0);
-draw_string("main screen  |");
-goto_lico(15,13);
-draw_string("|");
-goto_lico(16,13);
-if (TP_appui==1)
-{
-if ((TP_x<0x50)&&(TP_y>0x60))
-{
-clear_text();
-screen=0;
-init_chRGB();
 }
-}
-break;
-case (2):
-goto_lico(0,0);
-draw_string ("hello third screen");
-goto_lico(13,0);
-draw_string("-------------");
-goto_lico(14,0);
-draw_string("main screen  |");
-goto_lico(15,13);
-draw_string("|");
-goto_lico(16,13);
-if (TP_appui==1)
-{
-if ((TP_x<0x50)&&(TP_y>0x60))
-{
-clear_text();
-screen=0;
-init_chRGB();
-}
-}
-
-}
-
-
-
-
-}
-}
-
-void init_chRGB (void)
-{
-goto_lico(13,34);draw_char('R');draw_char(' ');draw_char('V');draw_char(' ');draw_char('B');
-goto_lico(14,34);draw_char('0');draw_char(' ');draw_char('0');draw_char(' ');draw_char('0');
-goto_lico(15,34);draw_char('1');draw_char(' ');draw_char('1');draw_char(' ');draw_char('1');
 }

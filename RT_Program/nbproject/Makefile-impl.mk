@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=RT_Program
+PROJECTNAME=Project_Real_Time
 
 # Active Configuration
 DEFAULTCONF=default
