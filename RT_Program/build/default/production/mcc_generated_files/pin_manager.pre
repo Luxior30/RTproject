@@ -1,5 +1,5 @@
 
-# 1 "T5.c"
+# 1 "mcc_generated_files/pin_manager.c"
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11923,168 +11923,49 @@ extern void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern void _delay3(unsigned char);
 
-# 20 "systeme.h"
-void interrupt fonction_d_interruption();
-void initialisation_du_systeme();
+# 78 "mcc_generated_files/pin_manager.h"
+void PIN_MANAGER_Initialize (void);
 
-# 29 "variables_globales.h"
-unsigned char W_TEMPORAIRE @ 0x60;
-unsigned char STATUS_TEMPORAIRE @ 0x61;
-unsigned char BSR_TEMPORAIRE @ 0x62;
-unsigned char FSR0H_TEMPORAIRE @ 0x63;
-unsigned char FSR0L_TEMPORAIRE @ 0x64;
-unsigned char DEMARRAGE @ 0x65;
+# 90
+void PIN_MANAGER_IOC(void);
 
-
-unsigned char TP_appui @ 0x66;
-unsigned char TP_x @ 0x67;
-unsigned char TP_y @ 0x68;
-
-struct tache_struct_t queue[6] @ 0x81;
-unsigned char tache_active @ 0x6F;
-unsigned char pointeur_de_tache @ 0x70;
-unsigned int Tick_Count @ 0x71;
-unsigned char vitesse @ 0x73;
-unsigned char batterie @ 0x74;
-
-unsigned char badge[10] @ 0x75;
-unsigned char n_octet_badge @ 0x7F;
-
-unsigned char RXTX_libre @ 0x80;
-
-
-
-void (*fptr)(void);
-unsigned short long val_tos;
-unsigned char * puc;
-unsigned char tc[3];
-
-# 66
-unsigned char contexte1[66] @ 0x100;
-unsigned char contexte2[66] @ 0x200;
-unsigned char contexte3[66] @ 0x300;
-unsigned char contexte4[66] @ 0x400;
-unsigned char contexte5[66] @ 0x500;
-unsigned char contexte6[66] @ 0x600;
-
-
-unsigned char STKPTR_T1 @0x103;
-unsigned char STKPTR_T2 @0x203;
-unsigned char STKPTR_T3 @0x303;
-unsigned char STKPTR_T4 @0x403;
-unsigned char STKPTR_T5 @0x503;
-unsigned char STKPTR_T6 @0x603;
-
-unsigned long Timer_G @0x81 ;
-unsigned long Timer_G_temp @0x87;
-unsigned char Timer_swap @0x85 ;
-unsigned char timer_swap_tempon @0x86 ;
-unsigned char CHOC_LONG @0x92;
-
-# 32 "afficheur.h"
-void write_d_aff(unsigned char data);
-void write_c_aff(unsigned char command);
-unsigned char check_status_ok();
-unsigned char wait_status_ok();
-unsigned char command(unsigned char cmd);
-unsigned char d1command(unsigned char d1, unsigned char cmd);
-unsigned char d2command(unsigned char d1, unsigned char d2, unsigned char cmd);
-void delai_us_char(unsigned char ucdelai);
-void initialisation_afficheur();
-void draw_char(unsigned char dccar);
-void draw_string(unsigned char * tableau);
-void draw_hex8(unsigned char octet);
-void goto_lico(unsigned char ligne, unsigned char colonne);
-void clear_text();
-void clear_graphics();
-void clear_cgram();
-void plot1(unsigned char x, unsigned char y);
-void plot0(unsigned char x, unsigned char y);
-
-# 22 "semaphore.h"
-unsigned char Val_sem_cna;
-unsigned char Val_sem_rxtx;
-
-
-void Init(unsigned char sem);
-void P(unsigned char sem);
-void V(unsigned char sem);
-
-# 17 "stid.h"
-unsigned char lecture_normale(unsigned char * stid_id);
-void stid_delai_us(unsigned int isdu);
-
-# 17 "rxtx.h"
-void init_rxtx();
-
-# 16 "T1.h"
-void tache1();
-
-# 17 "T2.h"
-void tache2();
-void tp_delai(unsigned int itpd);
-
-# 16 "T3.h"
-void tache3();
-
-# 16 "T4.h"
-void tache4();
-
-# 16 "T6.h"
-void tache6();
-
-
-# 36 "main.h"
-#pragma config CONFIG1L = 0x15
-#pragma config CONFIG1H = 0x13
-#pragma config CONFIG2L = 0x61
-#pragma config CONFIG2H = 0x00
-#pragma config CONFIG3L = 0x30
-#pragma config CONFIG3H = 0x80
-#pragma config CONFIG4L = 0x81
-#pragma config CONFIG5L = 0xFF
-#pragma config CONFIG5H = 0xC0
-#pragma config CONFIG6L = 0xFF
-#pragma config CONFIG6H = 0xE0
-#pragma config CONFIG7L = 0xFF
-#pragma config CONFIG7H = 0x40
-
-# 142
-void initialisation_des_ports();
-unsigned char lecture_8bit_analogique(unsigned char channel);
-
-# 16 "T5.h"
-void tache5();
-
-# 3 "T5.c"
-void tache5()
-{
-unsigned int a;
-while(1)
+# 55 "mcc_generated_files/pin_manager.c"
+void PIN_MANAGER_Initialize(void)
 {
 
+# 60
+LATE = 0x00;
+LATD = 0x00;
+LATA = 0x00;
+LATF = 0x00;
+LATB = 0x00;
+LATG = 0x00;
+LATC = 0x00;
+LATH = 0x00;
 
+# 72
+TRISE = 0xFF;
+TRISF = 0xFE;
+TRISA = 0xFF;
+TRISG = 0x1F;
+TRISB = 0xFF;
+TRISH = 0xFF;
+TRISC = 0xFF;
+TRISD = 0xFF;
 
-while (PIR1bits.TX1IF==0); TXREG1='t';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='a';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='c';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='h';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='e';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='5';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='e';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='n';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='c';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='o';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='u';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='r';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='s';while (TXSTA1bits.TRMT==0);
+# 84
+ANCON0 = 0xFF;
+ANCON1 = 0xFF;
+ANCON2 = 0xFF;
 
+# 99
+INTCONbits.RBIE = 1;
 
-for (a=0;a<65000;a++)
-;
-for (a=0;a<65000;a++)
-;
 }
+
+void PIN_MANAGER_IOC(void)
+{
+
+INTCONbits.RBIF = 0;
 }
+

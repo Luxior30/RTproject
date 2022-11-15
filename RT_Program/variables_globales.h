@@ -38,7 +38,7 @@ unsigned char TP_appui             @ 0x66;
 unsigned char TP_x                 @ 0x67;
 unsigned char TP_y                 @ 0x68;
 
-unsigned char queue[NOMBRE_DE_TACHES]        @ 0x69;
+unsigned char queue[NOMBRE_DE_TACHES] @ 0x81;
 unsigned char tache_active         @ 0x6F;
 unsigned char pointeur_de_tache    @ 0x70;
 unsigned int Tick_Count            @ 0x71;

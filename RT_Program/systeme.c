@@ -16,7 +16,7 @@
 
 void interrupt fonction_d_interruption()
 {
-	static bool ordonnanceur_utilise = false;
+	static char ordonnanceur_utilise = 0;
 // Sauvegarde de registres sensibles (ils sont modifiés au cours du changement de tache)
     STATUS_TEMPORAIRE=STATUS; W_TEMPORAIRE=WREG; BSR_TEMPORAIRE=BSR;
     FSR0H_TEMPORAIRE=FSR0H; FSR0L_TEMPORAIRE=FSR0L;
@@ -25,7 +25,7 @@ void interrupt fonction_d_interruption()
 		return;
 	}
 	
-	ordonnanceur_utilise = true;
+	ordonnanceur_utilise = 1;
 
 // INTERRUPTION TIMER0 UITLISEE PAR L'ORDONNANCEUR
     if(T0IE && T0IF)
@@ -135,13 +135,13 @@ void interrupt fonction_d_interruption()
     tache5();// ailleur, le compilateur les aurait ignorées.
     tache6();//
 	
-	ordonnanceur_utilise = false;
+	ordonnanceur_utilise = 0;
 }
 
 typedef struct{
 	char tache;
 	int prio;
-	bool debloquer;
+	char debloquer;
 }tache_struct_t;
 
 void debloquer_tache(char tache)
@@ -149,8 +149,8 @@ void debloquer_tache(char tache)
 	int index = 0;
 	
 	for(index = 0; index < NOMBRE_DE_TACHES; index++){
-		if(queue[index].tache == tache){
-			queue[index].debloquer = true;
+		if(queue[index] == tache){
+			queue[index] = TACHE1;
 			//fonction_d_interruption();
 		}
 	}	

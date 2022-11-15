@@ -11936,7 +11936,7 @@ unsigned char TP_appui @ 0x66;
 unsigned char TP_x @ 0x67;
 unsigned char TP_y @ 0x68;
 
-unsigned char queue[6] @ 0x69;
+struct tache_struct_t queue[6] @ 0x81;
 unsigned char tache_active @ 0x6F;
 unsigned char pointeur_de_tache @ 0x70;
 unsigned int Tick_Count @ 0x71;
@@ -12059,9 +12059,16 @@ void initialisation_du_systeme();
 # 17 "systeme.c"
 void interrupt fonction_d_interruption()
 {
+static char ordonnanceur_utilise = 0;
 
 STATUS_TEMPORAIRE=STATUS; W_TEMPORAIRE=WREG; BSR_TEMPORAIRE=BSR;
 FSR0H_TEMPORAIRE=FSR0H; FSR0L_TEMPORAIRE=FSR0L;
+
+if(ordonnanceur_utilise){
+return;
+}
+
+ordonnanceur_utilise = 1;
 
 
 if(T0IE && T0IF)
@@ -12170,6 +12177,26 @@ tache3();
 tache4();
 tache5();
 tache6();
+
+ordonnanceur_utilise = 0;
+}
+
+typedef struct tache_struct_t{
+char tache;
+int prio;
+char debloquer;
+}tache_struct_t;
+
+void debloquer_tache(char tache)
+{
+int index = 0;
+
+for(index = 0; index < 6; index++){
+if(queue[index].tache == tache){
+queue[index].debloquer = 1;
+
+}
+}
 }
 
 void initialisation_du_systeme()

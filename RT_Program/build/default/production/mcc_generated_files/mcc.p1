@@ -1,30 +1,18 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"55 variables_globales.h
-[v F10202 `(v ~T0 @X0 0 tf ]
-[s S746 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S746 . TMR1IF TMR2IF TMR1GIF SSP1IF TX1IF RC1IF ADIF PSPIF ]
-[s S747 :3 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S747 . . SSPIF TXIF RCIF ]
-[u S745 `S746 1 `S747 1 ]
-[n S745 . . . ]
-"11896 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
-[v _PIR1bits `VS745 ~T0 @X0 0 e@3998 ]
-"13426
-[v _TXREG1 `Vuc ~T0 @X0 0 e@4013 ]
-[s S809 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S809 . TX9D TRMT BRGH SENDB SYNC TXEN TX9 CSRC ]
-[s S810 :1 `uc 1 :5 `uc 1 :1 `uc 1 ]
-[n S810 . TXD8 . TX8_9 ]
-[s S811 :6 `uc 1 :1 `uc 1 ]
-[n S811 . . NOT_TX8 ]
-[s S812 :6 `uc 1 :1 `uc 1 ]
-[n S812 . . nTX8 ]
-[s S813 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S813 . TX9D1 TRMT1 BRGH1 SENDB1 SYNC1 TXEN1 TX91 CSRC1 ]
-[u S808 `S809 1 `S810 1 `S811 1 `S812 1 `S813 1 ]
-[n S808 . . . . . . ]
-"13184
-[v _TXSTA1bits `VS808 ~T0 @X0 0 e@4012 ]
+"132 mcc_generated_files/interrupt_manager.h
+[v _INTERRUPT_Initialize `(v ~T0 @X0 0 ef ]
+"78 mcc_generated_files/pin_manager.h
+[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
+"83 mcc_generated_files/mcc.h
+[v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
+"17449 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
+[v _OSCCON `Vuc ~T0 @X0 0 e@4051 ]
+"5549
+[v _OSCCON2 `Vuc ~T0 @X0 0 e@3940 ]
+"11657
+[v _OSCTUNE `Vuc ~T0 @X0 0 e@3995 ]
+"1739
+[v _REFOCON `Vuc ~T0 @X0 0 e@3882 ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [; ;pic18f87k22.h: 46: asm("PMD3 equ 0F16h");
@@ -9163,482 +9151,89 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 144: extern void _delay(unsigned long);
 [; ;pic18.h: 146: extern void _delaywdt(unsigned long);
 [; ;pic18.h: 148: extern void _delay3(unsigned char);
-[; ;systeme.h: 20: void interrupt fonction_d_interruption();
-[; ;systeme.h: 21: void initialisation_du_systeme();
-"29 variables_globales.h
-[v _W_TEMPORAIRE `uc ~T0 @X0 1 e@96 ]
-[; ;variables_globales.h: 29: unsigned char W_TEMPORAIRE @ 0x60;
-"30
-[v _STATUS_TEMPORAIRE `uc ~T0 @X0 1 e@97 ]
-[; ;variables_globales.h: 30: unsigned char STATUS_TEMPORAIRE @ 0x61;
-"31
-[v _BSR_TEMPORAIRE `uc ~T0 @X0 1 e@98 ]
-[; ;variables_globales.h: 31: unsigned char BSR_TEMPORAIRE @ 0x62;
-"32
-[v _FSR0H_TEMPORAIRE `uc ~T0 @X0 1 e@99 ]
-[; ;variables_globales.h: 32: unsigned char FSR0H_TEMPORAIRE @ 0x63;
-"33
-[v _FSR0L_TEMPORAIRE `uc ~T0 @X0 1 e@100 ]
-[; ;variables_globales.h: 33: unsigned char FSR0L_TEMPORAIRE @ 0x64;
-"34
-[v _DEMARRAGE `uc ~T0 @X0 1 e@101 ]
-[; ;variables_globales.h: 34: unsigned char DEMARRAGE @ 0x65;
-"37
-[v _TP_appui `uc ~T0 @X0 1 e@102 ]
-[; ;variables_globales.h: 37: unsigned char TP_appui @ 0x66;
-"38
-[v _TP_x `uc ~T0 @X0 1 e@103 ]
-[; ;variables_globales.h: 38: unsigned char TP_x @ 0x67;
-"39
-[v _TP_y `uc ~T0 @X0 1 e@104 ]
-[; ;variables_globales.h: 39: unsigned char TP_y @ 0x68;
-"41
-[v _queue `uc ~T0 @X0 -> 6 `i e@105 ]
-[; ;variables_globales.h: 41: unsigned char queue[6] @ 0x69;
-"42
-[v _tache_active `uc ~T0 @X0 1 e@111 ]
-[; ;variables_globales.h: 42: unsigned char tache_active @ 0x6F;
-"43
-[v _pointeur_de_tache `uc ~T0 @X0 1 e@112 ]
-[; ;variables_globales.h: 43: unsigned char pointeur_de_tache @ 0x70;
-"44
-[v _Tick_Count `ui ~T0 @X0 1 e@113 ]
-[; ;variables_globales.h: 44: unsigned int Tick_Count @ 0x71;
-"45
-[v _vitesse `uc ~T0 @X0 1 e@115 ]
-[; ;variables_globales.h: 45: unsigned char vitesse @ 0x73;
-"46
-[v _batterie `uc ~T0 @X0 1 e@116 ]
-[; ;variables_globales.h: 46: unsigned char batterie @ 0x74;
-"48
-[v _badge `uc ~T0 @X0 -> 10 `i e@117 ]
-[; ;variables_globales.h: 48: unsigned char badge[10] @ 0x75;
-"49
-[v _n_octet_badge `uc ~T0 @X0 1 e@127 ]
-[; ;variables_globales.h: 49: unsigned char n_octet_badge @ 0x7F;
-"51
-[v _RXTX_libre `uc ~T0 @X0 1 e@128 ]
-[; ;variables_globales.h: 51: unsigned char RXTX_libre @ 0x80;
-"55
-[v _fptr `*F10202 ~T0 @X0 1 e ]
-[; ;variables_globales.h: 55: void (*fptr)(void);
-"56
-[v _val_tos `um ~T0 @X0 1 e ]
-[; ;variables_globales.h: 56: unsigned short long val_tos;
-"57
-[v _puc `*uc ~T0 @X0 1 e ]
-[; ;variables_globales.h: 57: unsigned char * puc;
-"58
-[v _tc `uc ~T0 @X0 -> 3 `i e ]
-[; ;variables_globales.h: 58: unsigned char tc[3];
-"66
-[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
-[; ;variables_globales.h: 66: unsigned char contexte1[66] @ 0x100;
-"67
-[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
-[; ;variables_globales.h: 67: unsigned char contexte2[66] @ 0x200;
-"68
-[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
-[; ;variables_globales.h: 68: unsigned char contexte3[66] @ 0x300;
-"69
-[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
-[; ;variables_globales.h: 69: unsigned char contexte4[66] @ 0x400;
-"70
-[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
-[; ;variables_globales.h: 70: unsigned char contexte5[66] @ 0x500;
-"71
-[v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
-[; ;variables_globales.h: 71: unsigned char contexte6[66] @ 0x600;
-"74
-[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
-[; ;variables_globales.h: 74: unsigned char STKPTR_T1 @0x103;
-"75
-[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
-[; ;variables_globales.h: 75: unsigned char STKPTR_T2 @0x203;
-"76
-[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
-[; ;variables_globales.h: 76: unsigned char STKPTR_T3 @0x303;
-"77
-[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
-[; ;variables_globales.h: 77: unsigned char STKPTR_T4 @0x403;
-"78
-[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
-[; ;variables_globales.h: 78: unsigned char STKPTR_T5 @0x503;
-"79
-[v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
-[; ;variables_globales.h: 79: unsigned char STKPTR_T6 @0x603;
-"81
-[v _Timer_G `ul ~T0 @X0 1 e@129 ]
-[; ;variables_globales.h: 81: unsigned long Timer_G @0x81 ;
-"82
-[v _Timer_G_temp `ul ~T0 @X0 1 e@135 ]
-[; ;variables_globales.h: 82: unsigned long Timer_G_temp @0x87;
-"83
-[v _Timer_swap `uc ~T0 @X0 1 e@133 ]
-[; ;variables_globales.h: 83: unsigned char Timer_swap @0x85 ;
-"84
-[v _timer_swap_tempon `uc ~T0 @X0 1 e@134 ]
-[; ;variables_globales.h: 84: unsigned char timer_swap_tempon @0x86 ;
-"85
-[v _CHOC_LONG `uc ~T0 @X0 1 e@146 ]
-[; ;variables_globales.h: 85: unsigned char CHOC_LONG @0x92;
-[; ;afficheur.h: 32: void write_d_aff(unsigned char data);
-[; ;afficheur.h: 33: void write_c_aff(unsigned char command);
-[; ;afficheur.h: 34: unsigned char check_status_ok();
-[; ;afficheur.h: 35: unsigned char wait_status_ok();
-[; ;afficheur.h: 36: unsigned char command(unsigned char cmd);
-[; ;afficheur.h: 37: unsigned char d1command(unsigned char d1, unsigned char cmd);
-[; ;afficheur.h: 38: unsigned char d2command(unsigned char d1, unsigned char d2, unsigned char cmd);
-[; ;afficheur.h: 39: void delai_us_char(unsigned char ucdelai);
-[; ;afficheur.h: 40: void initialisation_afficheur();
-[; ;afficheur.h: 41: void draw_char(unsigned char dccar);
-[; ;afficheur.h: 42: void draw_string(unsigned char * tableau);
-[; ;afficheur.h: 43: void draw_hex8(unsigned char octet);
-[; ;afficheur.h: 44: void goto_lico(unsigned char ligne, unsigned char colonne);
-[; ;afficheur.h: 45: void clear_text();
-[; ;afficheur.h: 46: void clear_graphics();
-[; ;afficheur.h: 47: void clear_cgram();
-[; ;afficheur.h: 48: void plot1(unsigned char x, unsigned char y);
-[; ;afficheur.h: 49: void plot0(unsigned char x, unsigned char y);
-"22 semaphore.h
-[v _Val_sem_cna `uc ~T0 @X0 1 e ]
-[; ;semaphore.h: 22: unsigned char Val_sem_cna;
-"23
-[v _Val_sem_rxtx `uc ~T0 @X0 1 e ]
-[; ;semaphore.h: 23: unsigned char Val_sem_rxtx;
-[; ;semaphore.h: 26: void Init(unsigned char sem);
-[; ;semaphore.h: 27: void P(unsigned char sem);
-[; ;semaphore.h: 28: void V(unsigned char sem);
-[; ;stid.h: 17: unsigned char lecture_normale(unsigned char * stid_id);
-[; ;stid.h: 18: void stid_delai_us(unsigned int isdu);
-[; ;rxtx.h: 17: void init_rxtx();
-[; ;T1.h: 16: void tache1();
-[; ;T2.h: 17: void tache2();
-[; ;T2.h: 18: void tp_delai(unsigned int itpd);
-[; ;T3.h: 16: void tache3();
-[; ;T4.h: 16: void tache4();
-[; ;T6.h: 16: void tache6();
-"36 main.h
-[p x INTOSCSEL=HIGH ]
-[p x SOSCSEL=DIG ]
-[p x XINST=OFF ]
-[p x RETEN=ON ]
-"37
-[p x IESO=OFF ]
-[p x FOSC=HS1 ]
-[p x FCMEN=OFF ]
-[p x PLLCFG=ON ]
-"38
-[p x BOREN=OFF ]
-[p x BORPWR=ZPBORMV ]
-[p x BORV=0 ]
-[p x PWRTEN=OFF ]
-"39
-[p x WDTPS=1 ]
-[p x WDTEN=OFF ]
-"40
-[p x RTCOSC=INTOSCREF ]
-[p x BW=8 ]
-[p x EASHFT=OFF ]
-[p x WAIT=ON ]
-[p x ABW=MM ]
-"41
-[p x CCP2MX=PORTBE ]
-[p x ECCPMX=PORTH ]
-[p x MSSPMSK=MSK5 ]
-[p x MCLRE=ON ]
-"42
-[p x DEBUG=OFF ]
-[p x STVREN=ON ]
-[p x BBSIZ=BB1K ]
-"43
-[p x CP5=OFF ]
-[p x CP6=OFF ]
-[p x CP7=OFF ]
-[p x CP0=OFF ]
-[p x CP1=OFF ]
-[p x CP2=OFF ]
-[p x CP3=OFF ]
-[p x CP4=OFF ]
-"44
-[p x CPD=OFF ]
-[p x CPB=OFF ]
-"45
-[p x WRT0=OFF ]
-[p x WRT1=OFF ]
-[p x WRT2=OFF ]
-[p x WRT3=OFF ]
-[p x WRT4=OFF ]
-[p x WRT5=OFF ]
-[p x WRT6=OFF ]
-[p x WRT7=OFF ]
-"46
-[p x WRTB=OFF ]
-[p x WRTC=OFF ]
-[p x WRTD=OFF ]
-"47
-[p x EBRT0=OFF ]
-[p x EBRT1=OFF ]
-[p x EBRT2=OFF ]
-[p x EBRT3=OFF ]
-[p x EBRT4=OFF ]
-[p x EBRT5=OFF ]
-[p x EBRT6=OFF ]
-[p x EBRT7=OFF ]
-"48
-[p x EBRTB=OFF ]
-[; ;main.h: 142: void initialisation_des_ports();
-[; ;main.h: 143: unsigned char lecture_8bit_analogique(unsigned char channel);
-[; ;T5.h: 16: void tache5();
-"4 T5.c
-[v _tache5 `(v ~T0 @X0 1 ef ]
+[; ;pin_manager.h: 78: void PIN_MANAGER_Initialize (void);
+[; ;pin_manager.h: 90: void PIN_MANAGER_IOC(void);
+[; ;stdint.h: 13: typedef signed char int8_t;
+[; ;stdint.h: 20: typedef signed int int16_t;
+[; ;stdint.h: 28: typedef signed short long int int24_t;
+[; ;stdint.h: 36: typedef signed long int int32_t;
+[; ;stdint.h: 43: typedef unsigned char uint8_t;
+[; ;stdint.h: 49: typedef unsigned int uint16_t;
+[; ;stdint.h: 56: typedef unsigned short long int uint24_t;
+[; ;stdint.h: 63: typedef unsigned long int uint32_t;
+[; ;stdint.h: 71: typedef signed char int_least8_t;
+[; ;stdint.h: 78: typedef signed int int_least16_t;
+[; ;stdint.h: 90: typedef signed short long int int_least24_t;
+[; ;stdint.h: 98: typedef signed long int int_least32_t;
+[; ;stdint.h: 105: typedef unsigned char uint_least8_t;
+[; ;stdint.h: 111: typedef unsigned int uint_least16_t;
+[; ;stdint.h: 121: typedef unsigned short long int uint_least24_t;
+[; ;stdint.h: 128: typedef unsigned long int uint_least32_t;
+[; ;stdint.h: 137: typedef signed char int_fast8_t;
+[; ;stdint.h: 144: typedef signed int int_fast16_t;
+[; ;stdint.h: 156: typedef signed short long int int_fast24_t;
+[; ;stdint.h: 164: typedef signed long int int_fast32_t;
+[; ;stdint.h: 171: typedef unsigned char uint_fast8_t;
+[; ;stdint.h: 177: typedef unsigned int uint_fast16_t;
+[; ;stdint.h: 187: typedef unsigned short long int uint_fast24_t;
+[; ;stdint.h: 194: typedef unsigned long int uint_fast32_t;
+[; ;stdint.h: 200: typedef int32_t intmax_t;
+[; ;stdint.h: 205: typedef uint32_t uintmax_t;
+[; ;stdint.h: 210: typedef int16_t intptr_t;
+[; ;stdint.h: 215: typedef uint16_t uintptr_t;
+[; ;stdbool.h: 12: typedef unsigned char bool;
+[; ;conio.h: 17: extern int errno;
+[; ;conio.h: 20: extern void init_uart(void);
+[; ;conio.h: 22: extern char getch(void);
+[; ;conio.h: 23: extern char getche(void);
+[; ;conio.h: 24: extern void putch(char);
+[; ;conio.h: 25: extern void ungetch(char);
+[; ;conio.h: 27: extern __bit kbhit(void);
+[; ;conio.h: 31: extern char * cgets(char *);
+[; ;conio.h: 32: extern void cputs(const char *);
+[; ;interrupt_manager.h: 132: void INTERRUPT_Initialize (void);
+[; ;mcc.h: 70: void SYSTEM_Initialize(void);
+[; ;mcc.h: 83: void OSCILLATOR_Initialize(void);
+"51 mcc_generated_files/mcc.c
+[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
 {
-[; ;T5.c: 3: void tache5()
-[; ;T5.c: 4: {
-[e :U _tache5 ]
+[; ;mcc.c: 50: void SYSTEM_Initialize(void)
+[; ;mcc.c: 51: {
+[e :U _SYSTEM_Initialize ]
 [f ]
-"5
-[v _a `ui ~T0 @X0 1 a ]
-[; ;T5.c: 5: unsigned int a;
-[; ;T5.c: 6: while(1)
-"6
-[e :U 1240 ]
-[; ;T5.c: 7: {
-"7
-{
-[; ;T5.c: 11: while (PIR1bits.TX1IF==0); TXREG1='t';while (TXSTA1bits.TRMT==0);
-"11
-[e $U 1242  ]
-[e :U 1243 ]
-[e :U 1242 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1243  ]
-[e :U 1244 ]
-[e = _TXREG1 -> -> 116 `ui `uc ]
-[e $U 1245  ]
-[e :U 1246 ]
-[e :U 1245 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1246  ]
-[e :U 1247 ]
-[; ;T5.c: 12: while (PIR1bits.TX1IF==0); TXREG1='a';while (TXSTA1bits.TRMT==0);
-"12
-[e $U 1248  ]
-[e :U 1249 ]
-[e :U 1248 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1249  ]
-[e :U 1250 ]
-[e = _TXREG1 -> -> 97 `ui `uc ]
-[e $U 1251  ]
-[e :U 1252 ]
-[e :U 1251 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1252  ]
-[e :U 1253 ]
-[; ;T5.c: 13: while (PIR1bits.TX1IF==0); TXREG1='c';while (TXSTA1bits.TRMT==0);
-"13
-[e $U 1254  ]
-[e :U 1255 ]
-[e :U 1254 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1255  ]
-[e :U 1256 ]
-[e = _TXREG1 -> -> 99 `ui `uc ]
-[e $U 1257  ]
-[e :U 1258 ]
-[e :U 1257 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1258  ]
-[e :U 1259 ]
-[; ;T5.c: 14: while (PIR1bits.TX1IF==0); TXREG1='h';while (TXSTA1bits.TRMT==0);
-"14
-[e $U 1260  ]
-[e :U 1261 ]
-[e :U 1260 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1261  ]
-[e :U 1262 ]
-[e = _TXREG1 -> -> 104 `ui `uc ]
-[e $U 1263  ]
-[e :U 1264 ]
-[e :U 1263 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1264  ]
-[e :U 1265 ]
-[; ;T5.c: 15: while (PIR1bits.TX1IF==0); TXREG1='e';while (TXSTA1bits.TRMT==0);
-"15
-[e $U 1266  ]
-[e :U 1267 ]
-[e :U 1266 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1267  ]
-[e :U 1268 ]
-[e = _TXREG1 -> -> 101 `ui `uc ]
-[e $U 1269  ]
-[e :U 1270 ]
-[e :U 1269 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1270  ]
-[e :U 1271 ]
-[; ;T5.c: 16: while (PIR1bits.TX1IF==0); TXREG1='5';while (TXSTA1bits.TRMT==0);
-"16
-[e $U 1272  ]
-[e :U 1273 ]
-[e :U 1272 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1273  ]
-[e :U 1274 ]
-[e = _TXREG1 -> -> 53 `ui `uc ]
-[e $U 1275  ]
-[e :U 1276 ]
-[e :U 1275 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1276  ]
-[e :U 1277 ]
-[; ;T5.c: 17: while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
-"17
-[e $U 1278  ]
-[e :U 1279 ]
-[e :U 1278 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1279  ]
-[e :U 1280 ]
-[e = _TXREG1 -> -> 95 `ui `uc ]
-[e $U 1281  ]
-[e :U 1282 ]
-[e :U 1281 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1282  ]
-[e :U 1283 ]
-[; ;T5.c: 18: while (PIR1bits.TX1IF==0); TXREG1='e';while (TXSTA1bits.TRMT==0);
-"18
-[e $U 1284  ]
-[e :U 1285 ]
-[e :U 1284 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1285  ]
-[e :U 1286 ]
-[e = _TXREG1 -> -> 101 `ui `uc ]
-[e $U 1287  ]
-[e :U 1288 ]
-[e :U 1287 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1288  ]
-[e :U 1289 ]
-[; ;T5.c: 19: while (PIR1bits.TX1IF==0); TXREG1='n';while (TXSTA1bits.TRMT==0);
-"19
-[e $U 1290  ]
-[e :U 1291 ]
-[e :U 1290 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1291  ]
-[e :U 1292 ]
-[e = _TXREG1 -> -> 110 `ui `uc ]
-[e $U 1293  ]
-[e :U 1294 ]
-[e :U 1293 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1294  ]
-[e :U 1295 ]
-[; ;T5.c: 20: while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
-"20
-[e $U 1296  ]
-[e :U 1297 ]
-[e :U 1296 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1297  ]
-[e :U 1298 ]
-[e = _TXREG1 -> -> 95 `ui `uc ]
-[e $U 1299  ]
-[e :U 1300 ]
-[e :U 1299 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1300  ]
-[e :U 1301 ]
-[; ;T5.c: 21: while (PIR1bits.TX1IF==0); TXREG1='c';while (TXSTA1bits.TRMT==0);
-"21
-[e $U 1302  ]
-[e :U 1303 ]
-[e :U 1302 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1303  ]
-[e :U 1304 ]
-[e = _TXREG1 -> -> 99 `ui `uc ]
-[e $U 1305  ]
-[e :U 1306 ]
-[e :U 1305 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1306  ]
-[e :U 1307 ]
-[; ;T5.c: 22: while (PIR1bits.TX1IF==0); TXREG1='o';while (TXSTA1bits.TRMT==0);
-"22
-[e $U 1308  ]
-[e :U 1309 ]
-[e :U 1308 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1309  ]
-[e :U 1310 ]
-[e = _TXREG1 -> -> 111 `ui `uc ]
-[e $U 1311  ]
-[e :U 1312 ]
-[e :U 1311 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1312  ]
-[e :U 1313 ]
-[; ;T5.c: 23: while (PIR1bits.TX1IF==0); TXREG1='u';while (TXSTA1bits.TRMT==0);
-"23
-[e $U 1314  ]
-[e :U 1315 ]
-[e :U 1314 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1315  ]
-[e :U 1316 ]
-[e = _TXREG1 -> -> 117 `ui `uc ]
-[e $U 1317  ]
-[e :U 1318 ]
-[e :U 1317 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1318  ]
-[e :U 1319 ]
-[; ;T5.c: 24: while (PIR1bits.TX1IF==0); TXREG1='r';while (TXSTA1bits.TRMT==0);
-"24
-[e $U 1320  ]
-[e :U 1321 ]
-[e :U 1320 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1321  ]
-[e :U 1322 ]
-[e = _TXREG1 -> -> 114 `ui `uc ]
-[e $U 1323  ]
-[e :U 1324 ]
-[e :U 1323 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1324  ]
-[e :U 1325 ]
-[; ;T5.c: 25: while (PIR1bits.TX1IF==0); TXREG1='s';while (TXSTA1bits.TRMT==0);
-"25
-[e $U 1326  ]
-[e :U 1327 ]
-[e :U 1326 ]
-[e $ == -> . . _PIR1bits 0 4 `i -> 0 `i 1327  ]
-[e :U 1328 ]
-[e = _TXREG1 -> -> 115 `ui `uc ]
-[e $U 1329  ]
-[e :U 1330 ]
-[e :U 1329 ]
-[e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1330  ]
-[e :U 1331 ]
-[; ;T5.c: 28: for (a=0;a<65000;a++)
-"28
-{
-[e = _a -> -> 0 `i `ui ]
-[e $ < -> _a `l -> 65000 `l 1332  ]
-[e $U 1333  ]
-"29
-[e :U 1332 ]
-[; ;T5.c: 29: ;
-"28
-[e ++ _a -> -> 1 `i `ui ]
-[e $ < -> _a `l -> 65000 `l 1332  ]
-[e :U 1333 ]
-"29
-}
-[; ;T5.c: 30: for (a=0;a<65000;a++)
-"30
-{
-[e = _a -> -> 0 `i `ui ]
-[e $ < -> _a `l -> 65000 `l 1335  ]
-[e $U 1336  ]
-"31
-[e :U 1335 ]
-[; ;T5.c: 31: ;
-"30
-[e ++ _a -> -> 1 `i `ui ]
-[e $ < -> _a `l -> 65000 `l 1335  ]
-[e :U 1336 ]
-"31
-}
-"32
-}
-[e :U 1239 ]
-"6
-[e $U 1240  ]
-[e :U 1241 ]
-[; ;T5.c: 32: }
-[; ;T5.c: 33: }
-"33
+[; ;mcc.c: 53: INTERRUPT_Initialize();
+"53
+[e ( _INTERRUPT_Initialize ..  ]
+[; ;mcc.c: 54: PIN_MANAGER_Initialize();
+"54
+[e ( _PIN_MANAGER_Initialize ..  ]
+[; ;mcc.c: 55: OSCILLATOR_Initialize();
+"55
+[e ( _OSCILLATOR_Initialize ..  ]
+[; ;mcc.c: 56: }
+"56
 [e :UE 1238 ]
+}
+"59
+[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
+{
+[; ;mcc.c: 58: void OSCILLATOR_Initialize(void)
+[; ;mcc.c: 59: {
+[e :U _OSCILLATOR_Initialize ]
+[f ]
+[; ;mcc.c: 61: OSCCON = 0x60;
+"61
+[e = _OSCCON -> -> 96 `i `uc ]
+[; ;mcc.c: 63: OSCCON2 = 0x00;
+"63
+[e = _OSCCON2 -> -> 0 `i `uc ]
+[; ;mcc.c: 65: OSCTUNE = 0x00;
+"65
+[e = _OSCTUNE -> -> 0 `i `uc ]
+[; ;mcc.c: 67: REFOCON = 0x00;
+"67
+[e = _REFOCON -> -> 0 `i `uc ]
+[; ;mcc.c: 68: }
+"68
+[e :UE 1239 ]
 }
