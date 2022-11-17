@@ -11951,6 +11951,7 @@ unsigned char badge[10] @ 0x75;
 unsigned char n_octet_badge @ 0x7F;
 
 unsigned char RXTX_libre @ 0x80;
+unsigned char VAR_TACHE1 @ 0x370;
 
 
 
@@ -11959,7 +11960,7 @@ unsigned short long val_tos;
 unsigned char * puc;
 unsigned char tc[3];
 
-# 66
+# 67
 unsigned char contexte1[66] @ 0x100;
 unsigned char contexte2[66] @ 0x200;
 unsigned char contexte3[66] @ 0x300;
@@ -11979,6 +11980,16 @@ unsigned char STKPTR_T6 @0x603;
 unsigned long Timer_G @0x81 ;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
+
+unsigned char tempon_presence_cle @0x87;
+unsigned char temps_initial @0x88;
+unsigned char temps_initial_warn @0x89;
+unsigned char tempon_warnning @0x8A;
+unsigned long test_EEPROM @0x8B;
+unsigned char temps_final @0x8F;
+unsigned char tempon_anormal_use @0x90;
+unsigned char tempon_unused @0x91;
+unsigned char download @0x92;
 
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
@@ -12023,17 +12034,23 @@ void tache1();
 void tache2();
 void tp_delai(unsigned int itpd);
 
-# 14 "T3.h"
-unsigned char screen=0;
+# 17 "T3.h"
+unsigned char screen= 0;
 
-# 20
+# 23
 void tache3();
 void init_chRGB (void);
 
-# 16 "T4.h"
+# 23 "T4.h"
 void tache4();
 char read_EEPROM(char adressH, char adressL);
 void write_EEPROM(char data, char adressH, char adressL);
+unsigned char add_timer (char data_J, char adressH, char adressL,char type);
+void follow_driver_timer (void);
+char conv_badge_8bitsl (void);
+char conv_badge_8bitsh (void);
+void follow_driver_timer_anormal (void);
+void follow_timer_unused(void);
 
 # 16 "T6.h"
 void tache6();
@@ -12067,29 +12084,21 @@ void tache5()
 unsigned int a;
 while(1)
 {
-
-
-
-while (PIR1bits.TX1IF==0); TXREG1='t';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='a';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='c';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='h';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='e';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='5';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='e';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='n';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='c';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='o';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='u';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='r';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='s';while (TXSTA1bits.TRMT==0);
-
-
-for (a=0;a<65000;a++)
-;
-for (a=0;a<65000;a++)
-;
+if (download==1)
+{
+for (int i=0; i<1024 ; i++)
+{
+unsigned char ADRESSH= i>>8 & 0xFF;
+unsigned char ADRESSL = i & 0xFF;
+while(PIR1bits.TX1IF==0); TXREG1=read_EEPROM(ADRESSH,ADRESSL); while (TXSTA1bits.TRMT==0);
+if (i==1023) download==0;
 }
+}
+}
+
+# 42
+for (a=0;a<65000;a++)
+;
+for (a=0;a<65000;a++)
+;
 }

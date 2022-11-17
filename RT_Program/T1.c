@@ -2,51 +2,27 @@
 
 void tache1()
 {
-
     while(1)
     {
-
-         /*//Gère le siège
-        if((SIEGE == 1) && (CHOC == 0)) //Si user pas sur le siege et a un choc
+        vitesse = 0;
+        if (VAR_TACHE1 == 0)
         {
-            LED_R=0; //Allume le rouge
-            LED_G=1;
-            LED_B=1;
-            if (vitesse >= 0) //0% vitesse max
-            {
-               vitesse = 0; // 0% vitesse max
-            }    
+          clear_text(); 
+          LED_R=0;LED_G=1;LED_B=1;
+          VAR_TACHE1 = 1;
         }
-        else if((SIEGE == 0) && (CHOC == 0)) //Si user sur le siege et a un choc
+        LED_R=0;LED_G=1;LED_B=1;
+        goto_lico(6,0);
+        draw_string("Warning choc !!");
+        goto_lico(7,0);
+        draw_string("speed off");
+        goto_lico(8,0);
+        draw_string("for unlock push on 'choc'");
+        if (CHOC == 1)
         {
-                LED_R=0; //Allume le rouge
-                LED_G=1;
-                LED_B=1;
-                if (vitesse >= 10) //4% vitesse max
-                {
-                   vitesse = 10; // 4% vitesse max
-                }  
-        }
-        else if ((SIEGE == 1) && (CHOC == 0)) //Si user pas sur le siege et pas de choc
-            {   
-                LED_R=1; 
-                LED_G=1;
-                LED_B=0; //Allume le bleu
-                if (vitesse >= 0) //0% vitesse max
-                {
-                   vitesse = 0; // 0% vitesse max
-                }  
-            }
-        if ((SIEGE == 0) && (CHOC == 1)) //Si user pas sur le siege et pas de choc
-        {
-            LED_R=1;
-            LED_G=1;
-            LED_B=0;
-            if (vitesse >= 200) //0% vitesse max
-                {
-                   vitesse = 200; // 0% vitesse max
-                } 
+            clear_text();
+            LED_R=0;LED_G=0;LED_B=0;
+            VAR_TACHE1 = 0;
         }  
-        */
     }
 }

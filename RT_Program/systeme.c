@@ -66,8 +66,15 @@ void interrupt fonction_d_interruption()
 
         pointeur_de_tache++;                        //
         if (pointeur_de_tache==NOMBRE_DE_TACHES)    // Evolution du cycle des taches
-            pointeur_de_tache=0;                    // 1-2-3-4-5-6-1-2-3...
-        tache_active=queue[pointeur_de_tache];      //
+            pointeur_de_tache=1;                    // 1-2-3-4-5-6-1-2-3...
+             //
+        if ((CHOC==0) || (VAR_TACHE1 == 1)) 
+        {
+            vitesse = 0;
+            pointeur_de_tache =0;
+        }
+        tache_active=queue[pointeur_de_tache]; 
+            
 
  // Restauration du contexte de la tache active
 // Debut de restauration des zones utilisées par le compilateur
@@ -130,10 +137,13 @@ void interrupt fonction_d_interruption()
 
 void initialisation_du_systeme()
 {
+    VAR_TACHE1 = 0;
     unsigned char temp;
-
+    write_EEPROM(0x00, 0x00, 0x00);
     DEMARRAGE=1;
     Timer_G=0;
+    temps_initial=0;
+    temps_final=0;
     //initialisation de la gestion EEPROM
     INTCONbits.GIE=1;   // Active les interruptions globales
     INTCONbits.PEIE=1;  // Active les interruptions peripheriques
@@ -184,4 +194,5 @@ void initialisation_du_systeme()
     //T0CON=0x08;//16 bit, no prescaler, OFF, 5.46ms period
     T0CON=0x01;//16 bit, 1:4 Prescaler, 22ms period
     T0IE=1; // Autorisation IT Ordonnanceur
+    tempon_presence_cle=0;
 }

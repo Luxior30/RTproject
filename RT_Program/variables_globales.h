@@ -49,6 +49,7 @@ unsigned char badge[10]            @ 0x75;
 unsigned char n_octet_badge        @ 0x7F;
 
 unsigned char RXTX_libre        @ 0x80;
+unsigned char VAR_TACHE1        @ 0x370;
 
     //pointeur de fonction
         //il va servir a modifier la pile pour executer les taches
@@ -83,6 +84,15 @@ unsigned long Timer_G @0x81 ;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
 
+unsigned char tempon_presence_cle @0x87;
+unsigned char temps_initial @0x88;
+unsigned char temps_initial_warn @0x89;
+unsigned char tempon_warnning @0x8A;
+unsigned long test_EEPROM  @0x8B;
+unsigned char temps_final @0x8F;
+unsigned char tempon_anormal_use @0x90;
+unsigned char tempon_unused @0x91;
+unsigned char download @0x92;
 
 
 #ifdef	__cplusplus

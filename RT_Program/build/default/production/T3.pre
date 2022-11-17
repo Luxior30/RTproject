@@ -1,8 +1,8 @@
 
 # 1 "T3.c"
 
-# 14 "T3.h"
-unsigned char screen=0;
+# 17 "T3.h"
+unsigned char screen= 0;
 
 # 44 "C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h"
 extern volatile unsigned char PMD3 @ 0xF16;
@@ -11954,6 +11954,7 @@ unsigned char badge[10] @ 0x75;
 unsigned char n_octet_badge @ 0x7F;
 
 unsigned char RXTX_libre @ 0x80;
+unsigned char VAR_TACHE1 @ 0x370;
 
 
 
@@ -11962,7 +11963,7 @@ unsigned short long val_tos;
 unsigned char * puc;
 unsigned char tc[3];
 
-# 66
+# 67
 unsigned char contexte1[66] @ 0x100;
 unsigned char contexte2[66] @ 0x200;
 unsigned char contexte3[66] @ 0x300;
@@ -11982,6 +11983,16 @@ unsigned char STKPTR_T6 @0x603;
 unsigned long Timer_G @0x81 ;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
+
+unsigned char tempon_presence_cle @0x87;
+unsigned char temps_initial @0x88;
+unsigned char temps_initial_warn @0x89;
+unsigned char tempon_warnning @0x8A;
+unsigned long test_EEPROM @0x8B;
+unsigned char temps_final @0x8F;
+unsigned char tempon_anormal_use @0x90;
+unsigned char tempon_unused @0x91;
+unsigned char download @0x92;
 
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
@@ -12026,10 +12037,16 @@ void tache1();
 void tache2();
 void tp_delai(unsigned int itpd);
 
-# 16 "T4.h"
+# 23 "T4.h"
 void tache4();
 char read_EEPROM(char adressH, char adressL);
 void write_EEPROM(char data, char adressH, char adressL);
+unsigned char add_timer (char data_J, char adressH, char adressL,char type);
+void follow_driver_timer (void);
+char conv_badge_8bitsl (void);
+char conv_badge_8bitsh (void);
+void follow_driver_timer_anormal (void);
+void follow_timer_unused(void);
 
 # 16 "T5.h"
 void tache5();
@@ -12057,7 +12074,7 @@ void tache6();
 void initialisation_des_ports();
 unsigned char lecture_8bit_analogique(unsigned char channel);
 
-# 20 "T3.h"
+# 23 "T3.h"
 void tache3();
 void init_chRGB (void);
 
@@ -12089,9 +12106,16 @@ TP_appui=0;
 
 while(1)
 {
+
 switch (screen)
 {
 case (0):
+if (tempon_anormal_use==1)
+{
+LATCbits.LATC2 = 1;
+LATCbits.LATC1=0;
+LATGbits.LATG0=0;
+}
 goto_lico(0,0);
 draw_string("Marche:");
 if (PORTBbits.RB0==0)
@@ -12132,6 +12156,7 @@ if (PORTEbits.RE1==0)
 vitesse--;
 draw_hex8(vitesse);
 
+
 goto_lico(6,0);
 draw_string("Batterie:");
 if (PORTEbits.RE2==0)
@@ -12149,13 +12174,15 @@ draw_string("     ");
 goto_lico(8,0);
 draw_string("Badge:");
 if (n_octet_badge==0)
-draw_string(" AUCUN              ");
+draw_string(" AUCUN                                    ");
 else
 {
 for (i=0;i<n_octet_badge;i++)
 {
 draw_hex8(badge[i]);
 }
+goto_lico(8,14);
+draw_string("                                   ");
 }
 
 goto_lico(9,0);
@@ -12167,40 +12194,11 @@ goto_lico(10,0);
 draw_string("Y-Joystick:");
 draw_hex8(lecture_8bit_analogique(11));
 
-
-
-
-if (TP_appui==1)
-{
-goto_lico(0,20);
-draw_string("x=");
-draw_hex8(TP_x);
-draw_string(" y=");
-draw_hex8(TP_y);
-plot1(TP_x,TP_y);
-}
-else
-{
-asm(" nop");
-}
-
-goto_lico(13,0);
-draw_string("-------------");
+# 144
 goto_lico(14,0);
 draw_string("social data  |");
-goto_lico(15,13);
-draw_string("|");
-goto_lico(16,13);
 
 
-
-goto_lico(13,14);
-draw_string("-------------");
-goto_lico(14,14);
-draw_string("maintenance  |");
-goto_lico(15,27);
-draw_string("|");
-goto_lico(16,27);
 
 if (TP_appui==1)
 {
@@ -12209,15 +12207,10 @@ if ((TP_x<0x50)&&(TP_y>0x60))
 clear_text();
 screen=1;
 }
-if (((TP_x>0x50)&&(TP_x<0xA3))&&(TP_y>0x60))
-{
-clear_text();
-screen=2;
 }
-}
-if (TP_appui==1)
-{
-if ((TP_x>=203)&&(TP_x<209))
+
+
+else if ((TP_x>=203)&&(TP_x<209))
 {
 if ((TP_y>=113)&&(TP_y<121))
 {
@@ -12228,10 +12221,10 @@ if ((TP_y>=121)&&(TP_y<127))
 LATCbits.LATC2=0;
 }
 }
-}
-if (TP_appui==1)
-{
-if ((TP_x>=215)&&(TP_x<221))
+
+
+
+else if ((TP_x>=215)&&(TP_x<221))
 {
 if ((TP_y>=113)&&(TP_y<121))
 {
@@ -12241,11 +12234,11 @@ if ((TP_y>=121)&&(TP_y<127))
 {
 LATCbits.LATC1=0;
 }
+
 }
-}
-if (TP_appui==1)
-{
-if ((TP_x>=227)&&(TP_x<233))
+
+
+else if ((TP_x>=227)&&(TP_x<233))
 {
 if ((TP_y>=113)&&(TP_y<121))
 {
@@ -12256,19 +12249,37 @@ if ((TP_y>=121)&&(TP_y<127))
 LATGbits.LATG0=0;
 }
 }
-}
+
 
 break;
 case (1):
 goto_lico(0,0);
-draw_string ("hello second screen");
+draw_string ("social datas");
+goto_lico(2,0);
+draw_string ("time unused ans power on");
+goto_lico(3,0);
+draw_hex8(read_EEPROM(0x00,0x01));
+goto_lico(4,0);
+draw_string("your time");
+goto_lico(5,0);
+draw_hex8(read_EEPROM(conv_badge_8bitsh(),conv_badge_8bitsl ()+1));
+goto_lico(6,0);
+draw_string("warning your anormal use");
+goto_lico(7,0);
+draw_hex8(read_EEPROM(conv_badge_8bitsh(),conv_badge_8bitsl ()+4));
+
 goto_lico(13,0);
 draw_string("-------------");
 goto_lico(14,0);
 draw_string("main screen  |");
 goto_lico(15,13);
 draw_string("|");
-goto_lico(16,13);
+goto_lico(13,14);
+draw_string("-------------");
+goto_lico(14,14);
+draw_string("download     |");
+goto_lico(15,27);
+draw_string("|");
 if (TP_appui==1)
 {
 if ((TP_x<0x50)&&(TP_y>0x60))
@@ -12277,27 +12288,13 @@ clear_text();
 screen=0;
 init_chRGB();
 }
+if((TP_y>0x60)&&((TP_x<100)&&(TP_x>50)))
+{
+download=1;
 }
+}
+
 break;
-case (2):
-goto_lico(0,0);
-draw_string ("hello third screen");
-goto_lico(13,0);
-draw_string("-------------");
-goto_lico(14,0);
-draw_string("main screen  |");
-goto_lico(15,13);
-draw_string("|");
-goto_lico(16,13);
-if (TP_appui==1)
-{
-if ((TP_x<0x50)&&(TP_y>0x60))
-{
-clear_text();
-screen=0;
-init_chRGB();
-}
-}
 
 }
 
