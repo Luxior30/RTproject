@@ -38,7 +38,7 @@ unsigned char TP_appui             @ 0x66;
 unsigned char TP_x                 @ 0x67;
 unsigned char TP_y                 @ 0x68;
 
-unsigned char queue[NOMBRE_DE_TACHES]        @ 0x69;
+unsigned char queue[NOMBRE_DE_TACHES] @ 0x81;
 unsigned char tache_active         @ 0x6F;
 unsigned char pointeur_de_tache    @ 0x70;
 unsigned int Tick_Count            @ 0x71;
@@ -78,10 +78,11 @@ unsigned char STKPTR_T4             @0x403;
 unsigned char STKPTR_T5             @0x503;
 unsigned char STKPTR_T6             @0x603;
 
-
 unsigned long Timer_G @0x81 ;
+unsigned long Timer_G_temp @0x87;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
+unsigned char CHOC_LONG @0x92;
 
 
 

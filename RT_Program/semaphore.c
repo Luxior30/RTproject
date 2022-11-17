@@ -17,7 +17,7 @@ void Init(unsigned char sem)
     }
 }
 
-void P(unsigned char sem)
+ void P(unsigned char sem)
 {
     switch(sem)
     {
@@ -34,7 +34,7 @@ void P(unsigned char sem)
     }
 }
 
-void V(unsigned char sem)
+ void V(unsigned char sem)
 {
     switch(sem)
     {

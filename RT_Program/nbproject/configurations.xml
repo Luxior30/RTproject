@@ -27,7 +27,6 @@
                    projectFiles="true">
       <itemPath>main.c</itemPath>
       <itemPath>systeme.c</itemPath>
-      <itemPath>T1.c</itemPath>
       <itemPath>T2.c</itemPath>
       <itemPath>T3.c</itemPath>
       <itemPath>T4.c</itemPath>
@@ -37,13 +36,20 @@
       <itemPath>semaphore.c</itemPath>
       <itemPath>stid.c</itemPath>
       <itemPath>rxtx.c</itemPath>
+      <itemPath>T1.c</itemPath>
+      <itemPath>interrupt.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false">
       <itemPath>Makefile</itemPath>
+      <itemPath>TP_STR.mc3</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>C:\Users\aguillamot\Desktop\cesi\A5\TP\Project_Real_Time</Elem>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">
