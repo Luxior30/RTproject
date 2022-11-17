@@ -11954,6 +11954,7 @@ unsigned char badge[10] @ 0x75;
 unsigned char n_octet_badge @ 0x7F;
 
 unsigned char RXTX_libre @ 0x80;
+unsigned char VAR_TACHE1 @ 0x370;
 
 
 
@@ -11962,7 +11963,7 @@ unsigned short long val_tos;
 unsigned char * puc;
 unsigned char tc[3];
 
-# 66
+# 67
 unsigned char contexte1[66] @ 0x100;
 unsigned char contexte2[66] @ 0x200;
 unsigned char contexte3[66] @ 0x300;
@@ -12105,6 +12106,7 @@ TP_appui=0;
 
 while(1)
 {
+
 switch (screen)
 {
 case (0):
@@ -12172,13 +12174,15 @@ draw_string("     ");
 goto_lico(8,0);
 draw_string("Badge:");
 if (n_octet_badge==0)
-draw_string(" AUCUN              ");
+draw_string(" AUCUN                                    ");
 else
 {
 for (i=0;i<n_octet_badge;i++)
 {
 draw_hex8(badge[i]);
 }
+goto_lico(8,14);
+draw_string("                                   ");
 }
 
 goto_lico(9,0);
@@ -12190,36 +12194,11 @@ goto_lico(10,0);
 draw_string("Y-Joystick:");
 draw_hex8(lecture_8bit_analogique(11));
 
-goto_lico(5,20);
-draw_hex8(test_EEPROM);
-goto_lico(6,20);
-draw_hex8(temps_initial);
-goto_lico(7,20);
-draw_hex8(temps_final);
-
-
-
-if (TP_appui==1)
-{
-goto_lico(0,20);
-draw_string("x=");
-draw_hex8(TP_x);
-draw_string(" y=");
-draw_hex8(TP_y);
-plot1(TP_x,TP_y);
-}
-else
-{
-asm(" nop");
-}
-
-goto_lico(13,0);
-draw_string("-------------");
+# 144
 goto_lico(14,0);
 draw_string("social data  |");
-goto_lico(15,13);
-draw_string("|");
-goto_lico(16,13);
+
+
 
 if (TP_appui==1)
 {
@@ -12229,9 +12208,9 @@ clear_text();
 screen=1;
 }
 }
-if (TP_appui==1)
-{
-if ((TP_x>=203)&&(TP_x<209))
+
+
+else if ((TP_x>=203)&&(TP_x<209))
 {
 if ((TP_y>=113)&&(TP_y<121))
 {
@@ -12242,10 +12221,10 @@ if ((TP_y>=121)&&(TP_y<127))
 LATCbits.LATC2=0;
 }
 }
-}
-if (TP_appui==1)
-{
-if ((TP_x>=215)&&(TP_x<221))
+
+
+
+else if ((TP_x>=215)&&(TP_x<221))
 {
 if ((TP_y>=113)&&(TP_y<121))
 {
@@ -12255,11 +12234,11 @@ if ((TP_y>=121)&&(TP_y<127))
 {
 LATCbits.LATC1=0;
 }
+
 }
-}
-if (TP_appui==1)
-{
-if ((TP_x>=227)&&(TP_x<233))
+
+
+else if ((TP_x>=227)&&(TP_x<233))
 {
 if ((TP_y>=113)&&(TP_y<121))
 {
@@ -12270,7 +12249,7 @@ if ((TP_y>=121)&&(TP_y<127))
 LATGbits.LATG0=0;
 }
 }
-}
+
 
 break;
 case (1):

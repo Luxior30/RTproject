@@ -68,7 +68,11 @@ void interrupt fonction_d_interruption()
         if (pointeur_de_tache==NOMBRE_DE_TACHES)    // Evolution du cycle des taches
             pointeur_de_tache=1;                    // 1-2-3-4-5-6-1-2-3...
              //
-        else if (CHOC==1) pointeur_de_tache =0;
+        if ((CHOC==0) || (VAR_TACHE1 == 1)) 
+        {
+            vitesse = 0;
+            pointeur_de_tache =0;
+        }
         tache_active=queue[pointeur_de_tache]; 
             
 
@@ -133,6 +137,7 @@ void interrupt fonction_d_interruption()
 
 void initialisation_du_systeme()
 {
+    VAR_TACHE1 = 0;
     unsigned char temp;
     write_EEPROM(0x00, 0x00, 0x00);
     DEMARRAGE=1;

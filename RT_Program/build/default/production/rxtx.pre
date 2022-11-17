@@ -11951,6 +11951,7 @@ unsigned char badge[10] @ 0x75;
 unsigned char n_octet_badge @ 0x7F;
 
 unsigned char RXTX_libre @ 0x80;
+unsigned char VAR_TACHE1 @ 0x370;
 
 
 
@@ -11959,7 +11960,7 @@ unsigned short long val_tos;
 unsigned char * puc;
 unsigned char tc[3];
 
-# 66
+# 67
 unsigned char contexte1[66] @ 0x100;
 unsigned char contexte2[66] @ 0x200;
 unsigned char contexte3[66] @ 0x300;

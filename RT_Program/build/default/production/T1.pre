@@ -11951,6 +11951,7 @@ unsigned char badge[10] @ 0x75;
 unsigned char n_octet_badge @ 0x7F;
 
 unsigned char RXTX_libre @ 0x80;
+unsigned char VAR_TACHE1 @ 0x370;
 
 
 
@@ -11959,7 +11960,7 @@ unsigned short long val_tos;
 unsigned char * puc;
 unsigned char tc[3];
 
-# 66
+# 67
 unsigned char contexte1[66] @ 0x100;
 unsigned char contexte2[66] @ 0x200;
 unsigned char contexte3[66] @ 0x300;
@@ -12080,35 +12081,27 @@ void tache1();
 # 3 "T1.c"
 void tache1()
 {
-
 while(1)
 {
-unsigned char i;
-
-(INTCONbits.GIE = 0);
-initialisation_des_ports();
-initialisation_afficheur();
+vitesse = 0;
+if (VAR_TACHE1 == 0)
+{
 clear_text();
-clear_graphics();
-init_rxtx();
-Init(2);
-RXTX_libre=1;
-TXREG1='R';
-(INTCONbits.GIE = 1);
-
 LATCbits.LATC2=0;LATCbits.LATC1=1;LATGbits.LATG0=1;
-
-vitesse=0;
-
-while(1)
-{
+VAR_TACHE1 = 1;
+}
+LATCbits.LATC2=0;LATCbits.LATC1=1;LATGbits.LATG0=1;
 goto_lico(6,0);
 draw_string("Warning choc !!");
 goto_lico(7,0);
 draw_string("speed off");
 goto_lico(8,0);
 draw_string("for unlock push on 'choc'");
+if (PORTBbits.RB3 == 1)
+{
+clear_text();
+LATCbits.LATC2=0;LATCbits.LATC1=0;LATGbits.LATG0=0;
+VAR_TACHE1 = 0;
 }
-
 }
 }

@@ -1,6 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
-"55 variables_globales.h
-[v F10202 `(v ~T0 @X0 0 tf ]
+"56 variables_globales.h
+[v F10203 `(v ~T0 @X0 0 tf ]
 "17 stid.h
 [v _lecture_normale `(uc ~T0 @X0 0 ef1`*uc ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
@@ -9197,90 +9197,93 @@ Version 3.2 HI-TECH Software Intermediate Code
 "51
 [v _RXTX_libre `uc ~T0 @X0 1 e@128 ]
 [; ;variables_globales.h: 51: unsigned char RXTX_libre @ 0x80;
-"55
-[v _fptr `*F10202 ~T0 @X0 1 e ]
-[; ;variables_globales.h: 55: void (*fptr)(void);
+"52
+[v _VAR_TACHE1 `uc ~T0 @X0 1 e@880 ]
+[; ;variables_globales.h: 52: unsigned char VAR_TACHE1 @ 0x370;
 "56
-[v _val_tos `um ~T0 @X0 1 e ]
-[; ;variables_globales.h: 56: unsigned short long val_tos;
+[v _fptr `*F10203 ~T0 @X0 1 e ]
+[; ;variables_globales.h: 56: void (*fptr)(void);
 "57
-[v _puc `*uc ~T0 @X0 1 e ]
-[; ;variables_globales.h: 57: unsigned char * puc;
+[v _val_tos `um ~T0 @X0 1 e ]
+[; ;variables_globales.h: 57: unsigned short long val_tos;
 "58
+[v _puc `*uc ~T0 @X0 1 e ]
+[; ;variables_globales.h: 58: unsigned char * puc;
+"59
 [v _tc `uc ~T0 @X0 -> 3 `i e ]
-[; ;variables_globales.h: 58: unsigned char tc[3];
-"66
-[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
-[; ;variables_globales.h: 66: unsigned char contexte1[66] @ 0x100;
+[; ;variables_globales.h: 59: unsigned char tc[3];
 "67
-[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
-[; ;variables_globales.h: 67: unsigned char contexte2[66] @ 0x200;
+[v _contexte1 `uc ~T0 @X0 -> 66 `i e@256 ]
+[; ;variables_globales.h: 67: unsigned char contexte1[66] @ 0x100;
 "68
-[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
-[; ;variables_globales.h: 68: unsigned char contexte3[66] @ 0x300;
+[v _contexte2 `uc ~T0 @X0 -> 66 `i e@512 ]
+[; ;variables_globales.h: 68: unsigned char contexte2[66] @ 0x200;
 "69
-[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
-[; ;variables_globales.h: 69: unsigned char contexte4[66] @ 0x400;
+[v _contexte3 `uc ~T0 @X0 -> 66 `i e@768 ]
+[; ;variables_globales.h: 69: unsigned char contexte3[66] @ 0x300;
 "70
-[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
-[; ;variables_globales.h: 70: unsigned char contexte5[66] @ 0x500;
+[v _contexte4 `uc ~T0 @X0 -> 66 `i e@1024 ]
+[; ;variables_globales.h: 70: unsigned char contexte4[66] @ 0x400;
 "71
+[v _contexte5 `uc ~T0 @X0 -> 66 `i e@1280 ]
+[; ;variables_globales.h: 71: unsigned char contexte5[66] @ 0x500;
+"72
 [v _contexte6 `uc ~T0 @X0 -> 66 `i e@1536 ]
-[; ;variables_globales.h: 71: unsigned char contexte6[66] @ 0x600;
-"74
-[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
-[; ;variables_globales.h: 74: unsigned char STKPTR_T1 @0x103;
+[; ;variables_globales.h: 72: unsigned char contexte6[66] @ 0x600;
 "75
-[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
-[; ;variables_globales.h: 75: unsigned char STKPTR_T2 @0x203;
+[v _STKPTR_T1 `uc ~T0 @X0 1 e@259 ]
+[; ;variables_globales.h: 75: unsigned char STKPTR_T1 @0x103;
 "76
-[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
-[; ;variables_globales.h: 76: unsigned char STKPTR_T3 @0x303;
+[v _STKPTR_T2 `uc ~T0 @X0 1 e@515 ]
+[; ;variables_globales.h: 76: unsigned char STKPTR_T2 @0x203;
 "77
-[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
-[; ;variables_globales.h: 77: unsigned char STKPTR_T4 @0x403;
+[v _STKPTR_T3 `uc ~T0 @X0 1 e@771 ]
+[; ;variables_globales.h: 77: unsigned char STKPTR_T3 @0x303;
 "78
-[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
-[; ;variables_globales.h: 78: unsigned char STKPTR_T5 @0x503;
+[v _STKPTR_T4 `uc ~T0 @X0 1 e@1027 ]
+[; ;variables_globales.h: 78: unsigned char STKPTR_T4 @0x403;
 "79
+[v _STKPTR_T5 `uc ~T0 @X0 1 e@1283 ]
+[; ;variables_globales.h: 79: unsigned char STKPTR_T5 @0x503;
+"80
 [v _STKPTR_T6 `uc ~T0 @X0 1 e@1539 ]
-[; ;variables_globales.h: 79: unsigned char STKPTR_T6 @0x603;
-"82
-[v _Timer_G `ul ~T0 @X0 1 e@129 ]
-[; ;variables_globales.h: 82: unsigned long Timer_G @0x81 ;
+[; ;variables_globales.h: 80: unsigned char STKPTR_T6 @0x603;
 "83
-[v _Timer_swap `uc ~T0 @X0 1 e@133 ]
-[; ;variables_globales.h: 83: unsigned char Timer_swap @0x85 ;
+[v _Timer_G `ul ~T0 @X0 1 e@129 ]
+[; ;variables_globales.h: 83: unsigned long Timer_G @0x81 ;
 "84
+[v _Timer_swap `uc ~T0 @X0 1 e@133 ]
+[; ;variables_globales.h: 84: unsigned char Timer_swap @0x85 ;
+"85
 [v _timer_swap_tempon `uc ~T0 @X0 1 e@134 ]
-[; ;variables_globales.h: 84: unsigned char timer_swap_tempon @0x86 ;
-"86
-[v _tempon_presence_cle `uc ~T0 @X0 1 e@135 ]
-[; ;variables_globales.h: 86: unsigned char tempon_presence_cle @0x87;
+[; ;variables_globales.h: 85: unsigned char timer_swap_tempon @0x86 ;
 "87
-[v _temps_initial `uc ~T0 @X0 1 e@136 ]
-[; ;variables_globales.h: 87: unsigned char temps_initial @0x88;
+[v _tempon_presence_cle `uc ~T0 @X0 1 e@135 ]
+[; ;variables_globales.h: 87: unsigned char tempon_presence_cle @0x87;
 "88
-[v _temps_initial_warn `uc ~T0 @X0 1 e@137 ]
-[; ;variables_globales.h: 88: unsigned char temps_initial_warn @0x89;
+[v _temps_initial `uc ~T0 @X0 1 e@136 ]
+[; ;variables_globales.h: 88: unsigned char temps_initial @0x88;
 "89
-[v _tempon_warnning `uc ~T0 @X0 1 e@138 ]
-[; ;variables_globales.h: 89: unsigned char tempon_warnning @0x8A;
+[v _temps_initial_warn `uc ~T0 @X0 1 e@137 ]
+[; ;variables_globales.h: 89: unsigned char temps_initial_warn @0x89;
 "90
-[v _test_EEPROM `ul ~T0 @X0 1 e@139 ]
-[; ;variables_globales.h: 90: unsigned long test_EEPROM @0x8B;
+[v _tempon_warnning `uc ~T0 @X0 1 e@138 ]
+[; ;variables_globales.h: 90: unsigned char tempon_warnning @0x8A;
 "91
-[v _temps_final `uc ~T0 @X0 1 e@143 ]
-[; ;variables_globales.h: 91: unsigned char temps_final @0x8F;
+[v _test_EEPROM `ul ~T0 @X0 1 e@139 ]
+[; ;variables_globales.h: 91: unsigned long test_EEPROM @0x8B;
 "92
-[v _tempon_anormal_use `uc ~T0 @X0 1 e@144 ]
-[; ;variables_globales.h: 92: unsigned char tempon_anormal_use @0x90;
+[v _temps_final `uc ~T0 @X0 1 e@143 ]
+[; ;variables_globales.h: 92: unsigned char temps_final @0x8F;
 "93
-[v _tempon_unused `uc ~T0 @X0 1 e@145 ]
-[; ;variables_globales.h: 93: unsigned char tempon_unused @0x91;
+[v _tempon_anormal_use `uc ~T0 @X0 1 e@144 ]
+[; ;variables_globales.h: 93: unsigned char tempon_anormal_use @0x90;
 "94
+[v _tempon_unused `uc ~T0 @X0 1 e@145 ]
+[; ;variables_globales.h: 94: unsigned char tempon_unused @0x91;
+"95
 [v _download `uc ~T0 @X0 1 e@146 ]
-[; ;variables_globales.h: 94: unsigned char download @0x92;
+[; ;variables_globales.h: 95: unsigned char download @0x92;
 [; ;afficheur.h: 32: void write_d_aff(unsigned char data);
 [; ;afficheur.h: 33: void write_c_aff(unsigned char command);
 [; ;afficheur.h: 34: unsigned char check_status_ok();

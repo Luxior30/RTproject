@@ -28,8 +28,9 @@ void tache3()
 
     while(1)
     {
+
         switch (screen)
-        {
+        {           
             case (main_screen):
                 if (tempon_anormal_use==1)
                 {
@@ -95,13 +96,15 @@ void tache3()
                 goto_lico(8,0);
                 draw_string("Badge:");
                 if (n_octet_badge==0)
-                    draw_string(" AUCUN              ");
+                    draw_string(" AUCUN                                    ");
                 else
                 {
                     for (i=0;i<n_octet_badge;i++)
                     {
                         draw_hex8(badge[i]);
                     }
+                    goto_lico(8,14);
+                    draw_string("                                   ");
                 }
 
                 goto_lico(9,0);
@@ -113,36 +116,35 @@ void tache3()
                 draw_string("Y-Joystick:");
                 draw_hex8(lecture_8bit_analogique(JOYSTICK_Y));
 
-                goto_lico(5,20);
+                /*goto_lico(5,20);
                 draw_hex8(test_EEPROM);
                 goto_lico(6,20);
                 draw_hex8(temps_initial);
                 goto_lico(7,20);
                 draw_hex8(temps_final);
-                
+                */
           
                 
-                if (TP_appui==1)
-                {
-                    goto_lico(0,20);
-                    draw_string("x=");
-                    draw_hex8(TP_x);
-                    draw_string(" y=");
-                    draw_hex8(TP_y);
-                    plot1(TP_x,TP_y);
-                }
-                else
-                {
-                    Nop();
-                }
-
-                goto_lico(13,0);
-                draw_string("-------------");
+//                if (TP_appui==1)
+//                {
+//                    goto_lico(0,20);
+//                    draw_string("x=");
+//                    draw_hex8(TP_x);
+//                    draw_string(" y=");
+//                    draw_hex8(TP_y);
+//                    plot1(TP_x,TP_y);
+//                }
+//                else
+//                {
+//                    Nop();
+//                }
+//
+                //goto_lico(13,0);
+                //draw_string("-------------");
                 goto_lico(14,0);
                 draw_string("social data  |");
-                goto_lico(15,13);
-                draw_string("|");
-                goto_lico(16,13);
+                //goto_lico(15,13);
+                //draw_string("|");
 
                      if (TP_appui==1)
                     { 
@@ -152,9 +154,9 @@ void tache3()
                        screen=social_data_screen;
                        }
                     }  
-                if (TP_appui==1)
-        {
-            if ((TP_x>=203)&&(TP_x<209))
+                //if (TP_appui==1)
+       // {
+                else if ((TP_x>=203)&&(TP_x<209))
             {
                 if ((TP_y>=113)&&(TP_y<121))
                 {
@@ -165,10 +167,10 @@ void tache3()
                     LED_R=0;
                 }
             }
-        }
-        if (TP_appui==1)
-        {
-            if ((TP_x>=215)&&(TP_x<221))
+        //}
+        //if (TP_appui==1)
+        //{
+                else if ((TP_x>=215)&&(TP_x<221))
             {
                 if ((TP_y>=113)&&(TP_y<121))
                 {
@@ -178,11 +180,11 @@ void tache3()
                 {
                     LED_G=0;
                 }
-            }
+            //}
         }
-        if (TP_appui==1)
-        {
-            if ((TP_x>=227)&&(TP_x<233))
+        //if (TP_appui==1)
+        //{
+                else if ((TP_x>=227)&&(TP_x<233))
             {
                 if ((TP_y>=113)&&(TP_y<121))
                 {
@@ -193,7 +195,7 @@ void tache3()
                     LED_B=0;
                 }
             }
-        }
+        //}
                 
             break;
             case (social_data_screen):

@@ -11947,6 +11947,7 @@ unsigned char badge[10] @ 0x75;
 unsigned char n_octet_badge @ 0x7F;
 
 unsigned char RXTX_libre @ 0x80;
+unsigned char VAR_TACHE1 @ 0x370;
 
 
 
@@ -11955,7 +11956,7 @@ unsigned short long val_tos;
 unsigned char * puc;
 unsigned char tc[3];
 
-# 66
+# 67
 unsigned char contexte1[66] @ 0x100;
 unsigned char contexte2[66] @ 0x200;
 unsigned char contexte3[66] @ 0x300;
@@ -12132,10 +12133,14 @@ pointeur_de_tache++;
 if (pointeur_de_tache==6)
 pointeur_de_tache=1;
 
-else if (PORTBbits.RB3==1) pointeur_de_tache =0;
+if ((PORTBbits.RB3==0) || (VAR_TACHE1 == 1))
+{
+vitesse = 0;
+pointeur_de_tache =0;
+}
 tache_active=queue[pointeur_de_tache];
 
-# 78
+# 82
 FSR1H=0;
 FSR1L=0;
 FSR0H=tache_active;
@@ -12194,6 +12199,7 @@ tache6();
 
 void initialisation_du_systeme()
 {
+VAR_TACHE1 = 0;
 unsigned char temp;
 write_EEPROM(0x00, 0x00, 0x00);
 DEMARRAGE=1;

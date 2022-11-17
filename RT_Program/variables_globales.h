@@ -49,6 +49,7 @@ unsigned char badge[10]            @ 0x75;
 unsigned char n_octet_badge        @ 0x7F;
 
 unsigned char RXTX_libre        @ 0x80;
+unsigned char VAR_TACHE1        @ 0x370;
 
     //pointeur de fonction
         //il va servir a modifier la pile pour executer les taches
