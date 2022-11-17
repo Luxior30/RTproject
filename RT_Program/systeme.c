@@ -67,7 +67,10 @@ void interrupt fonction_d_interruption()
         pointeur_de_tache++;                        //
         if (pointeur_de_tache==NOMBRE_DE_TACHES)    // Evolution du cycle des taches
             pointeur_de_tache=0;                    // 1-2-3-4-5-6-1-2-3...
-        tache_active=queue[pointeur_de_tache];      //
+             //
+        else if (CHOC==1) pointeur_de_tache =0;
+        tache_active=queue[pointeur_de_tache]; 
+            
 
  // Restauration du contexte de la tache active
 // Debut de restauration des zones utilisées par le compilateur

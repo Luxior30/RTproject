@@ -12131,11 +12131,11 @@ Tick_Count++;
 pointeur_de_tache++;
 if (pointeur_de_tache==6)
 pointeur_de_tache=0;
+
+else if (PORTBbits.RB3==1) pointeur_de_tache =0;
 tache_active=queue[pointeur_de_tache];
 
-
-
-
+# 78
 FSR1H=0;
 FSR1L=0;
 FSR0H=tache_active;
