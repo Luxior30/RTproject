@@ -9362,6 +9362,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "93
 [v _tempon_unused `uc ~T0 @X0 1 e@145 ]
 [; ;variables_globales.h: 93: unsigned char tempon_unused @0x91;
+"94
+[v _download `uc ~T0 @X0 1 e@146 ]
+[; ;variables_globales.h: 94: unsigned char download @0x92;
 "22 semaphore.h
 [v _Val_sem_cna `uc ~T0 @X0 1 e ]
 [; ;semaphore.h: 22: unsigned char Val_sem_cna;

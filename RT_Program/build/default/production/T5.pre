@@ -11988,6 +11988,7 @@ unsigned long test_EEPROM @0x8B;
 unsigned char temps_final @0x8F;
 unsigned char tempon_anormal_use @0x90;
 unsigned char tempon_unused @0x91;
+unsigned char download @0x92;
 
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
@@ -12082,29 +12083,21 @@ void tache5()
 unsigned int a;
 while(1)
 {
-
-
-
-while (PIR1bits.TX1IF==0); TXREG1='t';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='a';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='c';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='h';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='e';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='5';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='e';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='n';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='c';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='o';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='u';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='r';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='s';while (TXSTA1bits.TRMT==0);
-
-
-for (a=0;a<65000;a++)
-;
-for (a=0;a<65000;a++)
-;
+if (download==1)
+{
+for (int i=0; i<1024 ; i++)
+{
+unsigned char ADRESSH= i>>8 & 0xFF;
+unsigned char ADRESSL = i & 0xFF;
+while(PIR1bits.TX1IF==0); TXREG1=read_EEPROM(ADRESSH,ADRESSL); while (TXSTA1bits.TRMT==0);
+if (i==1023) download==0;
 }
+}
+}
+
+# 42
+for (a=0;a<65000;a++)
+;
+for (a=0;a<65000;a++)
+;
 }

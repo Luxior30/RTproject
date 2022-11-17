@@ -91,6 +91,7 @@ unsigned long test_EEPROM  @0x8B;
 unsigned char temps_final @0x8F;
 unsigned char tempon_anormal_use @0x90;
 unsigned char tempon_unused @0x91;
+unsigned char download @0x92;
 
 
 #ifdef	__cplusplus

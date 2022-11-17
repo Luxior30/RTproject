@@ -202,7 +202,7 @@ void tache3()
                     goto_lico(2,0);
                     draw_string ("time unused ans power on");
                     goto_lico(3,0);
-                    draw_hex8(read_EEPROM(0x01,0x00));
+                    draw_hex8(read_EEPROM(0x00,0x01));
                     goto_lico(4,0);
                     draw_string("your time");
                     goto_lico(5,0);
@@ -218,7 +218,12 @@ void tache3()
                     draw_string("main screen  |");
                     goto_lico(15,13);
                     draw_string("|");
-                    goto_lico(16,13);
+                    goto_lico(13,14);
+                    draw_string("-------------");
+                    goto_lico(14,14);
+                    draw_string("download     |");
+                    goto_lico(15,27);
+                    draw_string("|");
                     if (TP_appui==1)
                     { 
                        if ((TP_x<0x50)&&(TP_y>0x60))
@@ -227,7 +232,12 @@ void tache3()
                        screen=0;
                        init_chRGB();
                        }
-                    }   
+                       if((TP_y>0x60)&&((TP_x<100)&&(TP_x>50)))
+                       {
+                           download=1;
+                       }
+                    } 
+                    
                     break; 
                 
     }

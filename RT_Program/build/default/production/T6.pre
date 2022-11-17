@@ -11988,6 +11988,7 @@ unsigned long test_EEPROM @0x8B;
 unsigned char temps_final @0x8F;
 unsigned char tempon_anormal_use @0x90;
 unsigned char tempon_unused @0x91;
+unsigned char download @0x92;
 
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
@@ -12079,24 +12080,5 @@ void tache6();
 # 3 "T6.c"
 void tache6()
 {
-unsigned char n;
-while(1)
-{
-n=lecture_normale(badge);
-if (n>0)
-{
-if(n<10)
-{
-n_octet_badge=n;
-}
-else
-{
-n_octet_badge=0;
-}
-}
-else
-{
-n_octet_badge=0;
-}
-}
+
 }

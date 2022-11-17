@@ -9372,6 +9372,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "93
 [v _tempon_unused `uc ~T0 @X0 1 e@145 ]
 [; ;variables_globales.h: 93: unsigned char tempon_unused @0x91;
+"94
+[v _download `uc ~T0 @X0 1 e@146 ]
+[; ;variables_globales.h: 94: unsigned char download @0x92;
 [; ;afficheur.h: 32: void write_d_aff(unsigned char data);
 [; ;afficheur.h: 33: void write_c_aff(unsigned char command);
 [; ;afficheur.h: 34: unsigned char check_status_ok();
@@ -9498,9 +9501,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;systeme.h: 20: void interrupt fonction_d_interruption();
 [; ;systeme.h: 21: void initialisation_du_systeme();
 "20 systeme.h
-[v F10313 `(v ~T0 @X0 1 tf ]
+[v F10314 `(v ~T0 @X0 1 tf ]
 "18 systeme.c
-[v _fonction_d_interruption `IF10313 ~T0 @X0 1 e ]
+[v _fonction_d_interruption `IF10314 ~T0 @X0 1 e ]
 {
 [; ;systeme.c: 17: void interrupt fonction_d_interruption()
 [; ;systeme.c: 18: {

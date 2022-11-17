@@ -9436,6 +9436,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "93
 [v _tempon_unused `uc ~T0 @X0 1 e@145 ]
 [; ;variables_globales.h: 93: unsigned char tempon_unused @0x91;
+"94
+[v _download `uc ~T0 @X0 1 e@146 ]
+[; ;variables_globales.h: 94: unsigned char download @0x92;
 [; ;afficheur.h: 32: void write_d_aff(unsigned char data);
 [; ;afficheur.h: 33: void write_c_aff(unsigned char command);
 [; ;afficheur.h: 34: unsigned char check_status_ok();
@@ -10131,9 +10134,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;T3.c: 204: goto_lico(3,0);
 "204
 [e ( _goto_lico (2 , -> -> 3 `i `uc -> -> 0 `i `uc ]
-[; ;T3.c: 205: draw_hex8(read_EEPROM(0x01,0x00));
+[; ;T3.c: 205: draw_hex8(read_EEPROM(0x00,0x01));
 "205
-[e ( _draw_hex8 (1 ( _read_EEPROM (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+[e ( _draw_hex8 (1 ( _read_EEPROM (2 , -> -> 0 `i `uc -> -> 1 `i `uc ]
 [; ;T3.c: 206: goto_lico(4,0);
 "206
 [e ( _goto_lico (2 , -> -> 4 `i `uc -> -> 0 `i `uc ]
@@ -10176,102 +10179,132 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;T3.c: 220: draw_string("|");
 "220
 [e ( _draw_string (1 -> :s 28C `*uc ]
-[; ;T3.c: 221: goto_lico(16,13);
+[; ;T3.c: 221: goto_lico(13,14);
 "221
-[e ( _goto_lico (2 , -> -> 16 `i `uc -> -> 13 `i `uc ]
-[; ;T3.c: 222: if (TP_appui==1)
+[e ( _goto_lico (2 , -> -> 13 `i `uc -> -> 14 `i `uc ]
+[; ;T3.c: 222: draw_string("-------------");
 "222
-[e $ ! == -> _TP_appui `i -> 1 `i 1283  ]
-[; ;T3.c: 223: {
+[e ( _draw_string (1 -> :s 29C `*uc ]
+[; ;T3.c: 223: goto_lico(14,14);
 "223
-{
-[; ;T3.c: 224: if ((TP_x<0x50)&&(TP_y>0x60))
+[e ( _goto_lico (2 , -> -> 14 `i `uc -> -> 14 `i `uc ]
+[; ;T3.c: 224: draw_string("download     |");
 "224
-[e $ ! && < -> _TP_x `i -> 80 `i > -> _TP_y `i -> 96 `i 1284  ]
-[; ;T3.c: 225: {
+[e ( _draw_string (1 -> :s 30C `*uc ]
+[; ;T3.c: 225: goto_lico(15,27);
 "225
-{
-[; ;T3.c: 226: clear_text();
+[e ( _goto_lico (2 , -> -> 15 `i `uc -> -> 27 `i `uc ]
+[; ;T3.c: 226: draw_string("|");
 "226
-[e ( _clear_text ..  ]
-[; ;T3.c: 227: screen=0;
+[e ( _draw_string (1 -> :s 31C `*uc ]
+[; ;T3.c: 227: if (TP_appui==1)
 "227
-[e = _screen -> -> 0 `i `uc ]
-[; ;T3.c: 228: init_chRGB();
+[e $ ! == -> _TP_appui `i -> 1 `i 1283  ]
+[; ;T3.c: 228: {
 "228
-[e ( _init_chRGB ..  ]
+{
+[; ;T3.c: 229: if ((TP_x<0x50)&&(TP_y>0x60))
 "229
+[e $ ! && < -> _TP_x `i -> 80 `i > -> _TP_y `i -> 96 `i 1284  ]
+[; ;T3.c: 230: {
+"230
+{
+[; ;T3.c: 231: clear_text();
+"231
+[e ( _clear_text ..  ]
+[; ;T3.c: 232: screen=0;
+"232
+[e = _screen -> -> 0 `i `uc ]
+[; ;T3.c: 233: init_chRGB();
+"233
+[e ( _init_chRGB ..  ]
+"234
 }
 [e :U 1284 ]
-"230
+[; ;T3.c: 234: }
+[; ;T3.c: 235: if((TP_y>0x60)&&((TP_x<100)&&(TP_x>50)))
+"235
+[e $ ! && > -> _TP_y `i -> 96 `i && < -> _TP_x `i -> 100 `i > -> _TP_x `i -> 50 `i 1285  ]
+[; ;T3.c: 236: {
+"236
+{
+[; ;T3.c: 237: download=1;
+"237
+[e = _download -> -> 1 `i `uc ]
+"238
+}
+[e :U 1285 ]
+"239
 }
 [e :U 1283 ]
-[; ;T3.c: 229: }
-[; ;T3.c: 230: }
-[; ;T3.c: 231: break;
-"231
+[; ;T3.c: 238: }
+[; ;T3.c: 239: }
+[; ;T3.c: 241: break;
+"241
 [e $U 1242  ]
-"233
+"243
 }
-[; ;T3.c: 233: }
+[; ;T3.c: 243: }
 [e $U 1242  ]
 "31
 [e :U 1243 ]
 [e [\ _screen , $ -> -> 0 `i `uc 1244
  , $ -> -> 1 `i `uc 1282
  1242 ]
-"233
+"243
 [e :U 1242 ]
-"238
+"248
 }
 [e :U 1239 ]
 "29
 [e $U 1240  ]
 [e :U 1241 ]
-[; ;T3.c: 238: }
-[; ;T3.c: 239: }
-"239
+[; ;T3.c: 248: }
+[; ;T3.c: 249: }
+"249
 [e :UE 1238 ]
 }
-"242
+"252
 [v _init_chRGB `(v ~T0 @X0 1 ef ]
 {
-[; ;T3.c: 241: void init_chRGB (void)
-[; ;T3.c: 242: {
+[; ;T3.c: 251: void init_chRGB (void)
+[; ;T3.c: 252: {
 [e :U _init_chRGB ]
 [f ]
-[; ;T3.c: 243: goto_lico(13,34);draw_char('R');draw_char(' ');draw_char('V');draw_char(' ');draw_char('B');
-"243
+[; ;T3.c: 253: goto_lico(13,34);draw_char('R');draw_char(' ');draw_char('V');draw_char(' ');draw_char('B');
+"253
 [e ( _goto_lico (2 , -> -> 13 `i `uc -> -> 34 `i `uc ]
 [e ( _draw_char (1 -> -> 82 `ui `uc ]
 [e ( _draw_char (1 -> -> 32 `ui `uc ]
 [e ( _draw_char (1 -> -> 86 `ui `uc ]
 [e ( _draw_char (1 -> -> 32 `ui `uc ]
 [e ( _draw_char (1 -> -> 66 `ui `uc ]
-[; ;T3.c: 244: goto_lico(14,34);draw_char('0');draw_char(' ');draw_char('0');draw_char(' ');draw_char('0');
-"244
+[; ;T3.c: 254: goto_lico(14,34);draw_char('0');draw_char(' ');draw_char('0');draw_char(' ');draw_char('0');
+"254
 [e ( _goto_lico (2 , -> -> 14 `i `uc -> -> 34 `i `uc ]
 [e ( _draw_char (1 -> -> 48 `ui `uc ]
 [e ( _draw_char (1 -> -> 32 `ui `uc ]
 [e ( _draw_char (1 -> -> 48 `ui `uc ]
 [e ( _draw_char (1 -> -> 32 `ui `uc ]
 [e ( _draw_char (1 -> -> 48 `ui `uc ]
-[; ;T3.c: 245: goto_lico(15,34);draw_char('1');draw_char(' ');draw_char('1');draw_char(' ');draw_char('1');
-"245
+[; ;T3.c: 255: goto_lico(15,34);draw_char('1');draw_char(' ');draw_char('1');draw_char(' ');draw_char('1');
+"255
 [e ( _goto_lico (2 , -> -> 15 `i `uc -> -> 34 `i `uc ]
 [e ( _draw_char (1 -> -> 49 `ui `uc ]
 [e ( _draw_char (1 -> -> 32 `ui `uc ]
 [e ( _draw_char (1 -> -> 49 `ui `uc ]
 [e ( _draw_char (1 -> -> 32 `ui `uc ]
 [e ( _draw_char (1 -> -> 49 `ui `uc ]
-[; ;T3.c: 246: }
-"246
-[e :UE 1285 ]
+[; ;T3.c: 256: }
+"256
+[e :UE 1286 ]
 }
 [a 27C 109 97 105 110 32 115 99 114 101 101 110 32 32 124 0 ]
 [a 20C 115 111 99 105 97 108 32 100 97 116 97 32 32 124 0 ]
+[a 30C 100 111 119 110 108 111 97 100 32 32 32 32 32 124 0 ]
 [a 21C 124 0 ]
 [a 28C 124 0 ]
+[a 31C 124 0 ]
 [a 22C 115 111 99 105 97 108 32 100 97 116 97 115 0 ]
 [a 23C 116 105 109 101 32 117 110 117 115 101 100 32 97 110 115 32 112 111 119 101 114 32 111 110 0 ]
 [a 25C 119 97 114 110 105 110 103 32 121 111 117 114 32 97 110 111 114 109 97 108 32 117 115 101 0 ]
@@ -10292,6 +10325,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 8C 67 104 111 99 58 0 ]
 [a 19C 45 45 45 45 45 45 45 45 45 45 45 45 45 0 ]
 [a 26C 45 45 45 45 45 45 45 45 45 45 45 45 45 0 ]
+[a 29C 45 45 45 45 45 45 45 45 45 45 45 45 45 0 ]
 [a 11C 40 40 33 41 41 0 ]
 [a 4C 78 32 0 ]
 [a 14C 32 65 85 67 85 78 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]

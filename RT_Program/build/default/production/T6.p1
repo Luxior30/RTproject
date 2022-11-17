@@ -1,8 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "55 variables_globales.h
 [v F10202 `(v ~T0 @X0 0 tf ]
-"17 stid.h
-[v _lecture_normale `(uc ~T0 @X0 0 ef1`*uc ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [; ;pic18f87k22.h: 46: asm("PMD3 equ 0F16h");
@@ -9278,6 +9276,9 @@ Version 3.2 HI-TECH Software Intermediate Code
 "93
 [v _tempon_unused `uc ~T0 @X0 1 e@145 ]
 [; ;variables_globales.h: 93: unsigned char tempon_unused @0x91;
+"94
+[v _download `uc ~T0 @X0 1 e@146 ]
+[; ;variables_globales.h: 94: unsigned char download @0x92;
 [; ;afficheur.h: 32: void write_d_aff(unsigned char data);
 [; ;afficheur.h: 33: void write_c_aff(unsigned char command);
 [; ;afficheur.h: 34: unsigned char check_status_ok();
@@ -9408,75 +9409,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;T6.c: 4: {
 [e :U _tache6 ]
 [f ]
-"5
-[v _n `uc ~T0 @X0 1 a ]
-[; ;T6.c: 5: unsigned char n;
-[; ;T6.c: 6: while(1)
+[; ;T6.c: 6: }
 "6
-[e :U 1240 ]
-[; ;T6.c: 7: {
-"7
-{
-[; ;T6.c: 8: n=lecture_normale(badge);
-"8
-[e = _n ( _lecture_normale (1 &U _badge ]
-[; ;T6.c: 9: if (n>0)
-"9
-[e $ ! > -> _n `i -> 0 `i 1242  ]
-[; ;T6.c: 10: {
-"10
-{
-[; ;T6.c: 11: if(n<10)
-"11
-[e $ ! < -> _n `i -> 10 `i 1243  ]
-[; ;T6.c: 12: {
-"12
-{
-[; ;T6.c: 13: n_octet_badge=n;
-"13
-[e = _n_octet_badge _n ]
-"14
-}
-[; ;T6.c: 14: }
-[e $U 1244  ]
-"15
-[e :U 1243 ]
-[; ;T6.c: 15: else
-[; ;T6.c: 16: {
-"16
-{
-[; ;T6.c: 17: n_octet_badge=0;
-"17
-[e = _n_octet_badge -> -> 0 `i `uc ]
-"18
-}
-[e :U 1244 ]
-"19
-}
-[; ;T6.c: 18: }
-[; ;T6.c: 19: }
-[e $U 1245  ]
-"20
-[e :U 1242 ]
-[; ;T6.c: 20: else
-[; ;T6.c: 21: {
-"21
-{
-[; ;T6.c: 22: n_octet_badge=0;
-"22
-[e = _n_octet_badge -> -> 0 `i `uc ]
-"23
-}
-[e :U 1245 ]
-"24
-}
-[e :U 1239 ]
-"6
-[e $U 1240  ]
-[e :U 1241 ]
-[; ;T6.c: 23: }
-[; ;T6.c: 24: }
-[; ;T6.c: 25: }
-"25
 [e :UE 1238 ]
 }
