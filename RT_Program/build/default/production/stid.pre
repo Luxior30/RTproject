@@ -11940,7 +11940,7 @@ unsigned char TP_appui @ 0x66;
 unsigned char TP_x @ 0x67;
 unsigned char TP_y @ 0x68;
 
-struct tache_struct_t queue[6] @ 0x81;
+unsigned char queue[6] @ 0x69;
 unsigned char tache_active @ 0x6F;
 unsigned char pointeur_de_tache @ 0x70;
 unsigned int Tick_Count @ 0x71;
@@ -11951,6 +11951,7 @@ unsigned char badge[10] @ 0x75;
 unsigned char n_octet_badge @ 0x7F;
 
 unsigned char RXTX_libre @ 0x80;
+unsigned char VAR_TACHE1 @ 0x370;
 
 
 
@@ -11959,7 +11960,7 @@ unsigned short long val_tos;
 unsigned char * puc;
 unsigned char tc[3];
 
-# 66
+# 67
 unsigned char contexte1[66] @ 0x100;
 unsigned char contexte2[66] @ 0x200;
 unsigned char contexte3[66] @ 0x300;
@@ -11975,11 +11976,20 @@ unsigned char STKPTR_T4 @0x403;
 unsigned char STKPTR_T5 @0x503;
 unsigned char STKPTR_T6 @0x603;
 
+
 unsigned long Timer_G @0x81 ;
-unsigned long Timer_G_temp @0x87;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
-unsigned char CHOC_LONG @0x92;
+
+unsigned char tempon_presence_cle @0x87;
+unsigned char temps_initial @0x88;
+unsigned char temps_initial_warn @0x89;
+unsigned char tempon_warnning @0x8A;
+unsigned long test_EEPROM @0x8B;
+unsigned char temps_final @0x8F;
+unsigned char tempon_anormal_use @0x90;
+unsigned char tempon_unused @0x91;
+unsigned char download @0x92;
 
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
@@ -12020,11 +12030,23 @@ void tache1();
 void tache2();
 void tp_delai(unsigned int itpd);
 
-# 16 "T3.h"
-void tache3();
+# 17 "T3.h"
+unsigned char screen= 0;
 
-# 16 "T4.h"
+# 23
+void tache3();
+void init_chRGB (void);
+
+# 23 "T4.h"
 void tache4();
+char read_EEPROM(char adressH, char adressL);
+void write_EEPROM(char data, char adressH, char adressL);
+unsigned char add_timer (char data_J, char adressH, char adressL,char type);
+void follow_driver_timer (void);
+char conv_badge_8bitsl (void);
+char conv_badge_8bitsh (void);
+void follow_driver_timer_anormal (void);
+void follow_timer_unused(void);
 
 # 16 "T5.h"
 void tache5();
@@ -12107,7 +12129,7 @@ return 0;
 }
 }
 
-# 105
+
 void stid_delai_us(unsigned int isdu)
 {
 while(isdu>0)

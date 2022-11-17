@@ -5,7 +5,21 @@ void tache5()
     unsigned int a;
     while(1)
     {
-        //P(SEM_RXTX);
+        if (download==1)
+        {
+        for (int i=0; i<1024 ; i++)
+        {
+            unsigned char ADRESSH= i>>8 & 0xFF;
+            unsigned char ADRESSL = i & 0xFF;
+            while(PIR1bits.TX1IF==0); TXREG1=read_EEPROM(ADRESSH,ADRESSL); while (TXSTA1bits.TRMT==0);
+            if (i==1023) download==0;
+        }
+        }
+    }
+    
+        
+        
+       /* //P(SEM_RXTX);
         //while(RXTX_libre==0);
         //RXTX_libre=0;
         while (PIR1bits.TX1IF==0);   TXREG1='t';while (TXSTA1bits.TRMT==0);
@@ -24,10 +38,9 @@ void tache5()
         while (PIR1bits.TX1IF==0);   TXREG1='r';while (TXSTA1bits.TRMT==0);
         while (PIR1bits.TX1IF==0);   TXREG1='s';while (TXSTA1bits.TRMT==0);
         //RXTX_libre=1;
-        //V(SEM_RXTX);
+        //V(SEM_RXTX);*/
         for (a=0;a<65000;a++)
             ;
         for (a=0;a<65000;a++)
             ;
     }
-}

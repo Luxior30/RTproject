@@ -11940,7 +11940,7 @@ unsigned char TP_appui @ 0x66;
 unsigned char TP_x @ 0x67;
 unsigned char TP_y @ 0x68;
 
-struct tache_struct_t queue[6] @ 0x81;
+unsigned char queue[6] @ 0x69;
 unsigned char tache_active @ 0x6F;
 unsigned char pointeur_de_tache @ 0x70;
 unsigned int Tick_Count @ 0x71;
@@ -11951,6 +11951,7 @@ unsigned char badge[10] @ 0x75;
 unsigned char n_octet_badge @ 0x7F;
 
 unsigned char RXTX_libre @ 0x80;
+unsigned char VAR_TACHE1 @ 0x370;
 
 
 
@@ -11959,7 +11960,7 @@ unsigned short long val_tos;
 unsigned char * puc;
 unsigned char tc[3];
 
-# 66
+# 67
 unsigned char contexte1[66] @ 0x100;
 unsigned char contexte2[66] @ 0x200;
 unsigned char contexte3[66] @ 0x300;
@@ -11975,11 +11976,20 @@ unsigned char STKPTR_T4 @0x403;
 unsigned char STKPTR_T5 @0x503;
 unsigned char STKPTR_T6 @0x603;
 
+
 unsigned long Timer_G @0x81 ;
-unsigned long Timer_G_temp @0x87;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
-unsigned char CHOC_LONG @0x92;
+
+unsigned char tempon_presence_cle @0x87;
+unsigned char temps_initial @0x88;
+unsigned char temps_initial_warn @0x89;
+unsigned char tempon_warnning @0x8A;
+unsigned long test_EEPROM @0x8B;
+unsigned char temps_final @0x8F;
+unsigned char tempon_anormal_use @0x90;
+unsigned char tempon_unused @0x91;
+unsigned char download @0x92;
 
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
@@ -12021,11 +12031,23 @@ void init_rxtx();
 void tache2();
 void tp_delai(unsigned int itpd);
 
-# 16 "T3.h"
-void tache3();
+# 17 "T3.h"
+unsigned char screen= 0;
 
-# 16 "T4.h"
+# 23
+void tache3();
+void init_chRGB (void);
+
+# 23 "T4.h"
 void tache4();
+char read_EEPROM(char adressH, char adressL);
+void write_EEPROM(char data, char adressH, char adressL);
+unsigned char add_timer (char data_J, char adressH, char adressL,char type);
+void follow_driver_timer (void);
+char conv_badge_8bitsl (void);
+char conv_badge_8bitsh (void);
+void follow_driver_timer_anormal (void);
+void follow_timer_unused(void);
 
 # 16 "T5.h"
 void tache5();
@@ -12059,75 +12081,27 @@ void tache1();
 # 3 "T1.c"
 void tache1()
 {
-
-unsigned char i;
-
-(INTCONbits.GIE = 0);
-initialisation_des_ports();
-initialisation_afficheur();
-clear_text();
-clear_graphics();
-init_rxtx();
-Init(2);
-RXTX_libre=1;
-TXREG1='R';
-(INTCONbits.GIE = 1);
-
-
-LATCbits.LATC2=0;LATCbits.LATC1=0;LATGbits.LATG0=0;
-
-vitesse=0;
-batterie=120;
-n_octet_badge=0;
-
-goto_lico(13,34);draw_char('R');draw_char(' ');draw_char('V');draw_char(' ');draw_char('B');
-goto_lico(14,34);draw_char('0');draw_char(' ');draw_char('0');draw_char(' ');draw_char('0');
-goto_lico(15,34);draw_char('1');draw_char(' ');draw_char('1');draw_char(' ');draw_char('1');
-
-TP_appui=0;
-
 while(1)
 {
-if (PORTBbits.RB3 == 0)
+vitesse = 0;
+if (VAR_TACHE1 == 0)
 {
-Timer_G_temp = Timer_G;
-while(PORTBbits.RB3==0);
-if(Timer_G - Timer_G_temp >= 10)
-{
-CHOC_LONG = 1;
+clear_text();
+LATCbits.LATC2=0;LATCbits.LATC1=1;LATGbits.LATG0=1;
+VAR_TACHE1 = 1;
 }
-else {
-CHOC_LONG = 0;
-}
-}
-
-# 95
-goto_lico(1,0);
-draw_string("Siege:");
-if (PORTBbits.RB2==0)
-{draw_char('1');}
-else
-{draw_char('0');}
-
-goto_lico(4,0);
-draw_string("Choc:");
-if (PORTBbits.RB3==0)
-draw_char('1');
-else
-draw_char('0');
-goto_lico(5,0);
-draw_string("Choc long:");
-if (CHOC_LONG==0)
-draw_char('1');
-else
-draw_char('0');
-
+LATCbits.LATC2=0;LATCbits.LATC1=1;LATGbits.LATG0=1;
 goto_lico(6,0);
-draw_string("Vitesse:");
-if (PORTEbits.RE0==0)
-vitesse++;
-if (PORTEbits.RE1==0)
-vitesse--;
-draw_hex8(vitesse);
+draw_string("Warning choc !!");
+goto_lico(7,0);
+draw_string("speed off");
+goto_lico(8,0);
+draw_string("for unlock push on 'choc'");
+if (PORTBbits.RB3 == 1)
+{
+clear_text();
+LATCbits.LATC2=0;LATCbits.LATC1=0;LATGbits.LATG0=0;
+VAR_TACHE1 = 0;
+}
 }
 }

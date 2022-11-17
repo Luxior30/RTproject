@@ -16,16 +16,9 @@
 
 void interrupt fonction_d_interruption()
 {
-	static char ordonnanceur_utilise = 0;
 // Sauvegarde de registres sensibles (ils sont modifiés au cours du changement de tache)
     STATUS_TEMPORAIRE=STATUS; W_TEMPORAIRE=WREG; BSR_TEMPORAIRE=BSR;
     FSR0H_TEMPORAIRE=FSR0H; FSR0L_TEMPORAIRE=FSR0L;
-	
-	if(ordonnanceur_utilise){
-		return;
-	}
-	
-	ordonnanceur_utilise = 1;
 
 // INTERRUPTION TIMER0 UITLISEE PAR L'ORDONNANCEUR
     if(T0IE && T0IF)
@@ -69,13 +62,19 @@ void interrupt fonction_d_interruption()
         TMR0=(0xFFFF-30000);// l'IT se redéclenchera dans 10ms
         T0IF=0;   // effacement du flag pour attendre la prochaine it
         Timer_G = Timer_G+1;
-        
         Tick_Count++;// Incrémentation du compteur de tick
 
         pointeur_de_tache++;                        //
         if (pointeur_de_tache==NOMBRE_DE_TACHES)    // Evolution du cycle des taches
-            pointeur_de_tache=0;                    // 1-2-3-4-5-6-1-2-3...
-        tache_active=queue[pointeur_de_tache];      //
+            pointeur_de_tache=1;                    // 1-2-3-4-5-6-1-2-3...
+             //
+        if ((CHOC==0) || (VAR_TACHE1 == 1)) 
+        {
+            vitesse = 0;
+            pointeur_de_tache =0;
+        }
+        tache_active=queue[pointeur_de_tache]; 
+            
 
  // Restauration du contexte de la tache active
 // Debut de restauration des zones utilisées par le compilateur
@@ -134,34 +133,27 @@ void interrupt fonction_d_interruption()
     tache4();// en compte, car comme elles ne sont appelées nulle part
     tache5();// ailleur, le compilateur les aurait ignorées.
     tache6();//
-	
-	ordonnanceur_utilise = 0;
-}
-
-typedef struct{
-	char tache;
-	int prio;
-	char debloquer;
-}tache_struct_t;
-
-void debloquer_tache(char tache)
-{
-	int index = 0;
-	
-	for(index = 0; index < NOMBRE_DE_TACHES; index++){
-		if(queue[index] == tache){
-			queue[index] = TACHE1;
-			//fonction_d_interruption();
-		}
-	}	
 }
 
 void initialisation_du_systeme()
 {
+    VAR_TACHE1 = 0;
     unsigned char temp;
-
+    write_EEPROM(0x00, 0x00, 0x00);
     DEMARRAGE=1;
-
+    Timer_G=0;
+    temps_initial=0;
+    temps_final=0;
+    //initialisation de la gestion EEPROM
+    INTCONbits.GIE=1;   // Active les interruptions globales
+    INTCONbits.PEIE=1;  // Active les interruptions peripheriques
+    EECON1=0x00; // Flags a 0 et anable des actions sur EEPROM
+        
+    EECON1bits.EEPGD=0;
+    EECON1bits.CFGS=0;
+    //PIE6bits.EEIE=1; // EEDATA Write operation interrupt anable
+    IPR6bits.EEIP=1; // EE interrupt High priority bit
+    
     /* Ordre de départ des taches */
     queue[0]=TACHE1;
     queue[1]=TACHE2;
@@ -202,5 +194,5 @@ void initialisation_du_systeme()
     //T0CON=0x08;//16 bit, no prescaler, OFF, 5.46ms period
     T0CON=0x01;//16 bit, 1:4 Prescaler, 22ms period
     T0IE=1; // Autorisation IT Ordonnanceur
-         
+    tempon_presence_cle=0;
 }

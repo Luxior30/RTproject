@@ -11940,7 +11940,7 @@ unsigned char TP_appui @ 0x66;
 unsigned char TP_x @ 0x67;
 unsigned char TP_y @ 0x68;
 
-struct tache_struct_t queue[6] @ 0x81;
+unsigned char queue[6] @ 0x69;
 unsigned char tache_active @ 0x6F;
 unsigned char pointeur_de_tache @ 0x70;
 unsigned int Tick_Count @ 0x71;
@@ -11951,6 +11951,7 @@ unsigned char badge[10] @ 0x75;
 unsigned char n_octet_badge @ 0x7F;
 
 unsigned char RXTX_libre @ 0x80;
+unsigned char VAR_TACHE1 @ 0x370;
 
 
 
@@ -11959,7 +11960,7 @@ unsigned short long val_tos;
 unsigned char * puc;
 unsigned char tc[3];
 
-# 66
+# 67
 unsigned char contexte1[66] @ 0x100;
 unsigned char contexte2[66] @ 0x200;
 unsigned char contexte3[66] @ 0x300;
@@ -11975,11 +11976,20 @@ unsigned char STKPTR_T4 @0x403;
 unsigned char STKPTR_T5 @0x503;
 unsigned char STKPTR_T6 @0x603;
 
+
 unsigned long Timer_G @0x81 ;
-unsigned long Timer_G_temp @0x87;
 unsigned char Timer_swap @0x85 ;
 unsigned char timer_swap_tempon @0x86 ;
-unsigned char CHOC_LONG @0x92;
+
+unsigned char tempon_presence_cle @0x87;
+unsigned char temps_initial @0x88;
+unsigned char temps_initial_warn @0x89;
+unsigned char tempon_warnning @0x8A;
+unsigned long test_EEPROM @0x8B;
+unsigned char temps_final @0x8F;
+unsigned char tempon_anormal_use @0x90;
+unsigned char tempon_unused @0x91;
+unsigned char download @0x92;
 
 # 32 "afficheur.h"
 void write_d_aff(unsigned char data);
@@ -12024,8 +12034,12 @@ void tache1();
 void tache2();
 void tp_delai(unsigned int itpd);
 
-# 16 "T3.h"
+# 17 "T3.h"
+unsigned char screen= 0;
+
+# 23
 void tache3();
+void init_chRGB (void);
 
 # 16 "T5.h"
 void tache5();
@@ -12053,36 +12067,189 @@ void tache6();
 void initialisation_des_ports();
 unsigned char lecture_8bit_analogique(unsigned char channel);
 
-# 16 "T4.h"
+# 23 "T4.h"
 void tache4();
+char read_EEPROM(char adressH, char adressL);
+void write_EEPROM(char data, char adressH, char adressL);
+unsigned char add_timer (char data_J, char adressH, char adressL,char type);
+void follow_driver_timer (void);
+char conv_badge_8bitsl (void);
+char conv_badge_8bitsh (void);
+void follow_driver_timer_anormal (void);
+void follow_timer_unused(void);
 
 # 3 "T4.c"
 void tache4()
 {
-unsigned int a;
-while(1)
+if ((tempon_presence_cle==0)&&(n_octet_badge!=0))
 {
-
-
-
-while (PIR1bits.TX1IF==0); TXREG1='T';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='A';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='C';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='H';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='E';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='4';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='E';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='N';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='_';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='C';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='O';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='U';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='R';while (TXSTA1bits.TRMT==0);
-while (PIR1bits.TX1IF==0); TXREG1='S';while (TXSTA1bits.TRMT==0);
-
-
-for (a=0;a<65000;a++)
-;
+tempon_unused=0;
+follow_timer_unused;
+tempon_presence_cle==1;
+temps_initial=Timer_G;
 }
+
+if ((tempon_presence_cle==1)&&(n_octet_badge==0))
+{
+tempon_presence_cle==0;
+follow_driver_timer();
+test_EEPROM=read_EEPROM(conv_badge_8bitsh,conv_badge_8bitsl);
+
 }
+
+if ((tempon_presence_cle==1)&&(PORTBbits.RB2==0)&&(tempon_anormal_use==0))
+{
+temps_initial=Timer_G;
+tempon_anormal_use = 1;
+}
+
+if ((tempon_presence_cle==1)&&(PORTBbits.RB2==1)&&(tempon_anormal_use==1))
+{
+temps_initial=Timer_G;
+tempon_anormal_use = 0;
+follow_driver_timer_anormal();
+}
+
+if ((tempon_presence_cle==0)&&(n_octet_badge==0)&&(tempon_unused==0))
+{
+temps_initial=Timer_G;
+tempon_unused=1;
+}
+
+}
+
+void write_EEPROM (char data, char adressH, char adressL)
+{
+EEADRH=adressH;
+EEADR=adressL;
+EEDATA=data;
+EECON1bits.WREN=1;
+INTCONbits.GIE=0;
+
+EECON2=0x55;
+EECON2=0xAA;
+EECON1bits.WR=1;
+while (EECON1bits.WR==1);
+
+INTCONbits.GIE=1;
+EECON1bits.WREN=0;
+}
+
+char read_EEPROM (char adressH, char adressL)
+{
+EEADRH=adressH;
+EEADR=adressL;
+EECON1bits.RD=1;
+while(EECON1bits.RD==1);
+unsigned char data = EEDATA;
+return data;
+}
+
+
+unsigned char add_timer (char data_J, char adressH, char adressL, char type)
+{
+unsigned char reste = 0;
+unsigned int data_t=0;
+unsigned char mem_val=0;
+switch (type)
+{
+case 0 :
+
+mem_val = read_EEPROM(adressH,adressL);
+data_t = (int)mem_val + data_J;
+if (data_t>255)
+{
+unsigned reste = 1;
+write_EEPROM(data_t-256,adressH,adressL);
+}
+else
+{
+write_EEPROM(data_t,adressH,adressL);
+}
+break;
+
+case 1 :
+mem_val = read_EEPROM(adressH,adressL);
+data_t = mem_val + data_J;
+if (data_t>59)
+{
+reste = 1;
+write_EEPROM(data_t-60,adressH,adressL);
+}
+else
+{
+write_EEPROM(data_t,adressH,adressL);
+}
+break;
+default :
+reste =0;
+break;
+
+}
+
+return reste;
+
+}
+
+void follow_driver_timer (void)
+{
+unsigned char adresslow=conv_badge_8bitsl();
+unsigned char adresshigh=conv_badge_8bitsh();
+unsigned int temps_act_driver = Timer_G - temps_initial ;
+unsigned int heure = temps_act_driver/360000;
+unsigned char heureh = heure>>8 & 0xFF;
+unsigned char heurel = heure & 0xFF;
+unsigned char min = (temps_act_driver-heure*360000)/60;
+unsigned char reste = add_timer(min,adresshigh,adresslow+2,1);
+reste=(heurel+reste,adresshigh,adresslow+1,0);
+reste=add_timer(heureh + reste,adresshigh,adresslow,0);
+
+
+}
+
+void follow_driver_timer_anormal (void)
+{
+unsigned char adresslow=conv_badge_8bitsl();
+unsigned char adresshigh=conv_badge_8bitsh();
+unsigned int temps_act_driver = Timer_G - temps_initial ;
+unsigned int heure = temps_act_driver/360000;
+unsigned char heureh = heure>>8 & 0xFF;
+unsigned char heurel = heure & 0xFF;
+unsigned char min = (temps_act_driver-heure*360000)/60;
+unsigned char reste = add_timer(min,adresshigh,adresslow+6,1);
+reste=(heurel+reste,adresshigh,adresslow+5,0);
+reste=add_timer(heureh + reste,adresshigh,adresslow+4,0);
+}
+
+void follow_timer_unused(void)
+{
+unsigned int temps_act_driver = Timer_G - temps_initial ;
+unsigned int heure = temps_act_driver/360000;
+unsigned char heureh = heure>>8 & 0xFF;
+unsigned char heurel = heure & 0xFF;
+unsigned char min = (temps_act_driver-heure*360000)/60;
+unsigned char reste = add_timer(min,0x00,0x02,1);
+reste=(heurel+reste,0x00,0x01,0);
+reste=add_timer(heureh + reste,0x00,0x00,0);
+}
+
+char conv_badge_8bitsl (void)
+{
+unsigned badge_t=0;
+for (unsigned char i=0; i<8; i++)
+{
+badge_t=badge_t+badge[i]<<i;
+}
+return badge_t;
+}
+
+char conv_badge_8bitsh (void)
+{
+unsigned badge_t=0;
+for (unsigned char i=0; i<2; i++)
+{
+badge_t=badge_t+badge[i+8]<<i;
+}
+return badge_t;
+}
+

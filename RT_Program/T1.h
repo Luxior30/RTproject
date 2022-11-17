@@ -2,7 +2,7 @@
  * File:   T1.h
  * Author: Franck
  *
- * Created on 29 janvier 2015, 11:40
+ * Created on 29 janvier 2015, 11:41
  */
 
 #ifndef T1_H
@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 #include "main.h"
-void tache1();
+    void tache1();
 
 #ifdef	__cplusplus
 }

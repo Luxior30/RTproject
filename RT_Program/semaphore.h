@@ -24,8 +24,8 @@ extern "C" {
 
     // Prototypes
     void Init(unsigned char sem);
-     void P(unsigned char sem);
-     void V(unsigned char sem);
+    void P(unsigned char sem);
+    void V(unsigned char sem);
 
 
 #ifdef	__cplusplus
