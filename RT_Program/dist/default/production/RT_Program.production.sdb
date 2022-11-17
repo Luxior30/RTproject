@@ -2040,6 +2040,11 @@
 {
 "17
 } 0
+"21
+[v _initialisation_des_ports `(v  1 e 0 0 ]
+{
+"54
+} 0
 "5 semaphore.c
 [v _Init `(v  1 e 0 0 ]
 {
@@ -2052,11 +2057,6 @@
 "136
 [v initialisation_du_systeme@temp `uc  1 a 1 6 ]
 "193
-} 0
-"21 main.c
-[v _initialisation_des_ports `(v  1 e 0 0 ]
-{
-"54
 } 0
 "43 T4.c
 [v _write_EEPROM `(v  1 e 0 0 ]
@@ -2071,6 +2071,11 @@
 {
 "132
 } 0
+"4 T1.c
+[v _tache1 `(v  1 e 0 0 ]
+{
+"36
+} 0
 "4 T2.c
 [v _tache2 `(v  1 e 0 0 ]
 {
@@ -2083,6 +2088,19 @@
 [v tache2@lx `uc  1 a 1 14 ]
 [v tache2@hx `uc  1 a 1 13 ]
 "80
+} 0
+"4 T5.c
+[v _tache5 `(v  1 e 0 0 ]
+{
+"13
+[v tache5@ADRESSL `uc  1 a 1 13 ]
+"12
+[v tache5@ADRESSH `uc  1 a 1 12 ]
+"10
+[v tache5@i `i  1 a 2 16 ]
+"5
+[v tache5@a `ui  1 a 2 14 ]
+"46
 } 0
 "5 T3.c
 [v _tache3 `(v  1 e 0 0 ]
@@ -2110,25 +2128,14 @@
 {
 "5
 [v tache6@n `uc  1 a 1 10 ]
-"22
+"25
 } 0
-"4 T5.c
-[v _tache5 `(v  1 e 0 0 ]
+"288 afficheur.c
+[v _clear_text `(v  1 e 0 0 ]
 {
-"13
-[v tache5@ADRESSL `uc  1 a 1 13 ]
-"12
-[v tache5@ADRESSH `uc  1 a 1 12 ]
-"10
-[v tache5@i `i  1 a 2 16 ]
-"5
-[v tache5@a `ui  1 a 2 14 ]
-"46
-} 0
-"4 T1.c
-[v _tache1 `(v  1 e 0 0 ]
-{
-"36
+"289
+[v clear_text@add `ui  1 a 2 13 ]
+"296
 } 0
 "5 rxtx.c
 [v _init_rxtx `(v  1 e 0 0 ]
@@ -2142,12 +2149,6 @@
 [v clear_graphics@add `ui  1 a 2 13 ]
 "307
 } 0
-"244
-[v _draw_string `(v  1 e 0 0 ]
-{
-[v draw_string@tableau `*.duc  1 p 2 9 ]
-"251
-} 0
 "165
 [v _initialisation_afficheur `(v  1 e 0 0 ]
 {
@@ -2155,12 +2156,11 @@
 [v initialisation_afficheur@error_count `uc  1 a 1 13 ]
 "226
 } 0
-"288
-[v _clear_text `(v  1 e 0 0 ]
+"244
+[v _draw_string `(v  1 e 0 0 ]
 {
-"289
-[v clear_text@add `ui  1 a 2 13 ]
-"296
+[v draw_string@tableau `*.duc  1 p 2 9 ]
+"251
 } 0
 "83 T2.c
 [v _tp_delai `(v  1 e 0 0 ]
@@ -2229,15 +2229,6 @@
 [v follow_driver_timer@heurel `uc  1 a 1 29 ]
 "129
 } 0
-"158
-[v _conv_badge_8bitsl `(uc  1 e 1 0 ]
-{
-"160
-[v conv_badge_8bitsl@i `uc  1 a 1 6 ]
-"159
-[v conv_badge_8bitsl@badge_t `ui  1 a 2 4 ]
-"165
-} 0
 "168
 [v _conv_badge_8bitsh `(uc  1 e 1 0 ]
 {
@@ -2246,6 +2237,15 @@
 "169
 [v conv_badge_8bitsh@badge_t `ui  1 a 2 6 ]
 "175
+} 0
+"158
+[v _conv_badge_8bitsl `(uc  1 e 1 0 ]
+{
+"160
+[v conv_badge_8bitsl@i `uc  1 a 1 6 ]
+"159
+[v conv_badge_8bitsl@badge_t `ui  1 a 2 4 ]
+"165
 } 0
 "132
 [v _follow_driver_timer_anormal `(v  1 e 0 0 ]
@@ -2305,14 +2305,15 @@
 [v check_status_ok@res `uc  1 a 1 1 ]
 "51
 } 0
-"91
-[v _command `(uc  1 e 1 0 ]
+"107
+[v _d1command `(uc  1 e 1 0 ]
 {
-"92
-[v command@res `uc  1 a 1 7 ]
-"91
-[v command@cmd `uc  1 p 1 5 ]
-"104
+"108
+[v d1command@res `uc  1 a 1 8 ]
+"107
+[v d1command@d1 `uc  1 p 1 5 ]
+[v d1command@cmd `uc  1 p 1 6 ]
+"126
 } 0
 "129
 [v _d2command `(uc  1 e 1 0 ]
@@ -2325,27 +2326,26 @@
 [v d2command@cmd `uc  1 p 1 7 ]
 "152
 } 0
-"107
-[v _d1command `(uc  1 e 1 0 ]
+"5
+[v _write_d_aff `(v  1 e 0 0 ]
 {
-"108
-[v d1command@res `uc  1 a 1 8 ]
-"107
-[v d1command@d1 `uc  1 p 1 5 ]
-[v d1command@cmd `uc  1 p 1 6 ]
-"126
+[v write_d_aff@data `uc  1 p 1 0 ]
+"15
+} 0
+"91
+[v _command `(uc  1 e 1 0 ]
+{
+"92
+[v command@res `uc  1 a 1 7 ]
+"91
+[v command@cmd `uc  1 p 1 5 ]
+"104
 } 0
 "18
 [v _write_c_aff `(v  1 e 0 0 ]
 {
 [v write_c_aff@command `uc  1 p 1 0 ]
 "28
-} 0
-"5
-[v _write_d_aff `(v  1 e 0 0 ]
-{
-[v write_d_aff@data `uc  1 p 1 0 ]
-"15
 } 0
 "54
 [v _wait_status_ok `(uc  1 e 1 0 ]
@@ -2405,16 +2405,6 @@
 [v ___awmod@divisor `i  1 p 2 2 ]
 "35
 } 0
-"3 C:\Program Files (x86)\Microchip\xc8\v1.12\sources\lmul.c
-[v ___lmul `(ul  1 e 4 0 ]
-{
-"4
-[v ___lmul@product `ul  1 a 4 8 ]
-"3
-[v ___lmul@multiplier `ul  1 p 4 0 ]
-[v ___lmul@multiplicand `ul  1 p 4 4 ]
-"13
-} 0
 "10 C:\Program Files (x86)\Microchip\xc8\v1.12\sources\lwdiv.c
 [v ___lwdiv `(ui  1 e 2 0 ]
 {
@@ -2427,10 +2417,15 @@
 [v ___lwdiv@divisor `ui  1 p 2 2 ]
 "31
 } 0
-"21 main.c
-[v i2_initialisation_des_ports `(v  1 e 0 0 ]
+"3 C:\Program Files (x86)\Microchip\xc8\v1.12\sources\lmul.c
+[v ___lmul `(ul  1 e 4 0 ]
 {
-"54
+"4
+[v ___lmul@product `ul  1 a 4 8 ]
+"3
+[v ___lmul@multiplier `ul  1 p 4 0 ]
+[v ___lmul@multiplicand `ul  1 p 4 4 ]
+"13
 } 0
 "5 semaphore.c
 [v i2_Init `(v  1 e 0 0 ]
@@ -2446,7 +2441,12 @@
 [v i2write_EEPROM@adressL `uc  1 p 1 2 ]
 "57
 } 0
-"60
+"21 main.c
+[v i2_initialisation_des_ports `(v  1 e 0 0 ]
+{
+"54
+} 0
+"60 T4.c
 [v _read_EEPROM `(uc  1 e 1 0 ]
 {
 "65
