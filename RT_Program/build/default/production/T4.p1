@@ -1,8 +1,6 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "55 variables_globales.h
 [v F10202 `(v ~T0 @X0 0 tf ]
-"17 stid.h
-[v _lecture_normale `(uc ~T0 @X0 0 ef1`*uc ]
 "31 T4.h
 [v _follow_timer_unused `(v ~T0 @X0 0 ef ]
 "27
@@ -9469,603 +9467,550 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;T4.c: 4: {
 [e :U _tache4 ]
 [f ]
+[; ;T4.c: 5: if ((tempon_presence_cle==0)&&(n_octet_badge!=0))
+"5
+[e $ ! && == -> _tempon_presence_cle `i -> 0 `i != -> _n_octet_badge `i -> 0 `i 1239  ]
+[; ;T4.c: 6: {
 "6
-[v _n `uc ~T0 @X0 1 a ]
-[; ;T4.c: 6: unsigned char n=lecture_normale(badge);
-[e = _n ( _lecture_normale (1 &U _badge ]
-[; ;T4.c: 7: if (n>0)
+{
+[; ;T4.c: 7: tempon_unused=0;
 "7
-[e $ ! > -> _n `i -> 0 `i 1239  ]
-[; ;T4.c: 8: {
+[e = _tempon_unused -> -> 0 `i `uc ]
+[; ;T4.c: 8: follow_timer_unused;
 "8
-{
-[; ;T4.c: 9: if(n<10)
+[e &U _follow_timer_unused ]
+[; ;T4.c: 9: tempon_presence_cle==1;
 "9
-[e $ ! < -> _n `i -> 10 `i 1240  ]
-[; ;T4.c: 10: {
+[e == -> _tempon_presence_cle `i -> 1 `i ]
+[; ;T4.c: 10: temps_initial=Timer_G;
 "10
-{
-[; ;T4.c: 11: n_octet_badge=n;
+[e = _temps_initial -> _Timer_G `uc ]
 "11
-[e = _n_octet_badge _n ]
-"12
 }
-[; ;T4.c: 12: }
-[e $U 1241  ]
+[e :U 1239 ]
+[; ;T4.c: 11: }
+[; ;T4.c: 13: if ((tempon_presence_cle==1)&&(n_octet_badge==0))
 "13
-[e :U 1240 ]
-[; ;T4.c: 13: else
+[e $ ! && == -> _tempon_presence_cle `i -> 1 `i == -> _n_octet_badge `i -> 0 `i 1240  ]
 [; ;T4.c: 14: {
 "14
 {
-[; ;T4.c: 15: n_octet_badge=0;
+[; ;T4.c: 15: tempon_presence_cle==0;
 "15
-[e = _n_octet_badge -> -> 0 `i `uc ]
+[e == -> _tempon_presence_cle `i -> 0 `i ]
+[; ;T4.c: 16: follow_driver_timer();
 "16
+[e ( _follow_driver_timer ..  ]
+[; ;T4.c: 17: test_EEPROM=read_EEPROM(conv_badge_8bitsh,conv_badge_8bitsl);
+"17
+[e = _test_EEPROM -> ( _read_EEPROM (2 , -> &U _conv_badge_8bitsh `uc -> &U _conv_badge_8bitsl `uc `ul ]
+"19
+}
+[e :U 1240 ]
+[; ;T4.c: 19: }
+[; ;T4.c: 21: if ((tempon_presence_cle==1)&&(PORTBbits.RB2==0)&&(tempon_anormal_use==0))
+"21
+[e $ ! && && == -> _tempon_presence_cle `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 0 `i == -> _tempon_anormal_use `i -> 0 `i 1241  ]
+[; ;T4.c: 22: {
+"22
+{
+[; ;T4.c: 23: temps_initial=Timer_G;
+"23
+[e = _temps_initial -> _Timer_G `uc ]
+[; ;T4.c: 24: tempon_anormal_use = 1;
+"24
+[e = _tempon_anormal_use -> -> 1 `i `uc ]
+"25
 }
 [e :U 1241 ]
-"17
-}
-[; ;T4.c: 16: }
-[; ;T4.c: 17: }
-[e $U 1242  ]
-"18
-[e :U 1239 ]
-[; ;T4.c: 18: else
-[; ;T4.c: 19: {
-"19
+[; ;T4.c: 25: }
+[; ;T4.c: 27: if ((tempon_presence_cle==1)&&(PORTBbits.RB2==1)&&(tempon_anormal_use==1))
+"27
+[e $ ! && && == -> _tempon_presence_cle `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 1 `i == -> _tempon_anormal_use `i -> 1 `i 1242  ]
+[; ;T4.c: 28: {
+"28
 {
-[; ;T4.c: 20: n_octet_badge=0;
-"20
-[e = _n_octet_badge -> -> 0 `i `uc ]
-"21
+[; ;T4.c: 29: temps_initial=Timer_G;
+"29
+[e = _temps_initial -> _Timer_G `uc ]
+[; ;T4.c: 30: tempon_anormal_use = 0;
+"30
+[e = _tempon_anormal_use -> -> 0 `i `uc ]
+[; ;T4.c: 31: follow_driver_timer_anormal();
+"31
+[e ( _follow_driver_timer_anormal ..  ]
+"32
 }
 [e :U 1242 ]
-[; ;T4.c: 21: }
-[; ;T4.c: 23: if ((tempon_presence_cle==0)&&(n_octet_badge!=0))
-"23
-[e $ ! && == -> _tempon_presence_cle `i -> 0 `i != -> _n_octet_badge `i -> 0 `i 1243  ]
-[; ;T4.c: 24: {
-"24
+[; ;T4.c: 32: }
+[; ;T4.c: 34: if ((tempon_presence_cle==0)&&(n_octet_badge==0)&&(tempon_unused==0))
+"34
+[e $ ! && && == -> _tempon_presence_cle `i -> 0 `i == -> _n_octet_badge `i -> 0 `i == -> _tempon_unused `i -> 0 `i 1243  ]
+[; ;T4.c: 35: {
+"35
 {
-[; ;T4.c: 25: tempon_unused=0;
-"25
-[e = _tempon_unused -> -> 0 `i `uc ]
-[; ;T4.c: 26: follow_timer_unused;
-"26
-[e &U _follow_timer_unused ]
-[; ;T4.c: 27: tempon_presence_cle==1;
-"27
-[e == -> _tempon_presence_cle `i -> 1 `i ]
-[; ;T4.c: 28: temps_initial=Timer_G;
-"28
+[; ;T4.c: 36: temps_initial=Timer_G;
+"36
 [e = _temps_initial -> _Timer_G `uc ]
-"29
+[; ;T4.c: 37: tempon_unused=1;
+"37
+[e = _tempon_unused -> -> 1 `i `uc ]
+"38
 }
 [e :U 1243 ]
-[; ;T4.c: 29: }
-[; ;T4.c: 31: if ((tempon_presence_cle==1)&&(n_octet_badge==0))
-"31
-[e $ ! && == -> _tempon_presence_cle `i -> 1 `i == -> _n_octet_badge `i -> 0 `i 1244  ]
-[; ;T4.c: 32: {
-"32
-{
-[; ;T4.c: 33: tempon_presence_cle==0;
-"33
-[e == -> _tempon_presence_cle `i -> 0 `i ]
-[; ;T4.c: 34: follow_driver_timer();
-"34
-[e ( _follow_driver_timer ..  ]
-[; ;T4.c: 35: test_EEPROM=read_EEPROM(conv_badge_8bitsh,conv_badge_8bitsl);
-"35
-[e = _test_EEPROM -> ( _read_EEPROM (2 , -> &U _conv_badge_8bitsh `uc -> &U _conv_badge_8bitsl `uc `ul ]
-"37
-}
-[e :U 1244 ]
-[; ;T4.c: 37: }
-[; ;T4.c: 39: if ((tempon_presence_cle==1)&&(PORTBbits.RB2==0)&&(tempon_anormal_use==0))
-"39
-[e $ ! && && == -> _tempon_presence_cle `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 0 `i == -> _tempon_anormal_use `i -> 0 `i 1245  ]
-[; ;T4.c: 40: {
+[; ;T4.c: 38: }
+[; ;T4.c: 40: }
 "40
-{
-[; ;T4.c: 41: temps_initial=Timer_G;
-"41
-[e = _temps_initial -> _Timer_G `uc ]
-[; ;T4.c: 42: tempon_anormal_use = 1;
-"42
-[e = _tempon_anormal_use -> -> 1 `i `uc ]
-"43
-}
-[e :U 1245 ]
-[; ;T4.c: 43: }
-[; ;T4.c: 45: if ((tempon_presence_cle==1)&&(PORTBbits.RB2==1)&&(tempon_anormal_use==1))
-"45
-[e $ ! && && == -> _tempon_presence_cle `i -> 1 `i == -> . . _PORTBbits 0 2 `i -> 1 `i == -> _tempon_anormal_use `i -> 1 `i 1246  ]
-[; ;T4.c: 46: {
-"46
-{
-[; ;T4.c: 47: temps_initial=Timer_G;
-"47
-[e = _temps_initial -> _Timer_G `uc ]
-[; ;T4.c: 48: tempon_anormal_use = 0;
-"48
-[e = _tempon_anormal_use -> -> 0 `i `uc ]
-[; ;T4.c: 49: follow_driver_timer_anormal();
-"49
-[e ( _follow_driver_timer_anormal ..  ]
-"50
-}
-[e :U 1246 ]
-[; ;T4.c: 50: }
-[; ;T4.c: 52: if ((tempon_presence_cle==0)&&(n_octet_badge==0)&&(tempon_unused==0))
-"52
-[e $ ! && && == -> _tempon_presence_cle `i -> 0 `i == -> _n_octet_badge `i -> 0 `i == -> _tempon_unused `i -> 0 `i 1247  ]
-[; ;T4.c: 53: {
-"53
-{
-[; ;T4.c: 54: temps_initial=Timer_G;
-"54
-[e = _temps_initial -> _Timer_G `uc ]
-[; ;T4.c: 55: tempon_unused=1;
-"55
-[e = _tempon_unused -> -> 1 `i `uc ]
-"56
-}
-[e :U 1247 ]
-[; ;T4.c: 56: }
-[; ;T4.c: 58: }
-"58
 [e :UE 1238 ]
 }
-"61
+"43
 [v _write_EEPROM `(v ~T0 @X0 1 ef3`uc`uc`uc ]
 {
-[; ;T4.c: 60: void write_EEPROM (char data, char adressH, char adressL)
-[; ;T4.c: 61: {
+[; ;T4.c: 42: void write_EEPROM (char data, char adressH, char adressL)
+[; ;T4.c: 43: {
 [e :U _write_EEPROM ]
 [v _data `uc ~T0 @X0 1 r1 ]
 [v _adressH `uc ~T0 @X0 1 r2 ]
 [v _adressL `uc ~T0 @X0 1 r3 ]
 [f ]
-[; ;T4.c: 62: EEADRH=adressH;
-"62
+[; ;T4.c: 44: EEADRH=adressH;
+"44
 [e = _EEADRH _adressH ]
-[; ;T4.c: 63: EEADR=adressL;
-"63
+[; ;T4.c: 45: EEADR=adressL;
+"45
 [e = _EEADR _adressL ]
-[; ;T4.c: 64: EEDATA=data;
-"64
+[; ;T4.c: 46: EEDATA=data;
+"46
 [e = _EEDATA _data ]
-[; ;T4.c: 65: EECON1bits.WREN=1;
-"65
+[; ;T4.c: 47: EECON1bits.WREN=1;
+"47
 [e = . . _EECON1bits 0 2 -> -> 1 `i `uc ]
-[; ;T4.c: 66: INTCONbits.GIE=0;
-"66
+[; ;T4.c: 48: INTCONbits.GIE=0;
+"48
 [e = . . _INTCONbits 1 7 -> -> 0 `i `uc ]
-[; ;T4.c: 68: EECON2=0x55;
-"68
+[; ;T4.c: 50: EECON2=0x55;
+"50
 [e = _EECON2 -> -> 85 `i `uc ]
-[; ;T4.c: 69: EECON2=0xAA;
-"69
+[; ;T4.c: 51: EECON2=0xAA;
+"51
 [e = _EECON2 -> -> 170 `i `uc ]
-[; ;T4.c: 70: EECON1bits.WR=1;
-"70
+[; ;T4.c: 52: EECON1bits.WR=1;
+"52
 [e = . . _EECON1bits 0 1 -> -> 1 `i `uc ]
-[; ;T4.c: 71: while (EECON1bits.WR==1);
-"71
-[e $U 1249  ]
-[e :U 1250 ]
-[e :U 1249 ]
-[e $ == -> . . _EECON1bits 0 1 `i -> 1 `i 1250  ]
-[e :U 1251 ]
-[; ;T4.c: 73: INTCONbits.GIE=1;
-"73
+[; ;T4.c: 53: while (EECON1bits.WR==1);
+"53
+[e $U 1245  ]
+[e :U 1246 ]
+[e :U 1245 ]
+[e $ == -> . . _EECON1bits 0 1 `i -> 1 `i 1246  ]
+[e :U 1247 ]
+[; ;T4.c: 55: INTCONbits.GIE=1;
+"55
 [e = . . _INTCONbits 1 7 -> -> 1 `i `uc ]
-[; ;T4.c: 74: EECON1bits.WREN=0;
-"74
+[; ;T4.c: 56: EECON1bits.WREN=0;
+"56
 [e = . . _EECON1bits 0 2 -> -> 0 `i `uc ]
-[; ;T4.c: 75: }
-"75
-[e :UE 1248 ]
+[; ;T4.c: 57: }
+"57
+[e :UE 1244 ]
 }
-"78
+"60
 [v _read_EEPROM `(uc ~T0 @X0 1 ef2`uc`uc ]
 {
-[; ;T4.c: 77: char read_EEPROM (char adressH, char adressL)
-[; ;T4.c: 78: {
+[; ;T4.c: 59: char read_EEPROM (char adressH, char adressL)
+[; ;T4.c: 60: {
 [e :U _read_EEPROM ]
 [v _adressH `uc ~T0 @X0 1 r1 ]
 [v _adressL `uc ~T0 @X0 1 r2 ]
 [f ]
-[; ;T4.c: 79: EEADRH=adressH;
-"79
+[; ;T4.c: 61: EEADRH=adressH;
+"61
 [e = _EEADRH _adressH ]
-[; ;T4.c: 80: EEADR=adressL;
-"80
+[; ;T4.c: 62: EEADR=adressL;
+"62
 [e = _EEADR _adressL ]
-[; ;T4.c: 81: EECON1bits.RD=1;
-"81
+[; ;T4.c: 63: EECON1bits.RD=1;
+"63
 [e = . . _EECON1bits 0 0 -> -> 1 `i `uc ]
-[; ;T4.c: 82: while(EECON1bits.RD==1);
-"82
-[e $U 1253  ]
-[e :U 1254 ]
-[e :U 1253 ]
-[e $ == -> . . _EECON1bits 0 0 `i -> 1 `i 1254  ]
-[e :U 1255 ]
-"83
+[; ;T4.c: 64: while(EECON1bits.RD==1);
+"64
+[e $U 1249  ]
+[e :U 1250 ]
+[e :U 1249 ]
+[e $ == -> . . _EECON1bits 0 0 `i -> 1 `i 1250  ]
+[e :U 1251 ]
+"65
 [v _data `uc ~T0 @X0 1 a ]
-[; ;T4.c: 83: unsigned char data = EEDATA;
+[; ;T4.c: 65: unsigned char data = EEDATA;
 [e = _data _EEDATA ]
-[; ;T4.c: 84: return data;
-"84
+[; ;T4.c: 66: return data;
+"66
 [e ) _data ]
-[e $UE 1252  ]
-[; ;T4.c: 85: }
-"85
-[e :UE 1252 ]
+[e $UE 1248  ]
+[; ;T4.c: 67: }
+"67
+[e :UE 1248 ]
 }
-"89
+"71
 [v _add_timer `(uc ~T0 @X0 1 ef4`uc`uc`uc`uc ]
 {
-[; ;T4.c: 88: unsigned char add_timer (char data_J, char adressH, char adressL, char type)
-[; ;T4.c: 89: {
+[; ;T4.c: 70: unsigned char add_timer (char data_J, char adressH, char adressL, char type)
+[; ;T4.c: 71: {
 [e :U _add_timer ]
 [v _data_J `uc ~T0 @X0 1 r1 ]
 [v _adressH `uc ~T0 @X0 1 r2 ]
 [v _adressL `uc ~T0 @X0 1 r3 ]
 [v _type `uc ~T0 @X0 1 r4 ]
 [f ]
-"90
+"72
 [v _reste `uc ~T0 @X0 1 a ]
-[; ;T4.c: 90: unsigned char reste = 0;
+[; ;T4.c: 72: unsigned char reste = 0;
 [e = _reste -> -> 0 `i `uc ]
-"91
+"73
 [v _data_t `ui ~T0 @X0 1 a ]
-[; ;T4.c: 91: unsigned int data_t=0;
+[; ;T4.c: 73: unsigned int data_t=0;
 [e = _data_t -> -> 0 `i `ui ]
-"92
+"74
 [v _mem_val `uc ~T0 @X0 1 a ]
-[; ;T4.c: 92: unsigned char mem_val=0;
+[; ;T4.c: 74: unsigned char mem_val=0;
 [e = _mem_val -> -> 0 `i `uc ]
-[; ;T4.c: 93: switch (type)
-"93
-[e $U 1258  ]
-[; ;T4.c: 94: {
-"94
+[; ;T4.c: 75: switch (type)
+"75
+[e $U 1254  ]
+[; ;T4.c: 76: {
+"76
 {
-[; ;T4.c: 95: case 0 :
-"95
-[e :U 1259 ]
-[; ;T4.c: 97: mem_val = read_EEPROM(adressH,adressL);
-"97
+[; ;T4.c: 77: case 0 :
+"77
+[e :U 1255 ]
+[; ;T4.c: 79: mem_val = read_EEPROM(adressH,adressL);
+"79
 [e = _mem_val ( _read_EEPROM (2 , _adressH _adressL ]
-[; ;T4.c: 98: data_t = (int)mem_val + data_J;
-"98
+[; ;T4.c: 80: data_t = (int)mem_val + data_J;
+"80
 [e = _data_t -> + -> _mem_val `i -> _data_J `i `ui ]
-[; ;T4.c: 99: if (data_t>255)
-"99
-[e $ ! > _data_t -> -> 255 `i `ui 1260  ]
-[; ;T4.c: 100: {
-"100
+[; ;T4.c: 81: if (data_t>255)
+"81
+[e $ ! > _data_t -> -> 255 `i `ui 1256  ]
+[; ;T4.c: 82: {
+"82
 {
-"101
+"83
 [v _reste `ui ~T0 @X0 1 a ]
-[; ;T4.c: 101: unsigned reste = 1;
+[; ;T4.c: 83: unsigned reste = 1;
 [e = _reste -> -> 1 `i `ui ]
-[; ;T4.c: 102: write_EEPROM(data_t-256,adressH,adressL);
-"102
+[; ;T4.c: 84: write_EEPROM(data_t-256,adressH,adressL);
+"84
 [e ( _write_EEPROM (3 , , -> - _data_t -> -> 256 `i `ui `uc _adressH _adressL ]
+"85
+}
+[; ;T4.c: 85: }
+[e $U 1257  ]
+"86
+[e :U 1256 ]
+[; ;T4.c: 86: else
+[; ;T4.c: 87: {
+"87
+{
+[; ;T4.c: 88: write_EEPROM(data_t,adressH,adressL);
+"88
+[e ( _write_EEPROM (3 , , -> _data_t `uc _adressH _adressL ]
+"89
+}
+[e :U 1257 ]
+[; ;T4.c: 89: }
+[; ;T4.c: 90: break;
+"90
+[e $U 1253  ]
+[; ;T4.c: 92: case 1 :
+"92
+[e :U 1258 ]
+[; ;T4.c: 93: mem_val = read_EEPROM(adressH,adressL);
+"93
+[e = _mem_val ( _read_EEPROM (2 , _adressH _adressL ]
+[; ;T4.c: 94: data_t = mem_val + data_J;
+"94
+[e = _data_t -> + -> _mem_val `i -> _data_J `i `ui ]
+[; ;T4.c: 95: if (data_t>59)
+"95
+[e $ ! > _data_t -> -> 59 `i `ui 1259  ]
+[; ;T4.c: 96: {
+"96
+{
+[; ;T4.c: 97: reste = 1;
+"97
+[e = _reste -> -> 1 `i `uc ]
+[; ;T4.c: 98: write_EEPROM(data_t-60,adressH,adressL);
+"98
+[e ( _write_EEPROM (3 , , -> - _data_t -> -> 60 `i `ui `uc _adressH _adressL ]
+"99
+}
+[; ;T4.c: 99: }
+[e $U 1260  ]
+"100
+[e :U 1259 ]
+[; ;T4.c: 100: else
+[; ;T4.c: 101: {
+"101
+{
+[; ;T4.c: 102: write_EEPROM(data_t,adressH,adressL);
+"102
+[e ( _write_EEPROM (3 , , -> _data_t `uc _adressH _adressL ]
 "103
 }
-[; ;T4.c: 103: }
-[e $U 1261  ]
-"104
 [e :U 1260 ]
-[; ;T4.c: 104: else
-[; ;T4.c: 105: {
+[; ;T4.c: 103: }
+[; ;T4.c: 104: break;
+"104
+[e $U 1253  ]
+[; ;T4.c: 105: default :
 "105
-{
-[; ;T4.c: 106: write_EEPROM(data_t,adressH,adressL);
-"106
-[e ( _write_EEPROM (3 , , -> _data_t `uc _adressH _adressL ]
-"107
-}
 [e :U 1261 ]
-[; ;T4.c: 107: }
-[; ;T4.c: 108: break;
-"108
-[e $U 1257  ]
-[; ;T4.c: 110: case 1 :
-"110
-[e :U 1262 ]
-[; ;T4.c: 111: mem_val = read_EEPROM(adressH,adressL);
-"111
-[e = _mem_val ( _read_EEPROM (2 , _adressH _adressL ]
-[; ;T4.c: 112: data_t = mem_val + data_J;
-"112
-[e = _data_t -> + -> _mem_val `i -> _data_J `i `ui ]
-[; ;T4.c: 113: if (data_t>59)
-"113
-[e $ ! > _data_t -> -> 59 `i `ui 1263  ]
-[; ;T4.c: 114: {
-"114
-{
-[; ;T4.c: 115: reste = 1;
-"115
-[e = _reste -> -> 1 `i `uc ]
-[; ;T4.c: 116: write_EEPROM(data_t-60,adressH,adressL);
-"116
-[e ( _write_EEPROM (3 , , -> - _data_t -> -> 60 `i `ui `uc _adressH _adressL ]
-"117
-}
-[; ;T4.c: 117: }
-[e $U 1264  ]
-"118
-[e :U 1263 ]
-[; ;T4.c: 118: else
-[; ;T4.c: 119: {
-"119
-{
-[; ;T4.c: 120: write_EEPROM(data_t,adressH,adressL);
-"120
-[e ( _write_EEPROM (3 , , -> _data_t `uc _adressH _adressL ]
-"121
-}
-[e :U 1264 ]
-[; ;T4.c: 121: }
-[; ;T4.c: 122: break;
-"122
-[e $U 1257  ]
-[; ;T4.c: 123: default :
-"123
-[e :U 1265 ]
-[; ;T4.c: 124: reste =0;
-"124
+[; ;T4.c: 106: reste =0;
+"106
 [e = _reste -> -> 0 `i `uc ]
-[; ;T4.c: 125: break;
-"125
-[e $U 1257  ]
-"127
+[; ;T4.c: 107: break;
+"107
+[e $U 1253  ]
+"109
 }
-[; ;T4.c: 127: }
-[e $U 1257  ]
-"93
-[e :U 1258 ]
-[e [\ _type , $ -> -> 0 `i `uc 1259
- , $ -> -> 1 `i `uc 1262
- 1265 ]
-"127
-[e :U 1257 ]
-[; ;T4.c: 129: return reste;
-"129
+[; ;T4.c: 109: }
+[e $U 1253  ]
+"75
+[e :U 1254 ]
+[e [\ _type , $ -> -> 0 `i `uc 1255
+ , $ -> -> 1 `i `uc 1258
+ 1261 ]
+"109
+[e :U 1253 ]
+[; ;T4.c: 111: return reste;
+"111
 [e ) _reste ]
-[e $UE 1256  ]
-[; ;T4.c: 131: }
-"131
-[e :UE 1256 ]
+[e $UE 1252  ]
+[; ;T4.c: 113: }
+"113
+[e :UE 1252 ]
 }
-"134
+"116
 [v _follow_driver_timer `(v ~T0 @X0 1 ef ]
 {
-[; ;T4.c: 133: void follow_driver_timer (void)
-[; ;T4.c: 134: {
+[; ;T4.c: 115: void follow_driver_timer (void)
+[; ;T4.c: 116: {
 [e :U _follow_driver_timer ]
 [f ]
-"135
+"117
 [v _adresslow `uc ~T0 @X0 1 a ]
-[; ;T4.c: 135: unsigned char adresslow=conv_badge_8bitsl();
+[; ;T4.c: 117: unsigned char adresslow=conv_badge_8bitsl();
 [e = _adresslow ( _conv_badge_8bitsl ..  ]
-"136
+"118
 [v _adresshigh `uc ~T0 @X0 1 a ]
-[; ;T4.c: 136: unsigned char adresshigh=conv_badge_8bitsh();
+[; ;T4.c: 118: unsigned char adresshigh=conv_badge_8bitsh();
 [e = _adresshigh ( _conv_badge_8bitsh ..  ]
-"137
+"119
 [v _temps_act_driver `ui ~T0 @X0 1 a ]
-[; ;T4.c: 137: unsigned int temps_act_driver = Timer_G - temps_initial ;
+[; ;T4.c: 119: unsigned int temps_act_driver = Timer_G - temps_initial ;
 [e = _temps_act_driver -> - _Timer_G -> _temps_initial `ul `ui ]
-"138
+"120
 [v _heure `ui ~T0 @X0 1 a ]
-[; ;T4.c: 138: unsigned int heure = temps_act_driver/360000;
+[; ;T4.c: 120: unsigned int heure = temps_act_driver/360000;
 [e = _heure -> / -> _temps_act_driver `l -> 360000 `l `ui ]
-"139
+"121
 [v _heureh `uc ~T0 @X0 1 a ]
-[; ;T4.c: 139: unsigned char heureh = heure>>8 & 0xFF;
+[; ;T4.c: 121: unsigned char heureh = heure>>8 & 0xFF;
 [e = _heureh -> & >> _heure -> 8 `i -> -> 255 `i `ui `uc ]
-"140
+"122
 [v _heurel `uc ~T0 @X0 1 a ]
-[; ;T4.c: 140: unsigned char heurel = heure & 0xFF;
+[; ;T4.c: 122: unsigned char heurel = heure & 0xFF;
 [e = _heurel -> & _heure -> -> 255 `i `ui `uc ]
-"141
+"123
 [v _min `uc ~T0 @X0 1 a ]
-[; ;T4.c: 141: unsigned char min = (temps_act_driver-heure*360000)/60;
+[; ;T4.c: 123: unsigned char min = (temps_act_driver-heure*360000)/60;
 [e = _min -> / - -> _temps_act_driver `l * -> _heure `l -> 360000 `l -> -> 60 `i `l `uc ]
-"142
+"124
 [v _reste `uc ~T0 @X0 1 a ]
-[; ;T4.c: 142: unsigned char reste = add_timer(min,adresshigh,adresslow+2,1);
+[; ;T4.c: 124: unsigned char reste = add_timer(min,adresshigh,adresslow+2,1);
 [e = _reste ( _add_timer (4 , , , _min _adresshigh -> + -> _adresslow `i -> 2 `i `uc -> -> 1 `i `uc ]
-[; ;T4.c: 143: reste=(heurel+reste,adresshigh,adresslow+1,0);
-"143
+[; ;T4.c: 125: reste=(heurel+reste,adresshigh,adresslow+1,0);
+"125
 [e = _reste -> ; ; ; + -> _heurel `i -> _reste `i _adresshigh + -> _adresslow `i -> 1 `i -> 0 `i `uc ]
-[; ;T4.c: 144: reste=add_timer(heureh + reste,adresshigh,adresslow,0);
-"144
+[; ;T4.c: 126: reste=add_timer(heureh + reste,adresshigh,adresslow,0);
+"126
 [e = _reste ( _add_timer (4 , , , -> + -> _heureh `i -> _reste `i `uc _adresshigh _adresslow -> -> 0 `i `uc ]
-[; ;T4.c: 147: }
-"147
-[e :UE 1266 ]
+[; ;T4.c: 129: }
+"129
+[e :UE 1262 ]
 }
-"150
+"132
 [v _follow_driver_timer_anormal `(v ~T0 @X0 1 ef ]
 {
-[; ;T4.c: 149: void follow_driver_timer_anormal (void)
-[; ;T4.c: 150: {
+[; ;T4.c: 131: void follow_driver_timer_anormal (void)
+[; ;T4.c: 132: {
 [e :U _follow_driver_timer_anormal ]
 [f ]
-"151
+"133
 [v _adresslow `uc ~T0 @X0 1 a ]
-[; ;T4.c: 151: unsigned char adresslow=conv_badge_8bitsl();
+[; ;T4.c: 133: unsigned char adresslow=conv_badge_8bitsl();
 [e = _adresslow ( _conv_badge_8bitsl ..  ]
-"152
+"134
 [v _adresshigh `uc ~T0 @X0 1 a ]
-[; ;T4.c: 152: unsigned char adresshigh=conv_badge_8bitsh();
+[; ;T4.c: 134: unsigned char adresshigh=conv_badge_8bitsh();
 [e = _adresshigh ( _conv_badge_8bitsh ..  ]
-"153
+"135
 [v _temps_act_driver `ui ~T0 @X0 1 a ]
-[; ;T4.c: 153: unsigned int temps_act_driver = Timer_G - temps_initial ;
+[; ;T4.c: 135: unsigned int temps_act_driver = Timer_G - temps_initial ;
 [e = _temps_act_driver -> - _Timer_G -> _temps_initial `ul `ui ]
-"154
+"136
 [v _heure `ui ~T0 @X0 1 a ]
-[; ;T4.c: 154: unsigned int heure = temps_act_driver/360000;
+[; ;T4.c: 136: unsigned int heure = temps_act_driver/360000;
 [e = _heure -> / -> _temps_act_driver `l -> 360000 `l `ui ]
-"155
+"137
 [v _heureh `uc ~T0 @X0 1 a ]
-[; ;T4.c: 155: unsigned char heureh = heure>>8 & 0xFF;
+[; ;T4.c: 137: unsigned char heureh = heure>>8 & 0xFF;
 [e = _heureh -> & >> _heure -> 8 `i -> -> 255 `i `ui `uc ]
-"156
+"138
 [v _heurel `uc ~T0 @X0 1 a ]
-[; ;T4.c: 156: unsigned char heurel = heure & 0xFF;
+[; ;T4.c: 138: unsigned char heurel = heure & 0xFF;
 [e = _heurel -> & _heure -> -> 255 `i `ui `uc ]
-"157
+"139
 [v _min `uc ~T0 @X0 1 a ]
-[; ;T4.c: 157: unsigned char min = (temps_act_driver-heure*360000)/60;
+[; ;T4.c: 139: unsigned char min = (temps_act_driver-heure*360000)/60;
 [e = _min -> / - -> _temps_act_driver `l * -> _heure `l -> 360000 `l -> -> 60 `i `l `uc ]
-"158
+"140
 [v _reste `uc ~T0 @X0 1 a ]
-[; ;T4.c: 158: unsigned char reste = add_timer(min,adresshigh,adresslow+6,1);
+[; ;T4.c: 140: unsigned char reste = add_timer(min,adresshigh,adresslow+6,1);
 [e = _reste ( _add_timer (4 , , , _min _adresshigh -> + -> _adresslow `i -> 6 `i `uc -> -> 1 `i `uc ]
-[; ;T4.c: 159: reste=(heurel+reste,adresshigh,adresslow+5,0);
-"159
+[; ;T4.c: 141: reste=(heurel+reste,adresshigh,adresslow+5,0);
+"141
 [e = _reste -> ; ; ; + -> _heurel `i -> _reste `i _adresshigh + -> _adresslow `i -> 5 `i -> 0 `i `uc ]
-[; ;T4.c: 160: reste=add_timer(heureh + reste,adresshigh,adresslow+4,0);
-"160
+[; ;T4.c: 142: reste=add_timer(heureh + reste,adresshigh,adresslow+4,0);
+"142
 [e = _reste ( _add_timer (4 , , , -> + -> _heureh `i -> _reste `i `uc _adresshigh -> + -> _adresslow `i -> 4 `i `uc -> -> 0 `i `uc ]
-[; ;T4.c: 161: }
-"161
-[e :UE 1267 ]
+[; ;T4.c: 143: }
+"143
+[e :UE 1263 ]
 }
-"164
+"146
 [v _follow_timer_unused `(v ~T0 @X0 1 ef ]
 {
-[; ;T4.c: 163: void follow_timer_unused(void)
-[; ;T4.c: 164: {
+[; ;T4.c: 145: void follow_timer_unused(void)
+[; ;T4.c: 146: {
 [e :U _follow_timer_unused ]
 [f ]
-"165
+"147
 [v _temps_act_driver `ui ~T0 @X0 1 a ]
-[; ;T4.c: 165: unsigned int temps_act_driver = Timer_G - temps_initial ;
+[; ;T4.c: 147: unsigned int temps_act_driver = Timer_G - temps_initial ;
 [e = _temps_act_driver -> - _Timer_G -> _temps_initial `ul `ui ]
-"166
+"148
 [v _heure `ui ~T0 @X0 1 a ]
-[; ;T4.c: 166: unsigned int heure = temps_act_driver/360000;
+[; ;T4.c: 148: unsigned int heure = temps_act_driver/360000;
 [e = _heure -> / -> _temps_act_driver `l -> 360000 `l `ui ]
-"167
+"149
 [v _heureh `uc ~T0 @X0 1 a ]
-[; ;T4.c: 167: unsigned char heureh = heure>>8 & 0xFF;
+[; ;T4.c: 149: unsigned char heureh = heure>>8 & 0xFF;
 [e = _heureh -> & >> _heure -> 8 `i -> -> 255 `i `ui `uc ]
-"168
+"150
 [v _heurel `uc ~T0 @X0 1 a ]
-[; ;T4.c: 168: unsigned char heurel = heure & 0xFF;
+[; ;T4.c: 150: unsigned char heurel = heure & 0xFF;
 [e = _heurel -> & _heure -> -> 255 `i `ui `uc ]
-"169
+"151
 [v _min `uc ~T0 @X0 1 a ]
-[; ;T4.c: 169: unsigned char min = (temps_act_driver-heure*360000)/60;
+[; ;T4.c: 151: unsigned char min = (temps_act_driver-heure*360000)/60;
 [e = _min -> / - -> _temps_act_driver `l * -> _heure `l -> 360000 `l -> -> 60 `i `l `uc ]
-"170
+"152
 [v _reste `uc ~T0 @X0 1 a ]
-[; ;T4.c: 170: unsigned char reste = add_timer(min,0x00,0x02,1);
+[; ;T4.c: 152: unsigned char reste = add_timer(min,0x00,0x02,1);
 [e = _reste ( _add_timer (4 , , , _min -> -> 0 `i `uc -> -> 2 `i `uc -> -> 1 `i `uc ]
-[; ;T4.c: 171: reste=(heurel+reste,0x00,0x01,0);
-"171
+[; ;T4.c: 153: reste=(heurel+reste,0x00,0x01,0);
+"153
 [e = _reste -> ; ; ; + -> _heurel `i -> _reste `i -> 0 `i -> 1 `i -> 0 `i `uc ]
-[; ;T4.c: 172: reste=add_timer(heureh + reste,0x00,0x00,0);
-"172
+[; ;T4.c: 154: reste=add_timer(heureh + reste,0x00,0x00,0);
+"154
 [e = _reste ( _add_timer (4 , , , -> + -> _heureh `i -> _reste `i `uc -> -> 0 `i `uc -> -> 0 `i `uc -> -> 0 `i `uc ]
-[; ;T4.c: 173: }
-"173
-[e :UE 1268 ]
+[; ;T4.c: 155: }
+"155
+[e :UE 1264 ]
 }
-"176
+"158
 [v _conv_badge_8bitsl `(uc ~T0 @X0 1 ef ]
 {
-[; ;T4.c: 175: char conv_badge_8bitsl (void)
-[; ;T4.c: 176: {
+[; ;T4.c: 157: char conv_badge_8bitsl (void)
+[; ;T4.c: 158: {
 [e :U _conv_badge_8bitsl ]
 [f ]
-"177
+"159
 [v _badge_t `ui ~T0 @X0 1 a ]
-[; ;T4.c: 177: unsigned badge_t=0;
+[; ;T4.c: 159: unsigned badge_t=0;
 [e = _badge_t -> -> 0 `i `ui ]
-[; ;T4.c: 178: for (unsigned char i=0; i<8; i++)
-"178
+[; ;T4.c: 160: for (unsigned char i=0; i<8; i++)
+"160
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 8 `i 1270  ]
-[e $U 1271  ]
-"179
-[e :U 1270 ]
-[; ;T4.c: 179: {
+[e $ < -> _i `i -> 8 `i 1266  ]
+[e $U 1267  ]
+"161
+[e :U 1266 ]
+[; ;T4.c: 161: {
 {
-[; ;T4.c: 180: badge_t=badge_t+badge[i]<<i;
-"180
+[; ;T4.c: 162: badge_t=badge_t+badge[i]<<i;
+"162
 [e = _badge_t << + _badge_t -> *U + &U _badge * -> _i `ux -> -> # *U &U _badge `ui `ux `ui _i ]
-"181
+"163
 }
-"178
+"160
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 8 `i 1270  ]
-[e :U 1271 ]
-"181
+[e $ < -> _i `i -> 8 `i 1266  ]
+[e :U 1267 ]
+"163
 }
-[; ;T4.c: 181: }
-[; ;T4.c: 182: return badge_t;
-"182
+[; ;T4.c: 163: }
+[; ;T4.c: 164: return badge_t;
+"164
 [e ) -> _badge_t `uc ]
-[e $UE 1269  ]
-[; ;T4.c: 183: }
-"183
-[e :UE 1269 ]
+[e $UE 1265  ]
+[; ;T4.c: 165: }
+"165
+[e :UE 1265 ]
 }
-"186
+"168
 [v _conv_badge_8bitsh `(uc ~T0 @X0 1 ef ]
 {
-[; ;T4.c: 185: char conv_badge_8bitsh (void)
-[; ;T4.c: 186: {
+[; ;T4.c: 167: char conv_badge_8bitsh (void)
+[; ;T4.c: 168: {
 [e :U _conv_badge_8bitsh ]
 [f ]
-"187
+"169
 [v _badge_t `ui ~T0 @X0 1 a ]
-[; ;T4.c: 187: unsigned badge_t=0;
+[; ;T4.c: 169: unsigned badge_t=0;
 [e = _badge_t -> -> 0 `i `ui ]
-[; ;T4.c: 188: for (unsigned char i=0; i<2; i++)
-"188
+[; ;T4.c: 170: for (unsigned char i=0; i<2; i++)
+"170
 {
 [v _i `uc ~T0 @X0 1 a ]
 [e = _i -> -> 0 `i `uc ]
-[e $ < -> _i `i -> 2 `i 1274  ]
-[e $U 1275  ]
-"189
-[e :U 1274 ]
-[; ;T4.c: 189: {
+[e $ < -> _i `i -> 2 `i 1270  ]
+[e $U 1271  ]
+"171
+[e :U 1270 ]
+[; ;T4.c: 171: {
 {
-[; ;T4.c: 190: badge_t=badge_t+badge[i+8]<<i;
-"190
+[; ;T4.c: 172: badge_t=badge_t+badge[i+8]<<i;
+"172
 [e = _badge_t << + _badge_t -> *U + &U _badge * -> -> + -> _i `i -> 8 `i `ui `ux -> -> # *U &U _badge `ui `ux `ui _i ]
-"191
+"173
 }
-"188
+"170
 [e ++ _i -> -> 1 `i `uc ]
-[e $ < -> _i `i -> 2 `i 1274  ]
-[e :U 1275 ]
-"191
+[e $ < -> _i `i -> 2 `i 1270  ]
+[e :U 1271 ]
+"173
 }
-[; ;T4.c: 191: }
-[; ;T4.c: 192: return badge_t;
-"192
+[; ;T4.c: 173: }
+[; ;T4.c: 174: return badge_t;
+"174
 [e ) -> _badge_t `uc ]
-[e $UE 1273  ]
-[; ;T4.c: 193: }
-"193
-[e :UE 1273 ]
+[e $UE 1269  ]
+[; ;T4.c: 175: }
+"175
+[e :UE 1269 ]
 }

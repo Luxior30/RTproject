@@ -758,7 +758,7 @@
 "55 variables_globales.h
 [v variables_globales@F10202 `(v  1 t 0 ]
 "28 T4.h
-[s S1916 . 1 `uc 1 RB0 1 0 :1:0 
+[s S1911 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -767,7 +767,7 @@
 `uc 1 RB6 1 0 :1:6 
 `uc 1 RB7 1 0 :1:7 
 ]
-[s S1925 . 1 `uc 1 INT0 1 0 :1:0 
+[s S1920 . 1 `uc 1 INT0 1 0 :1:0 
 `uc 1 INT1 1 0 :1:1 
 `uc 1 INT2 1 0 :1:2 
 `uc 1 INT3 1 0 :1:3 
@@ -776,29 +776,29 @@
 `uc 1 KBI2 1 0 :1:6 
 `uc 1 KBI3 1 0 :1:7 
 ]
-[s S1934 . 1 `uc 1 FLT0 1 0 :1:0 
+[s S1929 . 1 `uc 1 FLT0 1 0 :1:0 
 `uc 1 . 1 0 :1:1 
 `uc 1 CTED1 1 0 :1:2 
 `uc 1 CTED2 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 T3CKI 1 0 :1:5 
 ]
-[s S1941 . 1 `uc 1 . 1 0 :3:0 
+[s S1936 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_P2A 1 0 :1:3 
 `uc 1 . 1 0 :1:4 
 `uc 1 T1G 1 0 :1:5 
 ]
-[s S1946 . 1 `uc 1 . 1 0 :5:0 
+[s S1941 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 PGM 1 0 :1:5 
 `uc 1 PGC 1 0 :1:6 
 `uc 1 PGD 1 0 :1:7 
 ]
-[s S1951 . 1 `uc 1 . 1 0 :3:0 
+[s S1946 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 CCP2_PA2 1 0 :1:3 
 ]
-[u S1954 . 1 `S777 1 . 1 0 `S786 1 . 1 0 `S795 1 . 1 0 `S802 1 . 1 0 `S807 1 . 1 0 `S812 1 . 1 0 ]
+[u S1949 . 1 `S777 1 . 1 0 `S786 1 . 1 0 `S795 1 . 1 0 `S802 1 . 1 0 `S807 1 . 1 0 `S812 1 . 1 0 ]
 "5492 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
-[s S1969 . 1 `uc 1 RD 1 0 :1:0 
+[s S1964 . 1 `uc 1 RD 1 0 :1:0 
 `uc 1 WR 1 0 :1:1 
 `uc 1 WREN 1 0 :1:2 
 `uc 1 WRERR 1 0 :1:3 
@@ -807,12 +807,12 @@
 `uc 1 CFGS 1 0 :1:6 
 `uc 1 EEPGD 1 0 :1:7 
 ]
-[s S1978 . 1 `uc 1 . 1 0 :6:0 
+[s S1973 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 EEFS 1 0 :1:6 
 ]
-[u S1981 . 1 `S935 1 . 1 0 `S944 1 . 1 0 ]
+[u S1976 . 1 `S935 1 . 1 0 `S944 1 . 1 0 ]
 "8006
-[s S1985 . 1 `uc 1 RBIF 1 0 :1:0 
+[s S1980 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INT0IF 1 0 :1:1 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -821,7 +821,7 @@
 `uc 1 PEIE_GIEL 1 0 :1:6 
 `uc 1 GIE_GIEH 1 0 :1:7 
 ]
-[s S1994 . 1 `uc 1 . 1 0 :1:0 
+[s S1989 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -830,11 +830,11 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S2003 . 1 `uc 1 . 1 0 :6:0 
+[s S1998 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[s S2007 . 1 `uc 1 . 1 0 :1:0 
+[s S2002 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 INT0F 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
@@ -843,14 +843,14 @@
 `uc 1 PEIE 1 0 :1:6 
 `uc 1 GIE 1 0 :1:7 
 ]
-[s S2016 . 1 `uc 1 . 1 0 :6:0 
+[s S2011 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 GIEL 1 0 :1:6 
 `uc 1 GIEH 1 0 :1:7 
 ]
-[u S2020 . 1 `S62 1 . 1 0 `S71 1 . 1 0 `S80 1 . 1 0 `S71 1 . 1 0 `S80 1 . 1 0 ]
+[u S2015 . 1 `S62 1 . 1 0 `S71 1 . 1 0 `S80 1 . 1 0 `S71 1 . 1 0 `S80 1 . 1 0 ]
 "55 variables_globales.h
 [v variables_globales@F10202 `(v  1 t 0 ]
-[s S2128 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S2122 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 TMR1GIF 1 0 :1:2 
 `uc 1 SSP1IF 1 0 :1:3 
@@ -859,14 +859,14 @@
 `uc 1 ADIF 1 0 :1:6 
 `uc 1 PSPIF 1 0 :1:7 
 ]
-[s S2137 . 1 `uc 1 . 1 0 :3:0 
+[s S2131 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIF 1 0 :1:3 
 `uc 1 TXIF 1 0 :1:4 
 `uc 1 RCIF 1 0 :1:5 
 ]
-[u S2142 . 1 `S2128 1 . 1 0 `S2137 1 . 1 0 ]
+[u S2136 . 1 `S2122 1 . 1 0 `S2131 1 . 1 0 ]
 "24 T4.h
-[s S2162 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S2156 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -875,17 +875,17 @@
 `uc 1 TX9 1 0 :1:6 
 `uc 1 CSRC 1 0 :1:7 
 ]
-[s S2171 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S2165 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S2175 . 1 `uc 1 . 1 0 :6:0 
+[s S2169 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 NOT_TX8 1 0 :1:6 
 ]
-[s S2178 . 1 `uc 1 . 1 0 :6:0 
+[s S2172 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S2181 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S2175 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 SENDB1 1 0 :1:3 
@@ -894,7 +894,7 @@
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[u S2190 . 1 `S2162 1 . 1 0 `S2171 1 . 1 0 `S2175 1 . 1 0 `S2178 1 . 1 0 `S2181 1 . 1 0 ]
+[u S2184 . 1 `S2156 1 . 1 0 `S2165 1 . 1 0 `S2169 1 . 1 0 `S2172 1 . 1 0 `S2175 1 . 1 0 ]
 "55 variables_globales.h
 [v variables_globales@F10202 `(v  1 t 0 ]
 [v variables_globales@F10202 `(v  1 t 0 ]
@@ -1329,23 +1329,23 @@
 [v _init_chRGB `(v  1 e 0 0 ]
 "4 T4.c
 [v _tache4 `(v  1 e 0 0 ]
-"61
+"43
 [v _write_EEPROM `(v  1 e 0 0 ]
 [v i2_write_EEPROM `(v  1 e 0 0 ]
 [v i2_write_EEPROM `(v  1 e 0 0 ]
-"78
+"60
 [v _read_EEPROM `(uc  1 e 1 0 ]
-"89
+"71
 [v _add_timer `(uc  1 e 1 0 ]
-"134
+"116
 [v _follow_driver_timer `(v  1 e 0 0 ]
-"150
+"132
 [v _follow_driver_timer_anormal `(v  1 e 0 0 ]
-"164
+"146
 [v _follow_timer_unused `(v  1 e 0 0 ]
-"176
+"158
 [v _conv_badge_8bitsl `(uc  1 e 1 0 ]
-"186
+"168
 [v _conv_badge_8bitsh `(uc  1 e 1 0 ]
 "4 T5.c
 [v _tache5 `(v  1 e 0 0 ]
@@ -1720,7 +1720,7 @@
 [v _TRISH `VEuc  1 e 1 @3993 ]
 "11596
 [v _TRISJ `VEuc  1 e 1 @3994 ]
-[s S2128 . 1 `uc 1 TMR1IF 1 0 :1:0 
+[s S2122 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 TMR1GIF 1 0 :1:2 
 `uc 1 SSP1IF 1 0 :1:3 
@@ -1730,20 +1730,20 @@
 `uc 1 PSPIF 1 0 :1:7 
 ]
 "11896
-[s S2137 . 1 `uc 1 . 1 0 :3:0 
+[s S2131 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SSPIF 1 0 :1:3 
 `uc 1 TXIF 1 0 :1:4 
 `uc 1 RCIF 1 0 :1:5 
 ]
-[u S2142 . 1 `S2128 1 . 1 0 `S2137 1 . 1 0 ]
-[v _PIR1bits `VES2142  1 e 1 @3998 ]
+[u S2136 . 1 `S2122 1 . 1 0 `S2131 1 . 1 0 ]
+[v _PIR1bits `VES2136  1 e 1 @3998 ]
 "12675
 [v _IPR6bits `VES443  1 e 1 @4009 ]
 "12802
 [v _RCSTA1 `VEuc  1 e 1 @4011 ]
 "13139
 [v _TXSTA1 `VEuc  1 e 1 @4012 ]
-[s S2162 . 1 `uc 1 TX9D 1 0 :1:0 
+[s S2156 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -1753,17 +1753,17 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "13184
-[s S2171 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S2165 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S2175 . 1 `uc 1 . 1 0 :6:0 
+[s S2169 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 NOT_TX8 1 0 :1:6 
 ]
-[s S2178 . 1 `uc 1 . 1 0 :6:0 
+[s S2172 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S2181 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S2175 . 1 `uc 1 TX9D1 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 `uc 1 BRGH1 1 0 :1:2 
 `uc 1 SENDB1 1 0 :1:3 
@@ -1772,8 +1772,8 @@
 `uc 1 TX91 1 0 :1:6 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[u S2190 . 1 `S2162 1 . 1 0 `S2171 1 . 1 0 `S2175 1 . 1 0 `S2178 1 . 1 0 `S2181 1 . 1 0 ]
-[v _TXSTA1bits `VES2190  1 e 1 @4012 ]
+[u S2184 . 1 `S2156 1 . 1 0 `S2165 1 . 1 0 `S2169 1 . 1 0 `S2172 1 . 1 0 `S2175 1 . 1 0 ]
+[v _TXSTA1bits `VES2184  1 e 1 @4012 ]
 "13426
 [v _TXREG1 `VEuc  1 e 1 @4013 ]
 "13500
@@ -2040,10 +2040,11 @@
 {
 "17
 } 0
-"21
-[v _initialisation_des_ports `(v  1 e 0 0 ]
+"5 semaphore.c
+[v _Init `(v  1 e 0 0 ]
 {
-"54
+[v Init@sem `uc  1 p 1 0 ]
+"18
 } 0
 "135 systeme.c
 [v _initialisation_du_systeme `(v  1 e 0 0 ]
@@ -2052,42 +2053,23 @@
 [v initialisation_du_systeme@temp `uc  1 a 1 6 ]
 "193
 } 0
-"5 semaphore.c
-[v _Init `(v  1 e 0 0 ]
+"21 main.c
+[v _initialisation_des_ports `(v  1 e 0 0 ]
 {
-[v Init@sem `uc  1 p 1 0 ]
-"18
+"54
 } 0
-"61 T4.c
+"43 T4.c
 [v _write_EEPROM `(v  1 e 0 0 ]
 {
 [v write_EEPROM@data `uc  1 p 1 0 ]
 [v write_EEPROM@adressH `uc  1 p 1 1 ]
 [v write_EEPROM@adressL `uc  1 p 1 2 ]
-"75
+"57
 } 0
 "18 systeme.c
 [v _fonction_d_interruption `II(v  1 e 0 0 ]
 {
 "132
-} 0
-"4 T5.c
-[v _tache5 `(v  1 e 0 0 ]
-{
-"13
-[v tache5@ADRESSL `uc  1 a 1 13 ]
-"12
-[v tache5@ADRESSH `uc  1 a 1 12 ]
-"10
-[v tache5@i `i  1 a 2 16 ]
-"5
-[v tache5@a `ui  1 a 2 14 ]
-"46
-} 0
-"4 T6.c
-[v _tache6 `(v  1 e 0 0 ]
-{
-"6
 } 0
 "4 T2.c
 [v _tache2 `(v  1 e 0 0 ]
@@ -2121,28 +2103,57 @@
 "4 T4.c
 [v _tache4 `(v  1 e 0 0 ]
 {
-"6
-[v tache4@n `uc  1 a 1 42 ]
-"58
+"40
+} 0
+"4 T6.c
+[v _tache6 `(v  1 e 0 0 ]
+{
+"5
+[v tache6@n `uc  1 a 1 10 ]
+"22
+} 0
+"4 T5.c
+[v _tache5 `(v  1 e 0 0 ]
+{
+"13
+[v tache5@ADRESSL `uc  1 a 1 13 ]
+"12
+[v tache5@ADRESSH `uc  1 a 1 12 ]
+"10
+[v tache5@i `i  1 a 2 16 ]
+"5
+[v tache5@a `ui  1 a 2 14 ]
+"46
 } 0
 "4 T1.c
 [v _tache1 `(v  1 e 0 0 ]
 {
 "36
 } 0
-"165 afficheur.c
-[v _initialisation_afficheur `(v  1 e 0 0 ]
+"5 rxtx.c
+[v _init_rxtx `(v  1 e 0 0 ]
 {
-"167
-[v initialisation_afficheur@error_count `uc  1 a 1 13 ]
-"226
+"15
 } 0
-"299
+"299 afficheur.c
 [v _clear_graphics `(v  1 e 0 0 ]
 {
 "300
 [v clear_graphics@add `ui  1 a 2 13 ]
 "307
+} 0
+"244
+[v _draw_string `(v  1 e 0 0 ]
+{
+[v draw_string@tableau `*.duc  1 p 2 9 ]
+"251
+} 0
+"165
+[v _initialisation_afficheur `(v  1 e 0 0 ]
+{
+"167
+[v initialisation_afficheur@error_count `uc  1 a 1 13 ]
+"226
 } 0
 "288
 [v _clear_text `(v  1 e 0 0 ]
@@ -2151,33 +2162,13 @@
 [v clear_text@add `ui  1 a 2 13 ]
 "296
 } 0
-"244
-[v _draw_string `(v  1 e 0 0 ]
-{
-[v draw_string@tableau `*.duc  1 p 2 9 ]
-"251
-} 0
-"5 rxtx.c
-[v _init_rxtx `(v  1 e 0 0 ]
-{
-"15
-} 0
 "83 T2.c
 [v _tp_delai `(v  1 e 0 0 ]
 {
 [v tp_delai@itpd `ui  1 p 2 0 ]
 "89
 } 0
-"254 afficheur.c
-[v _draw_hex8 `(v  1 e 0 0 ]
-{
-"255
-[v draw_hex8@c `uc  1 a 1 14 ]
-"254
-[v draw_hex8@octet `uc  1 p 1 12 ]
-"273
-} 0
-"321
+"321 afficheur.c
 [v _plot1 `(v  1 e 0 0 ]
 {
 "322
@@ -2208,44 +2199,92 @@
 [v draw_char@dccar `uc  1 p 1 9 ]
 "240
 } 0
-"150 T4.c
-[v _follow_driver_timer_anormal `(v  1 e 0 0 ]
+"254
+[v _draw_hex8 `(v  1 e 0 0 ]
 {
-"154
-[v follow_driver_timer_anormal@heure `ui  1 a 2 37 ]
-"153
-[v follow_driver_timer_anormal@temps_act_driver `ui  1 a 2 33 ]
-"152
-[v follow_driver_timer_anormal@adresshigh `uc  1 a 1 36 ]
-"151
-[v follow_driver_timer_anormal@adresslow `uc  1 a 1 35 ]
+"255
+[v draw_hex8@c `uc  1 a 1 14 ]
+"254
+[v draw_hex8@octet `uc  1 p 1 12 ]
+"273
+} 0
+"116 T4.c
+[v _follow_driver_timer `(v  1 e 0 0 ]
+{
+"120
+[v follow_driver_timer@heure `ui  1 a 2 37 ]
+"119
+[v follow_driver_timer@temps_act_driver `ui  1 a 2 33 ]
+"118
+[v follow_driver_timer@adresshigh `uc  1 a 1 36 ]
+"117
+[v follow_driver_timer@adresslow `uc  1 a 1 35 ]
+"124
+[v follow_driver_timer@reste `uc  1 a 1 32 ]
+"123
+[v follow_driver_timer@min `uc  1 a 1 31 ]
+"121
+[v follow_driver_timer@heureh `uc  1 a 1 30 ]
+"122
+[v follow_driver_timer@heurel `uc  1 a 1 29 ]
+"129
+} 0
 "158
-[v follow_driver_timer_anormal@reste `uc  1 a 1 32 ]
-"157
-[v follow_driver_timer_anormal@min `uc  1 a 1 31 ]
-"155
-[v follow_driver_timer_anormal@heureh `uc  1 a 1 30 ]
-"156
-[v follow_driver_timer_anormal@heurel `uc  1 a 1 29 ]
-"161
-} 0
-"186
-[v _conv_badge_8bitsh `(uc  1 e 1 0 ]
-{
-"188
-[v conv_badge_8bitsh@i `uc  1 a 1 8 ]
-"187
-[v conv_badge_8bitsh@badge_t `ui  1 a 2 6 ]
-"193
-} 0
-"176
 [v _conv_badge_8bitsl `(uc  1 e 1 0 ]
 {
-"178
+"160
 [v conv_badge_8bitsl@i `uc  1 a 1 6 ]
-"177
+"159
 [v conv_badge_8bitsl@badge_t `ui  1 a 2 4 ]
-"183
+"165
+} 0
+"168
+[v _conv_badge_8bitsh `(uc  1 e 1 0 ]
+{
+"170
+[v conv_badge_8bitsh@i `uc  1 a 1 8 ]
+"169
+[v conv_badge_8bitsh@badge_t `ui  1 a 2 6 ]
+"175
+} 0
+"132
+[v _follow_driver_timer_anormal `(v  1 e 0 0 ]
+{
+"136
+[v follow_driver_timer_anormal@heure `ui  1 a 2 37 ]
+"135
+[v follow_driver_timer_anormal@temps_act_driver `ui  1 a 2 33 ]
+"134
+[v follow_driver_timer_anormal@adresshigh `uc  1 a 1 36 ]
+"133
+[v follow_driver_timer_anormal@adresslow `uc  1 a 1 35 ]
+"140
+[v follow_driver_timer_anormal@reste `uc  1 a 1 32 ]
+"139
+[v follow_driver_timer_anormal@min `uc  1 a 1 31 ]
+"137
+[v follow_driver_timer_anormal@heureh `uc  1 a 1 30 ]
+"138
+[v follow_driver_timer_anormal@heurel `uc  1 a 1 29 ]
+"143
+} 0
+"71
+[v _add_timer `(uc  1 e 1 0 ]
+{
+"83
+[v add_timer@reste_2089 `ui  1 a 2 17 ]
+"73
+[v add_timer@data_t `ui  1 a 2 21 ]
+"74
+[v add_timer@mem_val `uc  1 a 1 20 ]
+"72
+[v add_timer@reste `uc  1 a 1 19 ]
+"71
+[v add_timer@data_J `uc  1 p 1 12 ]
+[v add_timer@adressH `uc  1 p 1 13 ]
+[v add_timer@adressL `uc  1 p 1 14 ]
+[v add_timer@type `uc  1 p 1 15 ]
+"113
 } 0
 "6 stid.c
 [v _lecture_normale `(uc  1 e 1 0 ]
@@ -2259,45 +2298,6 @@
 [v lecture_normale@stid_id `*.buc  1 p 2 2 ]
 "53
 } 0
-"134 T4.c
-[v _follow_driver_timer `(v  1 e 0 0 ]
-{
-"138
-[v follow_driver_timer@heure `ui  1 a 2 37 ]
-"137
-[v follow_driver_timer@temps_act_driver `ui  1 a 2 33 ]
-"136
-[v follow_driver_timer@adresshigh `uc  1 a 1 36 ]
-"135
-[v follow_driver_timer@adresslow `uc  1 a 1 35 ]
-"142
-[v follow_driver_timer@reste `uc  1 a 1 32 ]
-"141
-[v follow_driver_timer@min `uc  1 a 1 31 ]
-"139
-[v follow_driver_timer@heureh `uc  1 a 1 30 ]
-"140
-[v follow_driver_timer@heurel `uc  1 a 1 29 ]
-"147
-} 0
-"89
-[v _add_timer `(uc  1 e 1 0 ]
-{
-"101
-[v add_timer@reste_2095 `ui  1 a 2 17 ]
-"91
-[v add_timer@data_t `ui  1 a 2 21 ]
-"92
-[v add_timer@mem_val `uc  1 a 1 20 ]
-"90
-[v add_timer@reste `uc  1 a 1 19 ]
-"89
-[v add_timer@data_J `uc  1 p 1 12 ]
-[v add_timer@adressH `uc  1 p 1 13 ]
-[v add_timer@adressL `uc  1 p 1 14 ]
-[v add_timer@type `uc  1 p 1 15 ]
-"131
-} 0
 "31 afficheur.c
 [v _check_status_ok `(uc  1 e 1 0 ]
 {
@@ -2305,15 +2305,14 @@
 [v check_status_ok@res `uc  1 a 1 1 ]
 "51
 } 0
-"107
-[v _d1command `(uc  1 e 1 0 ]
+"91
+[v _command `(uc  1 e 1 0 ]
 {
-"108
-[v d1command@res `uc  1 a 1 8 ]
-"107
-[v d1command@d1 `uc  1 p 1 5 ]
-[v d1command@cmd `uc  1 p 1 6 ]
-"126
+"92
+[v command@res `uc  1 a 1 7 ]
+"91
+[v command@cmd `uc  1 p 1 5 ]
+"104
 } 0
 "129
 [v _d2command `(uc  1 e 1 0 ]
@@ -2326,26 +2325,27 @@
 [v d2command@cmd `uc  1 p 1 7 ]
 "152
 } 0
-"5
-[v _write_d_aff `(v  1 e 0 0 ]
+"107
+[v _d1command `(uc  1 e 1 0 ]
 {
-[v write_d_aff@data `uc  1 p 1 0 ]
-"15
-} 0
-"91
-[v _command `(uc  1 e 1 0 ]
-{
-"92
-[v command@res `uc  1 a 1 7 ]
-"91
-[v command@cmd `uc  1 p 1 5 ]
-"104
+"108
+[v d1command@res `uc  1 a 1 8 ]
+"107
+[v d1command@d1 `uc  1 p 1 5 ]
+[v d1command@cmd `uc  1 p 1 6 ]
+"126
 } 0
 "18
 [v _write_c_aff `(v  1 e 0 0 ]
 {
 [v write_c_aff@command `uc  1 p 1 0 ]
 "28
+} 0
+"5
+[v _write_d_aff `(v  1 e 0 0 ]
+{
+[v write_d_aff@data `uc  1 p 1 0 ]
+"15
 } 0
 "54
 [v _wait_status_ok `(uc  1 e 1 0 ]
@@ -2381,17 +2381,6 @@
 [v ___aldiv@divisor `l  1 p 4 16 ]
 "42
 } 0
-"10 C:\Program Files (x86)\Microchip\xc8\v1.12\sources\awmod.c
-[v ___awmod `(i  1 e 2 0 ]
-{
-"11
-[v ___awmod@sign `uc  1 a 1 6 ]
-[v ___awmod@counter `uc  1 a 1 5 ]
-"10
-[v ___awmod@dividend `i  1 p 2 0 ]
-[v ___awmod@divisor `i  1 p 2 2 ]
-"35
-} 0
 "10 C:\Program Files (x86)\Microchip\xc8\v1.12\sources\awdiv.c
 [v ___awdiv `(i  1 e 2 0 ]
 {
@@ -2405,6 +2394,27 @@
 [v ___awdiv@divisor `i  1 p 2 2 ]
 "42
 } 0
+"10 C:\Program Files (x86)\Microchip\xc8\v1.12\sources\awmod.c
+[v ___awmod `(i  1 e 2 0 ]
+{
+"11
+[v ___awmod@sign `uc  1 a 1 6 ]
+[v ___awmod@counter `uc  1 a 1 5 ]
+"10
+[v ___awmod@dividend `i  1 p 2 0 ]
+[v ___awmod@divisor `i  1 p 2 2 ]
+"35
+} 0
+"3 C:\Program Files (x86)\Microchip\xc8\v1.12\sources\lmul.c
+[v ___lmul `(ul  1 e 4 0 ]
+{
+"4
+[v ___lmul@product `ul  1 a 4 8 ]
+"3
+[v ___lmul@multiplier `ul  1 p 4 0 ]
+[v ___lmul@multiplicand `ul  1 p 4 4 ]
+"13
+} 0
 "10 C:\Program Files (x86)\Microchip\xc8\v1.12\sources\lwdiv.c
 [v ___lwdiv `(ui  1 e 2 0 ]
 {
@@ -2417,28 +2427,10 @@
 [v ___lwdiv@divisor `ui  1 p 2 2 ]
 "31
 } 0
-"3 C:\Program Files (x86)\Microchip\xc8\v1.12\sources\lmul.c
-[v ___lmul `(ul  1 e 4 0 ]
-{
-"4
-[v ___lmul@product `ul  1 a 4 8 ]
-"3
-[v ___lmul@multiplier `ul  1 p 4 0 ]
-[v ___lmul@multiplicand `ul  1 p 4 4 ]
-"13
-} 0
 "21 main.c
 [v i2_initialisation_des_ports `(v  1 e 0 0 ]
 {
 "54
-} 0
-"61 T4.c
-[v i2_write_EEPROM `(v  1 e 0 0 ]
-{
-[v i2write_EEPROM@data `uc  1 p 1 0 ]
-[v i2write_EEPROM@adressH `uc  1 p 1 1 ]
-[v i2write_EEPROM@adressL `uc  1 p 1 2 ]
-"75
 } 0
 "5 semaphore.c
 [v i2_Init `(v  1 e 0 0 ]
@@ -2446,13 +2438,21 @@
 [v i2Init@sem `uc  1 p 1 0 ]
 "18
 } 0
-"78 T4.c
+"43 T4.c
+[v i2_write_EEPROM `(v  1 e 0 0 ]
+{
+[v i2write_EEPROM@data `uc  1 p 1 0 ]
+[v i2write_EEPROM@adressH `uc  1 p 1 1 ]
+[v i2write_EEPROM@adressL `uc  1 p 1 2 ]
+"57
+} 0
+"60
 [v _read_EEPROM `(uc  1 e 1 0 ]
 {
-"83
+"65
 [v read_EEPROM@data `uc  1 a 1 11 ]
-"78
+"60
 [v read_EEPROM@adressH `uc  1 p 1 9 ]
 [v read_EEPROM@adressL `uc  1 p 1 10 ]
-"85
+"67
 } 0

@@ -1,6 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
 "55 variables_globales.h
 [v F10202 `(v ~T0 @X0 0 tf ]
+"17 stid.h
+[v _lecture_normale `(uc ~T0 @X0 0 ef1`*uc ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [; ;pic18f87k22.h: 46: asm("PMD3 equ 0F16h");
@@ -9409,7 +9411,60 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;T6.c: 4: {
 [e :U _tache6 ]
 [f ]
-[; ;T6.c: 6: }
+"5
+[v _n `uc ~T0 @X0 1 a ]
+[; ;T6.c: 5: unsigned char n=lecture_normale(badge);
+[e = _n ( _lecture_normale (1 &U _badge ]
+[; ;T6.c: 6: if (n>0)
 "6
+[e $ ! > -> _n `i -> 0 `i 1239  ]
+[; ;T6.c: 7: {
+"7
+{
+[; ;T6.c: 8: if(n<10)
+"8
+[e $ ! < -> _n `i -> 10 `i 1240  ]
+[; ;T6.c: 9: {
+"9
+{
+[; ;T6.c: 10: n_octet_badge=n;
+"10
+[e = _n_octet_badge _n ]
+"11
+}
+[; ;T6.c: 11: }
+[e $U 1241  ]
+"12
+[e :U 1240 ]
+[; ;T6.c: 12: else
+[; ;T6.c: 13: {
+"13
+{
+[; ;T6.c: 14: n_octet_badge=0;
+"14
+[e = _n_octet_badge -> -> 0 `i `uc ]
+"15
+}
+[e :U 1241 ]
+"16
+}
+[; ;T6.c: 15: }
+[; ;T6.c: 16: }
+[e $U 1242  ]
+"17
+[e :U 1239 ]
+[; ;T6.c: 17: else
+[; ;T6.c: 18: {
+"18
+{
+[; ;T6.c: 19: n_octet_badge=0;
+"19
+[e = _n_octet_badge -> -> 0 `i `uc ]
+"20
+}
+[e :U 1242 ]
+[; ;T6.c: 20: }
+[; ;T6.c: 22: }
+"22
 [e :UE 1238 ]
 }
