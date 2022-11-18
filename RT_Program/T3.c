@@ -116,13 +116,13 @@ void tache3()
                 draw_string("Y-Joystick:");
                 draw_hex8(lecture_8bit_analogique(JOYSTICK_Y));
 
-                /*goto_lico(5,20);
+                goto_lico(5,20);
                 draw_hex8(test_EEPROM);
                 goto_lico(6,20);
                 draw_hex8(temps_initial);
                 goto_lico(7,20);
                 draw_hex8(temps_final);
-                */
+                
           
                 
 //                if (TP_appui==1)

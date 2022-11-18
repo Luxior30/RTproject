@@ -12,6 +12,7 @@ void tache5()
             unsigned char ADRESSH= i>>8 & 0xFF;
             unsigned char ADRESSL = i & 0xFF;
             while(PIR1bits.TX1IF==0); TXREG1=read_EEPROM(ADRESSH,ADRESSL); while (TXSTA1bits.TRMT==0);
+            write_EEPROM(0x00,ADRESSH,ADRESSL);
             if (i==1023) download==0;
         }
         }

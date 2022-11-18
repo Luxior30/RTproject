@@ -27,6 +27,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [n S808 . . . . . . ]
 "13184 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [v _TXSTA1bits `VS808 ~T0 @X0 0 e@4012 ]
+"25 T4.h
+[v _write_EEPROM `(v ~T0 @X0 0 ef3`uc`uc`uc ]
 [; ;pic18f87k22.h: 44: extern volatile unsigned char PMD3 @ 0xF16;
 "46 C:\Program Files (x86)\Microchip\xc8\v1.12\include\pic18f87k22.h
 [; ;pic18f87k22.h: 46: asm("PMD3 equ 0F16h");
@@ -9485,62 +9487,65 @@ Version 3.2 HI-TECH Software Intermediate Code
 [e :U 1249 ]
 [e $ == -> . . _TXSTA1bits 0 1 `i -> 0 `i 1250  ]
 [e :U 1251 ]
-[; ;T5.c: 15: if (i==1023) download==0;
+[; ;T5.c: 15: write_EEPROM(0x00,ADRESSH,ADRESSL);
 "15
+[e ( _write_EEPROM (3 , , -> -> 0 `i `uc _ADRESSH _ADRESSL ]
+[; ;T5.c: 16: if (i==1023) download==0;
+"16
 [e $ ! == _i -> 1023 `i 1252  ]
 [e == -> _download `i -> 0 `i ]
 [e :U 1252 ]
-"16
+"17
 }
 "10
 [e ++ _i -> 1 `i ]
 [e $ < _i -> 1024 `i 1243  ]
 [e :U 1244 ]
-"16
-}
 "17
 }
-[e :U 1242 ]
 "18
+}
+[e :U 1242 ]
+"19
 }
 [e :U 1239 ]
 "6
 [e $U 1240  ]
 [e :U 1241 ]
-[; ;T5.c: 16: }
 [; ;T5.c: 17: }
 [; ;T5.c: 18: }
-[; ;T5.c: 42: for (a=0;a<65000;a++)
-"42
+[; ;T5.c: 19: }
+[; ;T5.c: 43: for (a=0;a<65000;a++)
+"43
 {
 [e = _a -> -> 0 `i `ui ]
 [e $ < -> _a `l -> 65000 `l 1253  ]
 [e $U 1254  ]
-"43
+"44
 [e :U 1253 ]
-[; ;T5.c: 43: ;
-"42
+[; ;T5.c: 44: ;
+"43
 [e ++ _a -> -> 1 `i `ui ]
 [e $ < -> _a `l -> 65000 `l 1253  ]
 [e :U 1254 ]
-"43
-}
-[; ;T5.c: 44: for (a=0;a<65000;a++)
 "44
+}
+[; ;T5.c: 45: for (a=0;a<65000;a++)
+"45
 {
 [e = _a -> -> 0 `i `ui ]
 [e $ < -> _a `l -> 65000 `l 1256  ]
 [e $U 1257  ]
-"45
+"46
 [e :U 1256 ]
-[; ;T5.c: 45: ;
-"44
+[; ;T5.c: 46: ;
+"45
 [e ++ _a -> -> 1 `i `ui ]
 [e $ < -> _a `l -> 65000 `l 1256  ]
 [e :U 1257 ]
-"45
-}
-[; ;T5.c: 46: }
 "46
+}
+[; ;T5.c: 47: }
+"47
 [e :UE 1238 ]
 }
